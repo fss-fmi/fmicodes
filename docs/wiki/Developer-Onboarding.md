@@ -1,4 +1,4 @@
-This manual should serve you as a starting point for contributing to the FMI{CODES} platform. It showcases the general project structure, tools, and steps for setting up a local development environment, etc. Whether you are a seasoned developer of the platform or you are just poking around the codebase - your contributions are welcomed and appreciated! 💖
+This manual should serve you as a starting point for contributing to the FMI{Codes} platform. It showcases the general project structure, tools, and steps for setting up a local development environment, etc. Whether you are a seasoned developer of the platform or you are just poking around the codebase - your contributions are welcomed and appreciated! 💖
 
 ### Table of contents
 
@@ -122,7 +122,7 @@ pnpm nx run-many -t serve --all
 
 ## ⌨️ IDE Setup
 
-Development work on the FMI{CODES} project is easier in an IDE. In this part of the guide, the setup steps for 2 popular IDEs will be provided - JetBrains WebStorm and Visual Studio Code.
+Development work on the FMI{Codes} project is easier in an IDE. In this part of the guide, the setup steps for 2 popular IDEs will be provided - JetBrains WebStorm and Visual Studio Code.
 
 - **JetBrains WebStorm**
 
@@ -153,7 +153,7 @@ Development work on the FMI{CODES} project is easier in an IDE. In this part of 
 
 ## 🔚 Closing Remarks
 
-Congratulations on completing this guide. Now you should have the FMI{CODES} project set up locally. If you have questions or need help, reach out to anyone on the team.
+Congratulations on completing this guide. Now you should have the FMI{Codes} project set up locally. If you have questions or need help, reach out to anyone on the team.
 
 > [!IMPORTANT]
 > If you experience any issues during the project setup, make sure to post them in the [Project Setup Q&A](https://github.com/fss-fmi/fmicodes/discussions/categories/project-setup-q-a) discussions form and contact the project maintainers. This way we can both help you out and document the problem, in case anyone else comes across it.

@@ -30,7 +30,7 @@ export const NavbarExample: Story = {
       <>
         <NavbarLinks className="block xl:hidden" variant="mobile" />
 
-        <span className="font-bold capitalize">FMI{CODES}</span>
+        <span className="font-bold capitalize">{'FMI{Codes}'}</span>
 
         <NavbarLinks
           className="hidden xl:flex justify-center"

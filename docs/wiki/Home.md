@@ -1,4 +1,4 @@
-<h1 align="center">🎮 FMI{CODES} 🎮</h1>
+<h1 align="center">🎮 FMI{Codes} 🎮</h1>
 <p align="center">
   Tournament management platform for the Sofia University Gaming club.
 </p>
@@ -12,9 +12,9 @@
     </a>
 </p>
 
-## About FMI{CODES}
+## About FMI{Codes}
 
-FMI{CODES} is the online platform of Sofia University "St. Kliment Ohridski" gaming club - FMI{CODES}. The club organizes League of Legends and Counter-Strike tournaments. Participation is open to students at university and is completely free.
+FMI{Codes} is the online platform of Sofia University "St. Kliment Ohridski" gaming club - FMI{Codes}. The club organizes League of Legends and Counter-Strike tournaments. Participation is open to students at university and is completely free.
 
 ## About the repository
 

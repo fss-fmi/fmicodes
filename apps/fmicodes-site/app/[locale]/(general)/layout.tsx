@@ -60,7 +60,7 @@ export default async function RootLayout({
                 variant="desktop"
               />
 
-              <div className="flex flex-row gap-2">
+              <div className="flex flex-row align-middle gap-2">
                 {user && <NotificationsPopover user={user} />}
                 <NavbarUserControls user={user} className="" />
               </div>

@@ -16,7 +16,7 @@ export function Logo(props: React.HTMLAttributes<HTMLDivElement>) {
         width={32}
         height={32}
       />
-      <span className="text-xl font-bold">{`FMI{CODES}`}</span>
+      <span className="text-xl font-bold">{'FMI{Codes}'}</span>
     </div>
   );
 }

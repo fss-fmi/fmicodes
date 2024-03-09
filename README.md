@@ -1,4 +1,4 @@
-<h1 align="center">🎮 FMI{CODES} 🎮</h1>
+<h1 align="center">🎮 FMI{Codes} 🎮</h1>
 <p align="center">
   Tournament management platform for the Sofia University Gaming club.
 </p>
