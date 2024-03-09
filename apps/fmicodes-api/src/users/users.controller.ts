@@ -268,8 +268,7 @@ export class UsersController {
   @ApiBearerAuth()
   @ApiOperation({
     summary: 'Respond to a team invitation',
-    description:
-      'Endpoint for users to accept or decline team invitations.',
+    description: 'Endpoint for users to accept or decline team invitations.',
   })
   @ApiBody({ type: UsersPostCurrentTeamInvitesRespondRequestBodyDto })
   @ApiOkResponse({

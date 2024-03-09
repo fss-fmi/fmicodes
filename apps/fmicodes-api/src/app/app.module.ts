@@ -11,7 +11,7 @@ import { MulterModule } from '@nestjs/platform-express';
 import { HealthModule } from '../health/health.module';
 import { UsersModule } from '../users/users.module';
 import { AuthModule } from '../auth/auth.module';
-import { TeamsModule } from '..//teams/teams.module';
+import { TeamsModule } from '../teams/teams.module';
 import { appConfig } from './app.config';
 import { SponsorsModule } from '../sponsors/sponsors.module';
 

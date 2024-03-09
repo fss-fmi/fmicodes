@@ -10,10 +10,7 @@ export class UsersOnlyCaptainCanInviteException extends HttpException {
         HttpStatus.FORBIDDEN,
       );
     } else {
-      super(
-        i18n.t('errors.teams.onlyCaptainCanInvite'),
-        HttpStatus.FORBIDDEN,
-      );
+      super(i18n.t('errors.teams.onlyCaptainCanInvite'), HttpStatus.FORBIDDEN);
     }
   }
 }

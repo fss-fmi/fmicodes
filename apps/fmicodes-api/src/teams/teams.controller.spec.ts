@@ -15,9 +15,7 @@ describe('TeamsController', () => {
     '@fmicodes/fmicodes-services//teams/teams.service',
   );
 
-  mockTeamsService.create = jest
-    .fn()
-    .mockResolvedValue(exampleNonexistentTeam);
+  mockTeamsService.create = jest.fn().mockResolvedValue(exampleNonexistentTeam);
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({

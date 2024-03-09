@@ -40,11 +40,9 @@ export default async function TeamPage({ params }: TeamPageProps) {
 
   async function getTeamInvitesSentUserIds() {
     const invites =
-      await ApiClient.TeamsApiService.teamsControllerGetInvitationsSentV1(
-        {
-          authorization: await getBearerToken(),
-        },
-      );
+      await ApiClient.TeamsApiService.teamsControllerGetInvitationsSentV1({
+        authorization: await getBearerToken(),
+      });
     return invites.map((invite) => invite.userId);
   }
 
