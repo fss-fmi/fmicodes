@@ -151,11 +151,6 @@ export const libConfig = {
     scope: ['identify', 'guilds.join'],
     guildId: process.env['DISCORD_GUILD_ID'] || '0',
   },
-  steam: {
-    apiKey: process.env['STEAM_API_KEY'],
-    realm: process.env['STEAM_CALLBACK_API'],
-    returnURL: process.env['STEAM_CALLBACK_API'],
-  },
 };
 
 export default libConfig;

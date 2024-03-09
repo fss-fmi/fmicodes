@@ -179,9 +179,6 @@ dependencies:
   passport-local:
     specifier: ^1.0.0
     version: 1.0.0
-  passport-steam:
-    specifier: ^1.0.18
-    version: 1.0.18
   project-version:
     specifier: ^2.0.0
     version: 2.0.0
@@ -349,9 +346,6 @@ devDependencies:
   '@types/passport-local':
     specifier: ^1.0.37
     version: 1.0.38
-  '@types/passport-steam':
-    specifier: ^1.0.5
-    version: 1.0.5
   '@types/react':
     specifier: 18.2.33
     version: 18.2.33
@@ -6928,27 +6922,6 @@ packages:
       }
     engines: { node: '>=8.0.0' }
 
-  /@passport-next/passport-openid@1.0.0:
-    resolution:
-      {
-        integrity: sha512-W9uj4Ui/ZK/iBUNzSNxPWDQ8wCD1tUddGEVSGm0FN0B7ewo3yBQLGMoW3i3UqcwEzxdyGbAj06ohAhNQIXC4VA==,
-      }
-    engines: { node: '>=6' }
-    dependencies:
-      '@passport-next/passport-strategy': 1.1.0
-      openid: 2.0.11
-    transitivePeerDependencies:
-      - debug
-    dev: false
-
-  /@passport-next/passport-strategy@1.1.0:
-    resolution:
-      {
-        integrity: sha512-2KhFjtPueJG6xVj2HnqXt9BlANOfYCVLyu+pXYjPGBDT8yk+vQwc/6tsceIj+mayKcoxMau2JimggXRPHgoc8w==,
-      }
-    engines: { node: '>= 6.0.0' }
-    dev: false
-
   /@phenomnomnominal/tsquery@5.0.1(typescript@5.2.2):
     resolution:
       {
@@ -10837,16 +10810,6 @@ packages:
     dependencies:
       '@types/express': 4.17.21
       '@types/oauth': 0.9.4
-      '@types/passport': 1.0.16
-    dev: true
-
-  /@types/passport-steam@1.0.5:
-    resolution:
-      {
-        integrity: sha512-mFPuDcKtyGQggsBYhvnGXd2xChb6l9bjWDNJNkOnoWCyC3vIxUQpFkXPFtMigU3pyRjLIM+SuiPuvw4OoSfgLw==,
-      }
-    dependencies:
-      '@types/express': 4.17.21
       '@types/passport': 1.0.16
     dev: true
 
@@ -22604,19 +22567,6 @@ packages:
     hasBin: true
     dev: true
 
-  /openid@2.0.11:
-    resolution:
-      {
-        integrity: sha512-JAq4HWu9W9CYk83KOP4f8zwGfwwMrFOz9AAlji7h1oLGag+/ZqyfqKror0/TTHM1OV2mBpqNAv8CAPIhEDWB2A==,
-      }
-    engines: { node: '>= 0.6.0' }
-    dependencies:
-      axios: 1.6.7(debug@4.3.4)
-      qs: 6.11.2
-    transitivePeerDependencies:
-      - debug
-    dev: false
-
   /optionator@0.9.3:
     resolution:
       {
@@ -23026,19 +22976,6 @@ packages:
       passport-strategy: 1.0.0
       uid2: 0.0.4
       utils-merge: 1.0.1
-    dev: false
-
-  /passport-steam@1.0.18:
-    resolution:
-      {
-        integrity: sha512-3S6XlgATcJE3M3IfpwkvjWHeTDreaPUWQPykwxjv8LA5RtnfHrkt5c5HJdadYMCRHf3qh1OfCWETMxdpSdlBZA==,
-      }
-    engines: { node: '>= 0.4.0' }
-    dependencies:
-      '@passport-next/passport-openid': 1.0.0
-      steam-web: 0.4.0
-    transitivePeerDependencies:
-      - debug
     dev: false
 
   /passport-strategy@1.0.0:
@@ -24265,6 +24202,7 @@ packages:
     engines: { node: '>=0.6' }
     dependencies:
       side-channel: 1.0.4
+    dev: true
 
   /querystring-es3@0.2.1:
     resolution:
@@ -26026,16 +25964,6 @@ packages:
         integrity: sha512-RwNA9Z/7PrK06rYLIzFMlaF+l73iwpzsqRIFgbMLbTcLD6cOao82TaWefPXQvB2fOC4AjuYSEndS7N/mTCbkdQ==,
       }
     engines: { node: '>= 0.8' }
-
-  /steam-web@0.4.0:
-    resolution:
-      {
-        integrity: sha512-FgSYhL7GaP4Va5JKT09yZ+WrTZttFtLwenIPuZd7GUA1z3W7vu7qqPT/qTC76Pd9+sf85txMgIPr/y0+3gNlUA==,
-      }
-    engines: { '0': node >= 0.4.0 }
-    dependencies:
-      qs: 6.11.2
-    dev: false
 
   /stop-iteration-iterator@1.0.0:
     resolution:

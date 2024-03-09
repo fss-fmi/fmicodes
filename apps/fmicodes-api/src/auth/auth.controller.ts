@@ -27,8 +27,6 @@ import { OptionalJwtAuthGuard } from '@fmicodes/fmicodes-services/auth/guards/op
 import { DiscordAuthGuard } from '@fmicodes/fmicodes-services/auth/guards/discord-auth.guard';
 import { JwtRefreshGuard } from '@fmicodes/fmicodes-services/auth/guards/jwt-refresh.guard';
 import { DiscordLoginQueryDto } from '@fmicodes/fmicodes-services/auth/dto/discord-login-query.dto';
-import { SteamLoginQueryDto } from '@fmicodes/fmicodes-services/auth/dto/steam-login-query.dto';
-import SteamAuthGuard from '@fmicodes/fmicodes-services/auth/guards/steam-auth.guard';
 import { UserAuth } from '../users/user-auth.decorator';
 
 @Controller({ path: 'auth' })
@@ -81,33 +79,6 @@ export class AuthController {
   async postLoginDiscordV1(
     @UserAuth() user: Omit<User, 'passwordHash'>,
     @Query() _: DiscordLoginQueryDto,
-  ) {
-    return this.authService.login(user);
-  }
-
-  @Get('login/steam')
-  @Version(['1'])
-  @UseGuards(OptionalJwtAuthGuard, SteamAuthGuard)
-  @HttpCode(HttpStatus.OK)
-  @ApiOperation({
-    summary: 'Authenticate user using Steam',
-    description: 'Endpoint for authenticating users using Steam.',
-  })
-  @ApiOkResponse({
-    description:
-      'User logged in successfully / Account linked successfully and access token and information is returned.',
-    type: LoginDto,
-  })
-  @ApiUnauthorizedResponse({ description: 'Invalid Steam token.' })
-  @ApiNotFoundResponse({
-    description: 'No user is linked to this Steam account.',
-  })
-  @ApiConflictResponse({
-    description: 'Steam account already linked to an user.',
-  })
-  async postLoginSteamV1(
-    @UserAuth() user: Omit<User, 'passwordHash'>,
-    @Query() _: SteamLoginQueryDto,
   ) {
     return this.authService.login(user);
   }

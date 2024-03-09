@@ -33,7 +33,6 @@ export class HealthController {
           timeout: 10000,
         }),
       () => this.http.pingCheck('discord', 'https://discord.com'),
-      () => this.http.pingCheck('steam', 'https://steamcommunity.com/openid'),
     ]);
   }
 }

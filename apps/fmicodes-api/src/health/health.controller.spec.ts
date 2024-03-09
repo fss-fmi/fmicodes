@@ -47,7 +47,6 @@ describe('HealthController', () => {
       expect(result).toHaveProperty('info', {
         prisma: { status: 'up' },
         discord: { status: 'up' },
-        steam: { status: 'up' },
       });
     });
 

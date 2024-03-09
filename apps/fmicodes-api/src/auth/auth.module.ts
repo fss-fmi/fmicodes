@@ -5,7 +5,6 @@ import { AuthService } from '@fmicodes/fmicodes-services/auth/auth.service';
 import { LocalStrategy } from '@fmicodes/fmicodes-services/auth/strategies/local.strategy';
 import { AnonymousStrategy } from '@fmicodes/fmicodes-services/auth/strategies/anonymous.strategy';
 import { DiscordStrategy } from '@fmicodes/fmicodes-services/auth/strategies/discord.strategy';
-import { SteamStrategy } from '@fmicodes/fmicodes-services/auth/strategies/steam.strategy';
 import { appConfig } from '../app/app.config';
 import { AuthController } from './auth.controller';
 import { UsersModule } from '../users/users.module';
@@ -16,13 +15,7 @@ import { UsersModule } from '../users/users.module';
     PassportModule,
     JwtModule.register(appConfig.jwtAccessToken),
   ],
-  providers: [
-    AuthService,
-    LocalStrategy,
-    AnonymousStrategy,
-    DiscordStrategy,
-    SteamStrategy,
-  ],
+  providers: [AuthService, LocalStrategy, AnonymousStrategy, DiscordStrategy],
   controllers: [AuthController],
 })
 export class AuthModule {}

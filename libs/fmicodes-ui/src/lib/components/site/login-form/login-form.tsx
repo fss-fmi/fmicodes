@@ -9,7 +9,7 @@ import { useLocale, useTranslations } from 'next-intl';
 import { useState } from 'react';
 import Link from 'next/link';
 import { CgSpinnerAlt } from 'react-icons/cg';
-import { FaDiscord, FaSteamSymbol } from 'react-icons/fa6';
+import { FaDiscord } from 'react-icons/fa6';
 import { FaSignInAlt } from 'react-icons/fa';
 import * as process from 'process';
 import { Button } from '../../common/server';
@@ -145,19 +145,6 @@ export function LoginForm({ error }: LoginFormProps) {
             <FaDiscord className="mr-2 h-4 w-4" />
           )}
           Discord
-        </Link>
-      </Button>
-
-      <Button variant="outline" type="button" disabled={isLoading} asChild>
-        <Link
-          href={`${process.env.NEXT_PUBLIC_API_BASE}/api/v1/auth/login/discord`}
-        >
-          {isLoading ? (
-            <CgSpinnerAlt className="mr-2 h-4 w-4 animate-spin" />
-          ) : (
-            <FaSteamSymbol className="mr-2 h-4 w-4" />
-          )}
-          Steam
         </Link>
       </Button>
     </>

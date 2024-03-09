@@ -82,7 +82,7 @@
     },
     "onboarding-dialog": {
       "welcome-step": {
-        "title": "Добре дошли в FMI{CODES}!",
+        "title": "Добре дошли в FMI'{Codes'}!",
         "description": "Радваме се, че си тук! Нека завършим профила ти и да започваме.",
         "continue": "Продължи",
         "try-again": "Моля, опитайте отново. Ако проблемът продължава, свържете се с нас.",
@@ -108,19 +108,11 @@
       },
       "discord-step": {
         "title": "Discord акаунт",
-        "description": "Свържи своя Discord акаунт с FMI{CODES}, за да се присъединиш към нашия Discord сървър.",
+        "description": "Свържи своя Discord акаунт с FMI'{Codes'}, за да се присъединиш към нашия Discord сървър.",
         "previous": "Назад",
         "skip": "Пропусни",
         "continue": "Продължи",
         "continue-with-discord": "Продължи с Discord"
-      },
-      "steam-step": {
-        "title": "Steam акаунт",
-        "description": "Свържи своя Steam акаунт с FMI{CODES}, за да можеш да участваш в Counter-Strike турнири и мачове.",
-        "previous": "Назад",
-        "skip": "Пропусни",
-        "continue": "Продължи",
-        "continue-with-steam": "Продължи с Steam"
       },
       "completed-step": {
         "title": "Готови сме!",

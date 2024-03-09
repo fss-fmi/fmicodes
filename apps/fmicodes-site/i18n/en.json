@@ -9,8 +9,8 @@
     "club-regulations": "Club Regulations"
   },
   "sign-up-page": {
-    "title": "Join the club!",
-    "description": "Sign up for the FMI{CODES} club by filling-out the following form."
+    "title": "Join FMI'{Codes'}!",
+    "description": "Sign up for the hackathon by filling-out the following form."
   },
   "teams-page": {
     "title": "Teams",

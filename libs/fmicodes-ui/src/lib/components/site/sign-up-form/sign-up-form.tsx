@@ -179,7 +179,7 @@ export function SignUpForm() {
       path: ['passwordConfirmation'],
     })
     .refine((data) => data.termsAndConditions, {
-      message: t('isRequired'),
+      message: t('is-required'),
       path: ['termsAndConditions'],
     });
 

@@ -44,7 +44,7 @@ export async function bootstrap() {
       'https://github.com/fss-fmi/fmicodes/wiki',
     )
     .setContact(
-      'FMI{CODES}',
+      'FMI{Codes}',
       'https://fmicodes-site.vercel.app/',
       'all@fss.fmi.uni-sofia.bg',
     )

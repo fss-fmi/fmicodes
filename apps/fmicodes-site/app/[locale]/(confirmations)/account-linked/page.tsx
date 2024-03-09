@@ -8,7 +8,7 @@ import {
 } from '@fmicodes/fmicodes-ui/lib/components/common/server';
 import React, { useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { FaDiscord, FaSteam } from 'react-icons/fa6';
+import { FaDiscord } from 'react-icons/fa6';
 import { useTranslations } from 'next-intl';
 
 export default function AccountLinkedPage() {
@@ -58,7 +58,6 @@ export default function AccountLinkedPage() {
     <Card className="flex m-auto w-[450px] flex-col items-center p-4 md:p-8 space-y-4">
       <CardContent className="flex flex-col space-y-2 h-1/6 justify-end text-center">
         {type === 'discord' && <FaDiscord className="h-52 w-52 m-auto" />}
-        {type === 'steam' && <FaSteam className="h-52 w-52 m-auto" />}
 
         {!error ? (
           <>

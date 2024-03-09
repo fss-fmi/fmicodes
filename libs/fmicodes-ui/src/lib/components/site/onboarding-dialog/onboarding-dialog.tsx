@@ -9,7 +9,6 @@ import {
 import { WelcomeStep } from './components/welcome-step';
 import { AvatarStep } from './components/avatar-step';
 import { DiscordStep } from './components/discord-step';
-import { SteamStep } from './components/steam-step';
 import { CompletedStep } from './components/completed-step';
 import { Dialog, DialogContent, toast, Toaster } from '../../common/client';
 
@@ -21,7 +20,6 @@ enum OnboardingDialogSteps {
   Welcome,
   Avatar,
   Discord,
-  Steam,
   Completed,
 }
 
@@ -111,20 +109,13 @@ export function OnboardingDialog({ isOpen }: OnboardingDialogProps) {
         return (
           <DiscordStep
             previousStep={() => setStep(OnboardingDialogSteps.Avatar)}
-            nextStep={() => setStep(OnboardingDialogSteps.Steam)}
-          />
-        );
-      case OnboardingDialogSteps.Steam:
-        return (
-          <SteamStep
-            previousStep={() => setStep(OnboardingDialogSteps.Discord)}
             nextStep={() => setStep(OnboardingDialogSteps.Completed)}
           />
         );
       case OnboardingDialogSteps.Completed:
         return (
           <CompletedStep
-            previousStep={() => setStep(OnboardingDialogSteps.Steam)}
+            previousStep={() => setStep(OnboardingDialogSteps.Discord)}
             close={() => close()}
           />
         );

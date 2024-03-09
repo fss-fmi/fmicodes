@@ -32,7 +32,7 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
             <p className="text-lg">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
             </p>
-            <footer className="text-sm">FMI{CODES}</footer>
+            <footer className="text-sm">{`FMI{CODES}`}</footer>
           </blockquote>
         </div>
       </div>

@@ -12,7 +12,7 @@ export function Logo(props: React.HTMLAttributes<HTMLDivElement>) {
     >
       <Image
         src="/assets/icons/fmicodes.png"
-        alt="FMI{CODES} Logo"
+        alt="FMI{Codes} Logo"
         width={32}
         height={32}
       />

@@ -3,7 +3,7 @@ import { ApiProperty } from '@nestjs/swagger';
 import { i18nValidationMessage } from 'nestjs-i18n';
 // TODO:fix
 // eslint-disable-next-line import/no-cycle
-import { TeamResponseBodyDto } from '../..//teams/dto/team-response-body.dto';
+import { TeamResponseBodyDto } from '../../teams/dto/team-response-body.dto';
 import { UserBaseDto } from './user-base.dto';
 
 export class UserResponseBodyDto extends UserBaseDto {
@@ -29,11 +29,6 @@ export class UserResponseBodyDto extends UserBaseDto {
     description: 'User Discord account information.',
   })
   discord!: object | undefined; // TODO: Add Discord type
-
-  @ApiProperty({
-    description: 'User Steam account information.',
-  })
-  steam!: object | undefined; // TODO: Add Steam type
 
   @ApiProperty({
     description: 'User avatar URL.',

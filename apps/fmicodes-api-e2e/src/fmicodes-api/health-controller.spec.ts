@@ -11,7 +11,6 @@ describe('HealthController', () => {
     // Verify the database is up
     expect(res.data).toHaveProperty('info', {
       prisma: { status: 'up' },
-      steam: { status: 'up' },
       discord: { status: 'up' },
     });
   });

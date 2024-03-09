@@ -18,23 +18,22 @@
     "noDiscordAccountLinked": "Не сте свързали Discord акаунт.",
     "teamIsFull": "Отборът няма свободни места.",
     "discordAccountAlreadyLinked": "Този Discord акаунт вече е свързан с потребител.",
-    "steamAccountAlreadyLinked": "Този Steam акаунт вече е свързан с потребител.",
     "emailAlreadyInUse": "Имейлът вече е използван.",
     "nicknameAlreadyInUse": "Името вече е използвано от друг потребител.",
     "phoneAlreadyInUse": "Телефоният номер вече е използван от друг потребител.",
     "universityFacultyNumberAlreadyInUse": "Факултетният номер вече е използван от друг потребител."
   },
-    "teams": {
-      "noSuchTeam": "Не съществува такъв отбор.",
-      "nameAlreadyExists": "Отбор със същото име вече съществува.",
-      "notCaptain": "Не сте капитан на този отбор.",
-      "alreadyInTeam": "Вече сте член на друг отбор.",
-      "alreadyRequestedToJoinTeam": "Вече сте изпратили заявка за присъединяване в този отбор.",
-      "noJoinRequest": "Не съществува такава заявка за присъединяване към отбора.",
-      "teamIsFull": "Отборът няма свободни места.",
-      "userNotInTeam": "Потребителят не е член на отбора.",
-      "noSuchDiscordGuildRole": "Не съществува такава Discord сървърна роля.",
-      "alreadyHasRole": "Потребителят вече има роля.",
-      "captainCanNotLeave": "Капитанът не може да напусне отбора."
-    }
+  "teams": {
+    "noSuchTeam": "Не съществува такъв отбор.",
+    "nameAlreadyExists": "Отбор със същото име вече съществува.",
+    "notCaptain": "Не сте капитан на този отбор.",
+    "alreadyInTeam": "Вече сте член на друг отбор.",
+    "alreadyRequestedToJoinTeam": "Вече сте изпратили заявка за присъединяване в този отбор.",
+    "noJoinRequest": "Не съществува такава заявка за присъединяване към отбора.",
+    "teamIsFull": "Отборът няма свободни места.",
+    "userNotInTeam": "Потребителят не е член на отбора.",
+    "noSuchDiscordGuildRole": "Не съществува такава Discord сървърна роля.",
+    "alreadyHasRole": "Потребителят вече има роля.",
+    "captainCanNotLeave": "Капитанът не може да напусне отбора."
+  }
 }
