@@ -1,0 +1,13 @@
+{
+  "name": "@fmicodes/fmicodes-api-client",
+  "version": "0.1.0",
+  "dependencies": {
+    "tslib": "^2.3.0",
+    "next": "^14.0.2",
+    "jwt-decode": "^4.0.0",
+    "next-intl": "^3.1.2"
+  },
+  "type": "commonjs",
+  "main": "./src/index.js",
+  "typings": "./src/index.d.ts"
+}

@@ -1,0 +1,32 @@
+{
+  "name": "fmicodes-api-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "implicitDependencies": ["fmicodes-api"],
+  "targets": {
+    "e2e": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "start-server-and-test \"nx serve fmicodes-api:serve\" \"3000/api/v1/health\" \"nx _e2e fmicodes-api-e2e\""
+          }
+        ]
+      }
+    },
+    "_e2e": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{e2eProjectRoot}"],
+      "options": {
+        "jestConfig": "apps/fmicodes-api-e2e/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/fmicodes-api-e2e/**/*.{js,ts}"]
+      }
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "api/serverless.ts"
+    }
+  ],
+  "functions": {
+    "api/serverless.ts": {
+      "includeFiles": "assets/**/*"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "workspace",
+  "$schema": "node_modules/nx/schemas/project-schema.json",
+  "targets": {
+    "version": {
+      "executor": "@jscutlery/semver:version",
+      "options": {
+        "syncVersions": true,
+        "preset": "conventional"
+      }
+    },
+    "prisma": {
+      "command": "prisma",
+      "options": {
+        "cwd": "./prisma"
+      }
+    },
+    "prisma-generate": {
+      "command": "prisma generate",
+      "options": {
+        "cwd": "./prisma"
+      }
+    }
+  }
+}

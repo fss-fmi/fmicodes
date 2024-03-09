@@ -1,0 +1,46 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2020", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@fmicodes/fmicodes-api-client/client": [
+        "libs/fmicodes-api-client/src/client",
+      ],
+      "@fmicodes/fmicodes-api-client/next": [
+        "libs/fmicodes-api-client/src/next",
+      ],
+      "@fmicodes/fmicodes-services/*": ["libs/fmicodes-services/src/*"],
+      "@fmicodes/fmicodes-ui": ["libs/fmicodes-ui/src/index.ts"],
+      "@fmicodes/fmicodes-ui/*": ["libs/fmicodes-ui/src/*"],
+    },
+    "jsx": "react",
+    "removeComments": true,
+    "allowSyntheticDefaultImports": true,
+    "outDir": "./dist",
+    "incremental": true,
+    "strictNullChecks": false,
+    "noImplicitAny": false,
+    "strictBindCallApply": false,
+    "forceConsistentCasingInFileNames": false,
+    "noFallthroughCasesInSwitch": false,
+    "useDefineForClassFields": true,
+  },
+  "exclude": ["node_modules", "tmp"],
+  "ts-node": {
+    "compilerOptions": {
+      "module": "commonjs",
+    },
+  },
+}

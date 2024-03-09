@@ -1,0 +1,40 @@
+{
+  "auth": {
+    "unauthorized": "You are not authorized to access this resource."
+  },
+  "users": {
+    "noSuchUser": "No such user exists.",
+    "noSuchTeam": "No such team exists.",
+    "noSuchInvite": "No such invite exists.",
+    "noSuchDiscordGuild": "No such Discord server exists.",
+    "noSuchDiscordGuildRole": "No such Discord server role exists.",
+    "noSuchMemberOfDiscordGuild": "No such member of the Discord server exists.",
+    "cannotInviteSelf": "You cannot invite yourself.",
+    "notMemberOfTeam": "You are not a member of a team.",
+    "onlyCaptainCanInvite": "Only the team captain can invite new members.",
+    "inviteAlreadyPending": "An invitation to this user is already pending.",
+    "alreadyInTeam": "You are already a member of a team.",
+    "notInviteeOfInvite": "You are not the invitee of this invite.",
+    "noDiscordAccountLinked": "You have not linked your Discord account.",
+    "teamIsFull": "The team is already full.",
+    "discordAccountAlreadyLinked": "Your Discord account is already linked to an user.",
+    "steamAccountAlreadyLinked": "Your Steam account is already linked to an user.",
+    "emailAlreadyInUse": "The email is already in use.",
+    "nicknameAlreadyInUse": "The nickname is already in use.",
+    "phoneAlreadyInUse": "The phone number is already in use.",
+    "universityFacultyNumberAlreadyInUse": "The university faculty number is already in use."
+  },
+  "teams": {
+    "noSuchTeam": "No such team exists.",
+    "nameAlreadyExists": "A team with the same name already exists.",
+    "notCaptain": "You are not the captain of this team.",
+    "alreadyInTeam": "You are already a member of a team.",
+    "alreadyRequestedToJoinTeam": "You have already requested to join this team.",
+    "noJoinRequest": "No such requested to join this team exists.",
+    "teamIsFull": "The team is already full.",
+    "userNotInTeam": "The user is not a member of the team.",
+    "noSuchDiscordGuildRole": "No such Discord server role exists.",
+    "alreadyHasRole": "The user already has the role.",
+    "captainCanNotLeave": "The captain cannot leave the team."
+  }
+}

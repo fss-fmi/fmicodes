@@ -1,0 +1,10 @@
+{
+  "users": {
+    "teamInviteAccepted": "team invitation accepted successfully.",
+    "teamInviteDeclined": "team invitation declined successfully."
+  },
+  "teams": {
+    "joinRequestAccepted": "The join request has been accepted successfully.",
+    "joinRequestDeclined": "The join request has been declined successfully."
+  }
+}

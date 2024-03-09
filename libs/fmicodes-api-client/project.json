@@ -1,0 +1,54 @@
+{
+  "name": "fmicodes-api-client",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/fmicodes-api-client/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/fmicodes-api-client",
+        "main": "libs/fmicodes-api-client/src/index.ts",
+        "tsConfig": "libs/fmicodes-api-client/tsconfig.lib.json",
+        "assets": ["libs/fmicodes-api-client/*.md"]
+      },
+      "dependsOn": ["generate"]
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "libs/fmicodes-api-client/**/*.ts",
+          "libs/fmicodes-api-client/package.json"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/fmicodes-api-client/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    },
+    "generate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "start-server-and-test \"nx serve fmicodes-api:serve\" \"3000/api-json\" \"pnpm openapi generate -i http://localhost:3000/api-json -o ./libs/fmicodes-api-client/src/client/src -c fetch --useOptions\""
+          }
+        ]
+      }
+    }
+  },
+  "tags": []
+}

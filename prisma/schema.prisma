@@ -1,0 +1,226 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DATABASE_URL")
+}
+
+model User {
+  // Login information
+  id           String @id @default(uuid())
+  email        String @unique
+  phone        String @unique
+  passwordHash String @map("password_hash")
+
+  // Personal information
+  firstName String @map("first_name")
+  lastName  String @map("last_name")
+  nickname  String @unique
+
+  // University information
+  university              String
+  universityMajor         String                 @map("university_major")
+  universityDegree        UniversityDegree       @map("university_degree")
+  universityYear          UniversityYear         @map("university_year")
+  universityFacultyNumber String                 @unique @map("university_faculty_number")
+  universityProofImages   UniversityProofImage[]
+
+  // Avatar
+  avatarUrl String? @map("avatar_url")
+
+  // Onboarding
+  isOnboardingCompleted Boolean @default(false) @map("is_onboarding_completed")
+
+  // External accounts information
+  discord DiscordAccount?
+  steam   SteamAccount?
+
+  // Team
+  teamId          Int?             @map("team_id")
+  team            Team?            @relation(name: "TeamMembers", fields: [teamId], references: [id], onDelete: SetNull)
+  teamCaptain     Team?            @relation(name: "TeamCaptain")
+  teamInvitations TeamInvitation[] // The teams the user was invited to join
+  teamRequests    TeamRequest[] // The teams the user requested to join
+
+  // Row timestamps
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz()
+  updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamptz()
+
+  @@map("users")
+}
+
+model DiscordAccount {
+  // Primary key
+  id Int @id @default(autoincrement())
+
+  // User information
+  userId String @unique
+  user   User   @relation(fields: [userId], references: [id])
+
+  // Discord information
+  discordId    String @unique @map("discord_id")
+  accessToken  String @unique @map("access_token")
+  refreshToken String @unique @map("refresh_token")
+
+  // Row timestamps
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz()
+  updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamptz()
+
+  @@map("discord_accounts")
+}
+
+model SteamAccount {
+  // Primary key
+  id Int @id @default(autoincrement())
+
+  // User information
+  userId String @unique
+  user   User   @relation(fields: [userId], references: [id])
+
+  // Steam information
+  steamId String @unique @map("steam_id")
+
+  // Row timestamps
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz()
+  updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamptz()
+
+  @@map("steam_accounts")
+}
+
+model UniversityProofImage {
+  // Primary key
+  id Int @id @default(autoincrement())
+
+  // User relation
+  userId String @map("user_id")
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  // Image information
+  url String
+
+  // Row timestamps
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz()
+  updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamptz()
+
+  @@map("university_proof_images")
+}
+
+model Team {
+  // Primary key
+  id Int @id @default(autoincrement())
+
+  // Team information
+  name  String @unique
+  color Color
+
+  // Team members
+  members User[] @relation("TeamMembers")
+
+  // Team captain
+  capitanId String? @unique @map("capitan_id")
+  capitan   User?   @relation("TeamCaptain", fields: [capitanId], references: [id], onDelete: Restrict)
+
+  // Team invitations (invitations, send to players, from team capitans, asking them to join)
+  teamInvitations TeamInvitation[]
+
+  // Team requests (invitations, send to teams, from players, asking them to join)
+  teamRequests TeamRequest[]
+
+  // Row timestamps
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz()
+  updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamptz()
+
+  @@map("teams")
+}
+
+model TeamInvitation {
+  // Primary key
+  id Int @id @default(autoincrement())
+
+  // Team relation
+  teamId Int  @map("team_id")
+  team   Team @relation(fields: [teamId], references: [id], onDelete: Cascade)
+
+  // User relation
+  userId String @map("user_id")
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  // Row timestamps
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz
+
+  @@map("team_invitations")
+}
+
+model TeamRequest {
+  // Primary key
+  id Int @id @default(autoincrement())
+
+  // Team relation
+  teamId Int  @map("team_id")
+  team   Team @relation(fields: [teamId], references: [id], onDelete: Cascade)
+
+  // User relation
+  userId String @map("user_id")
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  // Row timestamps
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz
+
+  @@map("team_requests")
+}
+
+model Sponsor {
+  id          Int      @id @default(autoincrement())
+  name        String
+  color       String
+  description String
+  logo        String
+  website     String
+  createdAt   DateTime @default(now()) @map("created_at") @db.Timestamptz
+
+  @@map("sponsors")
+}
+
+enum Color {
+  RED
+  ORANGE
+  YELLOW
+  GREEN
+  BLUE
+  PURPLE
+  PINK
+  BROWN
+  NAVY
+  VIOLET
+  CYAN
+  MAGENTA
+  LIME
+  TEAL
+  INDIGO
+  CORAL
+
+  @@map("colors")
+}
+
+enum UniversityDegree {
+  BACHELOR
+  MASTER
+  DOCTORATE
+
+  @@map("university_degree")
+}
+
+enum UniversityYear {
+  FIRST
+  SECOND
+  THIRD
+  FOURTH
+
+  @@map("university_year")
+}

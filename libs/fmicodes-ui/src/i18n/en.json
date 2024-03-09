@@ -1,0 +1,190 @@
+{
+  "common": {
+    "theme-switcher": {
+      "light": "Light",
+      "system": "System",
+      "dark": "Dark"
+    },
+    "password-checklist": {
+      "title": "The password must contain:",
+      "length": "At least 8 characters",
+      "uppercase": "At least 1 uppercase letter",
+      "lowercase": "At least 1 lowercase letter",
+      "number": "At least 1 number",
+      "special": "At least 1 special character"
+    }
+  },
+  "site": {
+    "navbar-links": {
+      "home": "Home",
+      "teams": "Teams",
+      "regulations": "Regulations"
+    },
+    "navbar-user-controls": {
+      "preferences-popover": {
+        "get-started": "Get started",
+        "theme": "Theme"
+      }
+    },
+    "login-buttons": {
+      "login": "Login",
+      "signup": "Sign up"
+    },
+    "login-form": {
+      "email": "Email",
+      "invalid-email-format": "Invalid email address.",
+      "password": "Password",
+      "no-account": "Don't have an account?",
+      "signup-here": "Sign up!",
+      "submit": "Submit",
+      "or-continue-with": "or continue with",
+      "try-again": "Please, try again."
+    },
+    "sign-up-form": {
+      "first-name": "First Name",
+      "last-name": "Last Name",
+      "name-description": "The names should be written in cyrillic.",
+      "nickname": "Nickname",
+      "nickname-description": "This nickname will be used in tournaments, the Discord server and various other places.",
+      "email": "Email",
+      "phone": "Phone",
+      "password": "Password",
+      "password-confirmation": "Password Confirmation",
+      "passwords-dont-match": "Passwords don't match.",
+      "accept-club-regulations": "I accept the club regulations.",
+      "please-read-the": "Please, read the",
+      "club-regulations": "club regulations",
+      "before-signing-up": "before signing up",
+      "university": "University",
+      "university-major": "University Major",
+      "university-degree": "University Degree",
+      "university-degree-bachelor": "Bachelor",
+      "university-degree-master": "Master",
+      "university-degree-doctorate": "Doctorate",
+      "university-year": "University Year",
+      "university-year-first": "First year",
+      "university-year-second": "Second year",
+      "university-year-third": "Third year",
+      "university-year-fourth": "Fourth year",
+      "university-faculty-number": "University Faculty Number",
+      "university-proof-images": "University Proof Images",
+      "university-proof-images-description": "The proof can be a picture of your student book, a picture from a university platform or a certificate confirming that you are a student.",
+      "continue": "Continue",
+      "return": "Return",
+      "submit": "Submit",
+      "error-occurred": "An error occurred.",
+      "try-again": "Please, try again.",
+      "is-required": "This field is required.",
+      "too-short": "The field should contain at least {length} symbols.",
+      "too-long": "The field should contain at most {length} symbols.",
+      "regex-error": "The field does not match the requirements.",
+      "invalid-email-format": "Invalid email address."
+    },
+    "onboarding-dialog": {
+      "welcome-step": {
+        "title": "Welcome to FMI{CODES}!",
+        "description": "We are glad to have you here! Let's complete your profile and get you started.",
+        "continue": "Continue",
+        "try-again": "Please, try again. If the problem persists, contact us.",
+        "error-occurred": "An error occurred."
+      },
+      "avatar-step": {
+        "title": "Avatar Selection",
+        "description": "Choose your avatar and customize it to your liking.",
+        "skin-tone": "Skin Tone",
+        "eyes": "Eyes",
+        "eyebrows": "Eyebrows",
+        "mouth": "Mouth",
+        "facial-hair": "Facial Hair",
+        "facial-hair-color": "Facial Hair Color",
+        "top": "Hair/Hat",
+        "hair-color": "Hair Color",
+        "clothing": "Clothing",
+        "clothes-color": "Clothes Color",
+        "accessory": "Accessory",
+        "accessory-color": "Accessory Color",
+        "previous": "Previous",
+        "continue": "Continue"
+      },
+      "discord-step": {
+        "title": "Discord Account",
+        "description": "Connect your Discord account to FMI{CODES} in order to join or Discord server.",
+        "previous": "Previous",
+        "continue": "Continue",
+        "skip": "Skip",
+        "continue-with-discord": "Continue with Discord"
+      },
+      "steam-step": {
+        "title": "Steam Account",
+        "description": "Connect your Steam account to FMI{CODES} in order to be able to participate in Counter-Strike tournaments and matches.",
+        "previous": "Previous",
+        "continue": "Continue",
+        "skip": "Skip",
+        "continue-with-steam": "Continue with Steam"
+      },
+      "completed-step": {
+        "title": "We're all set!",
+        "description": "You are now ready to start your journey with FMI{CODES}. Let's go!",
+        "previous": "Previous",
+        "lets-go": "Let's go!",
+        "try-again": "Please, try again. If the problem persists, contact us."
+      }
+    },
+    "create-team-dialog": {
+      "name": "Name",
+      "name-placeholder": "Example name",
+      "color": "Color",
+      "submit": "Submit",
+      "error-occurred": "An error occurred.",
+      "try-again": "Please, try again.",
+      "is-required": "This field is required.",
+      "too-short": "The field should contain at least {length} symbols.",
+      "too-long": "The field should contain at most {length} symbols."
+    },
+    "users-search": {
+      "search-placeholder": "Type a name to search...",
+      "no-results": "No results found.",
+      "users-requested-to-join": "Requested to join",
+      "users-without-a-team": "Without a team",
+      "users-with-a-team": "With a team",
+      "users-already-invited": "Already invited",
+      "invite-confirmation-dialog": {
+        "title": "Invite Confirmation",
+        "description": "Are you sure you want to invite {name} to join your team?",
+        "cancel": "Cancel",
+        "invite": "Invite",
+        "invite-sent": "Invite sent.",
+        "error-occurred": "An error occurred.",
+        "try-again": "Please, try again."
+      }
+    },
+    "leave-team-dialog": {
+      "title": "Leave team",
+      "description": "Are you sure you want to leave the team?",
+      "cancel": "Cancel",
+      "leave": "Leave",
+      "left-team": "You have left the team.",
+      "error-occurred": "An error occurred.",
+      "try-again": "Please, try again."
+    },
+    "team-member-avatar": {
+      "try-again": "Please, try again. If the problem persists, contact us."
+    },
+    "notifications-popover": {
+      "no-notifications": "No notifications",
+      "invites": "Invites",
+      "join-requests": "Join Requests",
+      "invite-item": {
+        "you-have-been-invited": "You have been invited to join the team {teamName}.",
+        "accepted": "The invite has been accepted successfully.",
+        "declined": "The invite has been declined successfully.",
+        "error-occurred": "An error occurred.",
+        "try-again": "Please, try again. If the problem persists, contact us."
+      }
+    },
+    "sponsors-showcase": {
+      "with-the-support-of": "With the support of",
+      "our-sponsors": "Our sponsors"
+    }
+  }
+}
