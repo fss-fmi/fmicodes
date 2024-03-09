@@ -19,42 +19,52 @@ import {
 import { FaUsers, FaUserTie } from 'react-icons/fa6';
 import { CreateTeamDialog } from '@fmicodes/fmicodes-ui/lib/components/site/client';
 import { Suspense } from 'react';
+import { Metadata } from 'next';
 
-async function VerifiedTeamsCards() {
-  const teams = await ApiClient.TeamsApiService.teamsControllerGetV1({});
-  return teams
-    .filter((team) => isTeamVerified(team))
-    .map((team) => <TeamCard key={team.id} team={team} />);
-}
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations('teams-page');
 
-async function UnverifiedTeamsCards() {
-  const teams = await ApiClient.TeamsApiService.teamsControllerGetV1({});
-  return teams
-    .filter((team) => !isTeamVerified(team))
-    .map((team) => <TeamCard key={team.id} team={team} />);
-}
-
-function FallbackCards() {
-  return Array(4)
-    .fill(0)
-    .map((_) => (
-      <Card
-        key={Math.random()}
-        className="w-full transition hover:-translate-y-1 hover:shadow-lg "
-      >
-        <CardHeader className="relative p-0 w-full aspect-[21/9] space-y-0 overflow-hidden rounded-t-xl">
-          <Skeleton className="w-full h-full" />
-        </CardHeader>
-        <div className="p-3">
-          <Skeleton className="w-1/2 h-6" />
-        </div>
-      </Card>
-    ));
+  return {
+    title: `${t('title')} | FMI{Codes} 2024`,
+    description: t('description'),
+  };
 }
 
 export default async function TeamsPage() {
   const t = await getTranslations('teams-page');
   const user = await getUser();
+
+  async function VerifiedTeamsCards() {
+    const teams = await ApiClient.TeamsApiService.teamsControllerGetV1({});
+    return teams
+      .filter((team) => isTeamVerified(team))
+      .map((team) => <TeamCard key={team.id} team={team} />);
+  }
+
+  async function UnverifiedTeamsCards() {
+    const teams = await ApiClient.TeamsApiService.teamsControllerGetV1({});
+    return teams
+      .filter((team) => !isTeamVerified(team))
+      .map((team) => <TeamCard key={team.id} team={team} />);
+  }
+
+  function FallbackCards() {
+    return Array(4)
+      .fill(0)
+      .map((_) => (
+        <Card
+          key={Math.random()}
+          className="w-full transition hover:-translate-y-1 hover:shadow-lg "
+        >
+          <CardHeader className="relative p-0 w-full aspect-[21/9] space-y-0 overflow-hidden rounded-t-xl">
+            <Skeleton className="w-full h-full" />
+          </CardHeader>
+          <div className="p-3">
+            <Skeleton className="w-1/2 h-6" />
+          </div>
+        </Card>
+      ));
+  }
 
   return (
     <>

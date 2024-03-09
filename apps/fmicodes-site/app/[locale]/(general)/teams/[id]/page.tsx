@@ -15,9 +15,25 @@ import { getBearerToken, getUser } from '@fmicodes/fmicodes-api-client/next';
 import { useLocale } from 'next-intl';
 import { FaSignOutAlt } from 'react-icons/fa';
 import { LeaveTeamDialog } from '@fmicodes/fmicodes-ui/lib/components/site/leave-team-dialog/leave-team-dialog';
+import { Metadata } from 'next';
+import { getTranslations } from 'next-intl/server';
 
 interface TeamPageProps {
   params: { id: string };
+}
+
+export async function generateMetadata({
+  params,
+}: TeamPageProps): Promise<Metadata> {
+  const t = await getTranslations('team-page');
+  const team = await ApiClient.TeamsApiService.teamsControllerGetTeamV1({
+    teamId: params.id,
+  });
+
+  return {
+    title: `${t('title', { teamName: team?.name })} | FMI{Codes} 2024`,
+    description: t('description'),
+  };
 }
 
 export default async function TeamPage({ params }: TeamPageProps) {
