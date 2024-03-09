@@ -11,12 +11,12 @@ export function Logo(props: React.HTMLAttributes<HTMLDivElement>) {
       {...otherProps}
     >
       <Image
-        src="/assets/icons/fmicodes.png"
+        src="/assets/icons/fmicodes.svg"
         alt="FMI{Codes} Logo"
         width={32}
         height={32}
       />
-      <span className="text-xl font-bold">{'FMI{Codes}'}</span>
+      <span className="text-xl font-bold text-[#f7f281]">{'FMI{Codes}'}</span>
     </div>
   );
 }
