@@ -1,19 +1,23 @@
 {
-  "Index": {
-    "title": "Тест заглавие"
+  "layout": {
+    "title": "FMI'{Codes'} 2024",
+    "description": ""
   },
   "login-page": {
-    "title": "Радваме се да те видим отново!",
+    "title": "Вход",
+    "heading": "Радваме се да те видим отново!",
     "description": "Влез в профила си използвайки имейл и парола или чрез свързан външен акаунт.",
     "by-signing-in-you-agree-to-our": "С влизането си в платформата се съгласявате с",
-    "club-regulations": "правилата на клуба"
+    "hackathon-regulations": "регламента на FMI'{Codes'} 2024"
   },
   "sign-up-page": {
     "title": "Регистрация",
+    "heading": "Регистрация",
     "description": "Включи се в хакатона, като попълниш следния формуляр."
   },
   "teams-page": {
     "title": "Отбори",
+    "description": "",
     "verified-teams": "Потвърдени отбори",
     "unverified-teams": "Непотвърдени отбори",
     "want-to-be-a-part-of-a-team": "Искаш да си част от отбор?",
@@ -26,5 +30,9 @@
     "title-error": "Възникна грешка по време на свързването на акаунта!",
     "description-success": "Вече можеш да се върнеш на предишната страница. Ще бъдеш пренасочен след 5 секунди.",
     "close": "Затвори"
+  },
+  "regulations-page": {
+    "title": "Регламент",
+    "description": ""
   }
 }

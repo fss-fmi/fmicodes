@@ -6,9 +6,19 @@ import { Card } from '@fmicodes/fmicodes-ui/lib/components/common/server';
 import { getTranslations } from 'next-intl/server';
 import { Logo } from '@fmicodes/fmicodes-ui/lib/components/site/server';
 import { useLocale } from 'next-intl';
+import { Metadata } from 'next';
 
 interface LoginPageProps {
   searchParams?: { [key: string]: string | string[] | undefined };
+}
+
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations('login-page');
+
+  return {
+    title: `${t('title')} | FMI{Codes} 2024`,
+    description: t('description'),
+  };
 }
 
 export default async function LoginPage({ searchParams }: LoginPageProps) {
@@ -27,21 +37,21 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
           <Logo />
         </div>
 
-        <div className="relative z-20 mt-auto">
-          <blockquote className="space-y-2">
-            <p className="text-lg">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-            </p>
-            <footer className="text-sm">{`FMI{Codes}`}</footer>
-          </blockquote>
-        </div>
+        {/* <div className="relative z-20 mt-auto"> */}
+        {/*  <blockquote className="space-y-2"> */}
+        {/*    <p className="text-lg"> */}
+        {/*      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed */}
+        {/*    </p> */}
+        {/*    <footer className="text-sm">{`FMI{Codes}`}</footer> */}
+        {/*  </blockquote> */}
+        {/* </div> */}
       </div>
 
       <div className="p-8">
         <div className="mx-auto flex w-full flex-col justify-center space-y-4 sm:w-[350px]">
           <div className="flex flex-col space-y-2 text-center">
             <h1 className="text-2xl font-semibold tracking-tight">
-              {t('title')}
+              {t('heading')}
             </h1>
             <p className="text-sm text-muted-foreground">{t('description')}</p>
           </div>
@@ -55,7 +65,7 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
               target="_blank"
               className="underline underline-offset-4 hover:text-primary"
             >
-              {t('club-regulations')}
+              {t('hackathon-regulations')}
             </Link>
             .
           </p>

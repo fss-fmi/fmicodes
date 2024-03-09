@@ -1,15 +1,18 @@
 {
-  "Index": {
-    "title": "Test title"
+  "layout": {
+    "title": "FMI'{Codes'} 2024",
+    "description": ""
   },
   "login-page": {
-    "title": "Welcome back!",
+    "title": "Login",
+    "heading": "Welcome back!",
     "description": "Log back in your account using your email and password or with a linked third-party account.",
     "by-signing-in-you-agree-to-our": "By signing in, you agree to our",
-    "club-regulations": "Club Regulations"
+    "hackathon-regulations": "FMI'{Codes'} 2024 Regulations"
   },
   "sign-up-page": {
-    "title": "Join FMI'{Codes'}!",
+    "title": "Sign up",
+    "heading": "Join FMI'{Codes'}!",
     "description": "Sign up for the hackathon by filling-out the following form."
   },
   "teams-page": {
@@ -26,5 +29,9 @@
     "title-error": "An error occurred during the account linking!",
     "description-success": "You can now go back to the previous page. You will be redirected in 5 seconds.",
     "close": "Close"
+  },
+  "regulations-page": {
+    "title": "Regulations",
+    "description": ""
   }
 }

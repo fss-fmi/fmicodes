@@ -144,15 +144,15 @@ export function PersonalInformationFields({
               />
             </FormControl>
             <div className="space-y-1 leading-none">
-              <FormLabel>{t('accept-club-regulations')}</FormLabel>
-              <FormDescription className="text-center text-sm text-muted-foreground">
+              <FormLabel>{t('accept-hackathon-regulations')}</FormLabel>
+              <FormDescription className="text-sm text-muted-foreground">
                 {t('please-read-the')}{' '}
                 <Link
                   href={`/${locale}/regulations`}
                   target="_blank"
                   className="underline underline-offset-4 hover:text-primary"
                 >
-                  {t('club-regulations')}
+                  {t('hackathon-regulations')}
                 </Link>{' '}
                 {t('before-signing-up')}.
               </FormDescription>
