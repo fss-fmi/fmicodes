@@ -20,6 +20,8 @@ export function NotificationsPopover({ user }: NotificationsPopoverProps) {
 
   // Refresh invites and join requests every 5000 ms
   async function updateNotifications() {
+    if (!user) return;
+
     try {
       const currentInvites =
         await ApiClient.UsersApiService.usersControllerGetUserTeamInvitesV1({
@@ -32,6 +34,7 @@ export function NotificationsPopover({ user }: NotificationsPopoverProps) {
     }
 
     try {
+      if (user.team?.capitanId !== user.id) return;
       const currentJoinRequests =
         await ApiClient.TeamsApiService.teamsControllerGetJoinRequestsV1({
           authorization: await getBearerToken(),
