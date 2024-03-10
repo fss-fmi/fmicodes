@@ -8,6 +8,10 @@ resource "vercel_project" "vercel_site" {
     production_branch = "release-placeholder"
   }
 
+  vercel_authentication = {
+    deployment_type = "none"
+  }
+
   build_command    = "pnpm prisma migrate deploy && pnpm prisma generate && pnpm nx build fmicodes-site --prod"
   output_directory = "../../dist/apps/fmicodes-site/.next"
   install_command  = "pnpm install"
