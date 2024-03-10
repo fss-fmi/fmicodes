@@ -9,6 +9,13 @@ This file was generated using [@jscutlery/semver](https://github.com/jscutlery/s
 
 * remove timers ([0c4925f](https://github.com/fss-fmi/fmicodes/commit/0c4925f97f2dd2ac1ab1d6a1e57a4f9568602193))
 
+## [1.0.2](https://github.com/fss-fmi/fmicodes/compare/v1.0.1...v1.0.2) (2024-03-10)
+
+
+### Bug Fixes
+
+* remove timers ([0c4925f](https://github.com/fss-fmi/fmicodes/commit/0c4925f97f2dd2ac1ab1d6a1e57a4f9568602193))
+
 ## [1.0.1](https://github.com/fss-fmi/fmicodes/compare/v1.0.0...v1.0.1) (2024-03-10)
 
 ### Features
