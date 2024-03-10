@@ -14,6 +14,7 @@ export default async function Index() {
         sponsors={await ApiClient.SponsorsApiService.sponsorsControllerGetV1(
           {},
         )}
+        variant="gold"
       />
     </>
   );

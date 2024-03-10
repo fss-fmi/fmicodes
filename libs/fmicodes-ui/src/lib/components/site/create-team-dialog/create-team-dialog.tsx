@@ -43,7 +43,7 @@ export function CreateTeamDialog({ children }: CreateTeamDialogProps) {
   const formSchema = z.object({
     name: z
       .string({
-        required_error: t('required'),
+        required_error: t('is-required'),
       })
       .min(
         libConfig.team.name.minLength,

@@ -31,22 +31,22 @@ export class SponsorBaseDto {
   color!: string;
 
   @ApiProperty({
-    description: 'Sponsor image',
-    example: 'Sponsor image',
+    description: 'Sponsor logo',
+    example: 'Sponsor logo',
   })
   @IsNotEmpty({
     message: i18nValidationMessage('validation.isNotEmpty'),
   })
-  image!: string;
+  logo!: string;
 
   @ApiProperty({
-    description: 'Sponsor link',
-    example: 'Sponsor link',
+    description: 'Sponsor website',
+    example: 'Sponsor website',
   })
   @IsNotEmpty({
     message: i18nValidationMessage('validation.isNotEmpty'),
   })
-  link!: string;
+  website!: string;
 }
 
 export default SponsorBaseDto;
