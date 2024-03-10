@@ -5,16 +5,28 @@ import { getTranslations } from 'next-intl/server';
 import { Hero } from '@fmicodes/fmicodes-ui/lib/components/site/hero/hero';
 
 export default async function Index() {
-  const t = await getTranslations('Index');
-
   return (
     <>
       <Hero />
       <SponsorsShowcase
-        sponsors={await ApiClient.SponsorsApiService.sponsorsControllerGetV1(
-          {},
-        )}
+        sponsors={await ApiClient.SponsorsApiService.sponsorsControllerGetV1({
+          type: 'GOLD',
+        })}
         variant="gold"
+      />
+
+      <SponsorsShowcase
+        sponsors={await ApiClient.SponsorsApiService.sponsorsControllerGetV1({
+          type: 'SILVER',
+        })}
+        variant="silver"
+      />
+
+      <SponsorsShowcase
+        sponsors={await ApiClient.SponsorsApiService.sponsorsControllerGetV1({
+          type: 'BRONZE',
+        })}
+        variant="bronze"
       />
     </>
   );

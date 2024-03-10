@@ -1,6 +1,6 @@
 'use client';
 
-import { FaDiscord, FaLink } from 'react-icons/fa6';
+import { FaLink } from 'react-icons/fa6';
 import Image from 'next/image';
 import React, { useState } from 'react';
 import Link from 'next/link';
@@ -15,6 +15,7 @@ import {
 } from '../../common/client';
 import { Card } from '../../common/card/card';
 import { Button } from '../../common/server';
+import { cn } from '../../../utils';
 
 interface SponsorsShowcaseProps {
   sponsors: ApiClient.SponsorResponseBodyDto[];
@@ -43,8 +44,26 @@ export function SponsorsShowcase({ sponsors, variant }: SponsorsShowcaseProps) {
   }
 
   return (
-    <Card className="grid grid-flow-col grid-cols-2 grid-rows-5 md:grid-rows-none md:grid-cols-5 w-full mt-2 md:aspect-[5/2] overflow-hidden">
-      <div className="flex flex-col justify-center items-center border col-span-2 row-span-2 p-4">
+    <Card
+      className={cn(
+        'grid w-full mt-2  overflow-hidden',
+        variant === 'gold' || variant === 'silver'
+          ? 'grid-cols-2 grid-rows-5 md:grid-rows-none md:grid-cols-5 md:aspect-[5/2]'
+          : '',
+        variant === 'bronze'
+          ? 'grid-cols-2 grid-rows-2 md:grid-rows-none md:grid-cols-4 md:aspect-[4/1]'
+          : '',
+      )}
+    >
+      <div
+        className={cn(
+          'flex flex-col justify-center items-center border  p-4',
+          variant === 'gold' || variant === 'silver'
+            ? 'col-span-2 row-span-2'
+            : '',
+          variant === 'bronze' ? 'col-span-2 row-span-1' : '',
+        )}
+      >
         <span className="font-semibold uppercase text-2xl text-center">
           {t('with-the-support-of')}
         </span>
