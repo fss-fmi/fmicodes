@@ -64,7 +64,13 @@ export class UsersService {
   async getAllUsers() {
     // Get all users from the database
     return this.prisma.user.findMany({
-      include: {
+      select: {
+        id: true,
+        firstName: true,
+        lastName: true,
+        nickname: true,
+        avatarUrl: true,
+        university: true,
         team: true,
       },
     });
