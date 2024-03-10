@@ -20,6 +20,7 @@ import { FaUsers, FaUserTie } from 'react-icons/fa6';
 import { CreateTeamDialog } from '@fmicodes/fmicodes-ui/lib/components/site/client';
 import { Suspense } from 'react';
 import { Metadata } from 'next';
+import { libConfig } from '@fmicodes/fmicodes-services/config/lib.config';
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations('teams-page');
@@ -66,6 +67,17 @@ export default async function TeamsPage() {
       ));
   }
 
+  async function VerifiedTeamsCounter() {
+    const teams = await ApiClient.TeamsApiService.teamsControllerGetV1({});
+    const verifiedTeams = teams.filter((team) => isTeamVerified(team));
+
+    return (
+      <>
+        ({verifiedTeams.length}/{libConfig.team.max})
+      </>
+    );
+  }
+
   return (
     <>
       <h1 className="text-2xl sm:text-4xl md:text-6xl font-black uppercase my-4 truncate text-clip">
@@ -109,7 +121,10 @@ export default async function TeamsPage() {
       <div className="flex items-center">
         <GoVerified className="w-8 h-8 mr-2" />
         <h2 className="text-lg sm:text-2xl md:text-4xl font-semibold my-4 truncate text-clip">
-          {t('verified-teams')}
+          {t('verified-teams')}{' '}
+          <Suspense>
+            <VerifiedTeamsCounter />
+          </Suspense>
         </h2>
       </div>
 

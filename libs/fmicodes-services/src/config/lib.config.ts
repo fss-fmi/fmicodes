@@ -143,6 +143,7 @@ export const libConfig = {
       max: 5,
       sofiaUniversityThreshold: 3,
     },
+    max: 18,
   },
   discord: {
     clientID: process.env['DISCORD_CLIENT_ID'],
