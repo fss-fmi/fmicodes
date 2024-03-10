@@ -82,7 +82,7 @@
     },
     "onboarding-dialog": {
       "welcome-step": {
-        "title": "Welcome to FMI{Codes}!",
+        "title": "Welcome to FMI'{Codes'}!",
         "description": "We are glad to have you here! Let's complete your profile and get you started.",
         "continue": "Continue",
         "try-again": "Please, try again. If the problem persists, contact us.",
@@ -108,7 +108,7 @@
       },
       "discord-step": {
         "title": "Discord Account",
-        "description": "Connect your Discord account to FMI{Codes} in order to join or Discord server.",
+        "description": "Connect your Discord account to FMI'{Codes'} in order to join or Discord server.",
         "previous": "Previous",
         "continue": "Continue",
         "skip": "Skip",
