@@ -21,7 +21,6 @@ import {
   Toaster,
   useToast,
 } from '../../common/client';
-import { Countdown } from '../../common/countdown/countdown';
 
 export function SignUpForm() {
   const t = useTranslations('site.sign-up-form');
@@ -267,17 +266,17 @@ export function SignUpForm() {
     }
   }
 
-  const registrationStartDate = '2024/03/10 18:00:00';
-  if (Date.now() < new Date(registrationStartDate).getTime()) {
-    return (
-      <>
-        <p className="text-lg font-bold text-center">
-          Регистрацията отваря след:
-        </p>
-        <Countdown targetDate={registrationStartDate} />
-      </>
-    );
-  }
+  // const registrationStartDate = '2024/03/10 18:00:00';
+  // if (Date.now() < new Date(registrationStartDate).getTime()) {
+  //   return (
+  //     <>
+  //       <p className="text-lg font-bold text-center">
+  //         Регистрацията отваря след:
+  //       </p>
+  //       <Countdown targetDate={registrationStartDate} />
+  //     </>
+  //   );
+  // }
 
   return (
     <>
