@@ -7,6 +7,9 @@ CREATE TYPE "university_degree" AS ENUM ('BACHELOR', 'MASTER', 'DOCTORATE');
 -- CreateEnum
 CREATE TYPE "university_year" AS ENUM ('FIRST', 'SECOND', 'THIRD', 'FOURTH');
 
+-- CreateEnum
+CREATE TYPE "sponsor_type" AS ENUM ('GOLD', 'SILVER', 'BRONZE', 'PARTNER');
+
 -- CreateTable
 CREATE TABLE "users" (
     "id" TEXT NOT NULL,
@@ -91,6 +94,7 @@ CREATE TABLE "sponsors" (
     "id" SERIAL NOT NULL,
     "name" TEXT NOT NULL,
     "color" TEXT NOT NULL,
+    "sponsor_type" "sponsor_type" NOT NULL,
     "description" TEXT NOT NULL,
     "logo" TEXT NOT NULL,
     "website" TEXT NOT NULL,

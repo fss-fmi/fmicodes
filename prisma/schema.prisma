@@ -157,13 +157,14 @@ model TeamRequest {
 }
 
 model Sponsor {
-  id          Int      @id @default(autoincrement())
+  id          Int         @id @default(autoincrement())
   name        String
   color       String
+  type        SponsorType @map("sponsor_type")
   description String
   logo        String
   website     String
-  createdAt   DateTime @default(now()) @map("created_at") @db.Timestamptz
+  createdAt   DateTime    @default(now()) @map("created_at") @db.Timestamptz
 
   @@map("sponsors")
 }
@@ -204,4 +205,13 @@ enum UniversityYear {
   FOURTH
 
   @@map("university_year")
+}
+
+enum SponsorType {
+  GOLD
+  SILVER
+  BRONZE
+  PARTNER
+
+  @@map("sponsor_type")
 }
