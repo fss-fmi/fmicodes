@@ -139,9 +139,8 @@ export const libConfig = {
       enum: Color,
     },
     members: {
-      min: 5,
-      max: 5,
-      sofiaUniversityThreshold: 3,
+      min: 3,
+      max: 6,
     },
     max: 18,
   },
