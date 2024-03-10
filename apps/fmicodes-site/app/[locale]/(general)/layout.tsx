@@ -46,7 +46,7 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} suppressHydrationWarning>
-      <body className="min-h-screen">
+      <body className="min-h-screen overflow-x-hidden">
         {/* Enable production logging */}
         <AxiomWebVitals />
 
