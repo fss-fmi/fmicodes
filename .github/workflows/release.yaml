@@ -76,6 +76,6 @@ jobs:
           generateReleaseNotes: true
           body: |-
             ## Environments
-            **fmicodes-api**: https://api.fmicodes.club/api
+            **fmicodes-api**: https://api.fmicodes.com/api
             **fmicodes-site**: ${{ fromJson(needs.read-preview-urls.outputs.result).preview-url.fmicodes-site }}
             **fmicodes-admin**: ${{ fromJson(needs.read-preview-urls.outputs.result).preview-url.fmicodes-admin }}

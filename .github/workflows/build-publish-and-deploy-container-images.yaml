@@ -125,7 +125,7 @@ jobs:
             NGINX_PROXY_MANAGER_PASSWORD="${{ env.PREVIEW_NGINX_PROXY_MANAGER_PASSWORD }}"
             CONTAINER_NAME="${{ matrix.IMAGE_NAME }}-pr-${{ github.event.number }}"
             CONTAINER_PORT=`expr 4000 + ${{ github.event.number }}`
-            API_DOMAIN="pr-${{ github.event.number }}-api.fmicodes.club"
+            API_DOMAIN="pr-${{ github.event.number }}-api.fmicodes.com"
             ENV_FILE=".env.preview"
           elif [ "${{ github.ref }}" = "refs/heads/main" ]; then
             IMAGE_TAG="main"
@@ -136,7 +136,7 @@ jobs:
             NGINX_PROXY_MANAGER_PASSWORD="${{ env.PREVIEW_NGINX_PROXY_MANAGER_PASSWORD }}"
             CONTAINER_NAME="main"
             CONTAINER_PORT="4000"
-            API_DOMAIN="preview-api.fmicodes.club"
+            API_DOMAIN="preview-api.fmicodes.com"
             ENV_FILE=".env.preview"
           elif [ "${{ github.ref }}" = "refs/tags/${{ github.ref }}" ]; then
             IMAGE_TAG="latest"
@@ -147,7 +147,7 @@ jobs:
             NGINX_PROXY_MANAGER_PASSWORD="${{ env.PRODUCTION_NGINX_PROXY_MANAGER_PASSWORD }}"
             CONTAINER_NAME="latest"
             CONTAINER_PORT="3000"
-            API_DOMAIN=api.fmicodes.club
+            API_DOMAIN=api.fmicodes.com
             ENV_FILE=".env.production"
           fi
 
