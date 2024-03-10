@@ -28,7 +28,7 @@ export function TeamBanner({
       <div
         className="absolute inset-0 w-full h-full grid justify-center items-end"
         style={{
-          padding: `0px ${2 + (libConfig.team.members.max - team.members.length) * 9.75}%`,
+          padding: `0px ${2 + (libConfig.team.members.max - team.members.length) * 7}%`,
           gridTemplateColumns: `repeat(${team.members.length}, 1fr)`,
         }}
       >

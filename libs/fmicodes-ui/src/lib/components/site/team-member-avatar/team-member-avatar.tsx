@@ -66,7 +66,6 @@ export function TeamMemberAvatar({
             src={member.avatarUrl}
             alt={`${member.firstName} ${member.lastName}`}
           />
-
           {enableTeamCapitanControls && user && member.id !== user?.id && (
             <div className="absolute top-0 left-0 w-full h-full flex justify-center items-center transition-opacity opacity-0 group-hover:opacity-100">
               <div className="flex space-x-2">
