@@ -116,7 +116,7 @@
       },
       "completed-step": {
         "title": "Готови сме!",
-        "description": "Добре дошли в FMI{Codes}! Ти вече си част от нашия клуб.",
+        "description": "Добре дошли в FMI'{Codes'}! Ти вече си част от хакатона.",
         "previous": "Назад",
         "lets-go": "Да започваме!",
         "try-again": "Моля, опитайте отново. Ако проблемът продължава, свържете се с нас."
@@ -176,7 +176,10 @@
     },
     "sponsors-showcase": {
       "with-the-support-of": "С подкрепата на",
-      "our-sponsors": "Нашите спонсори"
+      "our-gold-sponsors": "нашите златни спонсори",
+      "our-silver-sponsors": "нашите сребърни спонсори",
+      "our-bronze-sponsors": "нашите бронзови спонсори",
+      "our-partners": "нашите партньори"
     }
   }
 }

@@ -6,11 +6,10 @@ import {
   CardContent,
   CardHeader,
 } from '@fmicodes/fmicodes-ui/lib/components/common/server';
-import { FaArrowLeft, FaUserPlus } from 'react-icons/fa6';
+import { FaArrowLeft, FaPeopleGroup, FaUserPlus } from 'react-icons/fa6';
 import Link from 'next/link';
 import { UsersSearch } from '@fmicodes/fmicodes-ui/lib/components/site/client';
 import React, { Suspense } from 'react';
-import { SiCounterstrike } from 'react-icons/si';
 import { getBearerToken, getUser } from '@fmicodes/fmicodes-api-client/next';
 import { useLocale } from 'next-intl';
 import { FaSignOutAlt } from 'react-icons/fa';
@@ -129,7 +128,7 @@ export default async function TeamPage({ params }: TeamPageProps) {
       </CardHeader>
       <CardContent className="p-3">
         <div className="flex items-center">
-          <SiCounterstrike className="h-8 w-8 mr-1" />
+          <FaPeopleGroup className="w-8 h-8 mr-2" />
           <h1 className="text-xl sm:text-2xl md:text-3xl font-black uppercase my-2 truncate text-clip">
             {team.name}
           </h1>

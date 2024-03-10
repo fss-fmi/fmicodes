@@ -176,7 +176,10 @@
     },
     "sponsors-showcase": {
       "with-the-support-of": "With the support of",
-      "our-sponsors": "Our sponsors"
+      "our-gold-sponsors": "our gold sponsors",
+      "our-silver-sponsors": "our silver sponsors",
+      "our-bronze-sponsors": "our bronze sponsors",
+      "our-partners": "our partners"
     }
   }
 }
