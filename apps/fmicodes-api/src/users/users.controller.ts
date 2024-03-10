@@ -4,6 +4,7 @@ import {
   Get,
   HttpCode,
   HttpStatus,
+  ImATeapotException,
   Param,
   Patch,
   Post,
@@ -108,10 +109,10 @@ export class UsersController {
     @Body() user: UserRequestBodyDto,
     @UploadedFiles() universityProofImages: Array<Express.Multer.File>,
   ) {
-    // const registrationStartDate = '2024/03/10 18:00:00';
-    // if (Date.now() < new Date(registrationStartDate).getTime()) {
-    //   throw new ImATeapotException('Nice try :) but not yet!');
-    // }
+    const registrationStartDate = '2024/03/10 18:00:00';
+    if (Date.now() < new Date(registrationStartDate).getTime()) {
+      throw new ImATeapotException('Nice try :) but not yet!');
+    }
     return this.usersService.registerUser(user, universityProofImages);
   }
 

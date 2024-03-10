@@ -45,7 +45,7 @@
       "last-name": "Last Name",
       "name-description": "The names should be written in cyrillic.",
       "nickname": "Nickname",
-      "nickname-description": "This nickname will be used in tournaments, the Discord server and various other places.",
+      "nickname-description": "This nickname will be used in your profile and in various other places in the site.",
       "email": "Email",
       "phone": "Phone",
       "password": "Password",
