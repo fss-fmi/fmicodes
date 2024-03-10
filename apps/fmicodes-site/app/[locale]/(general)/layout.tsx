@@ -7,6 +7,7 @@ import { notFound } from 'next/navigation';
 import { ThemeProvider } from '@fmicodes/fmicodes-ui/lib/providers/theme-provider';
 import { Navbar } from '@fmicodes/fmicodes-ui/lib/components/common/server';
 import {
+  Blobcho,
   NavbarLinks,
   NavbarUserControls,
   NotificationsPopover,
@@ -46,7 +47,7 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} suppressHydrationWarning>
-      <body className="min-h-screen overflow-x-hidden">
+      <body className="min-h-screen">
         {/* Enable production logging */}
         <AxiomWebVitals />
 
@@ -78,7 +79,11 @@ export default async function RootLayout({
 
             <OnboardingDialog isOpen={user && !user.isOnboardingCompleted} />
 
-            <main className="max-w-[88rem] m-auto px-4">{children}</main>
+            <Blobcho />
+
+            <main className="max-w-[88rem] m-auto px-4 overflow-x-hidden">
+              {children}
+            </main>
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>

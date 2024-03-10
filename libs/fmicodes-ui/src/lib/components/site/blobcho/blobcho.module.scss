@@ -1,0 +1,24 @@
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  50% {
+    scale: 1 1.2;
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.blob {
+  animation: rotate 10s linear infinite;
+  @apply h-96 aspect-square absolute inset-1/2 rounded-full -z-10 opacity-70;
+  @apply bg-gradient-to-r from-yellow-400 to-blue-600;
+  translate: -50% -50%;
+}
+
+.container {
+  @apply fixed w-screen h-screen overflow-hidden -z-20 transition-opacity blur-[200px];
+}
