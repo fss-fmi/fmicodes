@@ -234,7 +234,7 @@ export class UsersService {
     }
 
     // Update the nickname
-    return guildMember.setNickname(user.nickname);
+    return guildMember.setNickname(`${user.firstName} ${user.lastName}`);
   }
 
   async addDiscordServerRoleById(
