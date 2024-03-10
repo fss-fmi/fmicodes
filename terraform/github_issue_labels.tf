@@ -5,7 +5,6 @@ resource "github_issue_label" "feature_label" {
   color       = "A2EEEF"
 }
 
-
 resource "github_issue_label" "refactor_label" {
   repository  = github_repository.github_repository.name
   name        = "refactor"

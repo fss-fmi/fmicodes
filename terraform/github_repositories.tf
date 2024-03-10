@@ -1,7 +1,7 @@
 resource "github_repository" "github_repository" {
   name         = "fmicodes"
-  description  = "Tournament management platform for the Sofia University Gaming club. 🎮"
-  homepage_url = "https://fmicodes.club"
+  description  = "Website of the FMI{Codes} 2024 hackathon."
+  homepage_url = "https://fmicodes.com"
 
   visibility = "public"
 
