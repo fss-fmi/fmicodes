@@ -297,8 +297,8 @@ export class TeamsService {
   ) {
     // Create a role for the team
     const newRole = await guild.roles.create({
-      name: `🐔 Отбор ${teamName} 🐔`,
-      color: 'Orange',
+      name: `🧩 Отбор ${teamName} 🧩`,
+      color: 'Blurple',
     });
 
     // Find the @everyone role
@@ -326,7 +326,7 @@ export class TeamsService {
   async createDiscordCategoryForTeam(guild: Guild, teamName: string) {
     // Create a category for the team
     return guild.channels.create({
-      name: `🐔 Отбор ${teamName} 🐔`,
+      name: `🧩 Отбор ${teamName} 🧩`,
       type: ChannelType.GuildCategory,
     });
   }
@@ -345,7 +345,7 @@ export class TeamsService {
 
     // Send a welcome message to the text channel
     await textChannel.send(
-      `Welcome to the ${name} team! Please make sure to read the rules and have fun!`,
+      `Добре дошли в отбор ${name}! Надяваме се да се забалявате!`,
     );
 
     // Create a voice channel for the team
