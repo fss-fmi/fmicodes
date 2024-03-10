@@ -2,16 +2,16 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { I18nContext } from 'nestjs-i18n';
 import { getRedisToken } from '@songkeys/nestjs-redis';
 import { TeamsService } from './teams.service';
-import { PrismaService } from '../src/prisma/prisma.service';
-import prismaServiceMock from '../src/prisma/prisma.service.mock';
+import { PrismaService } from '../prisma/prisma.service';
+import prismaServiceMock from '../prisma/prisma.service.mock';
 import {
   exampleNonexistentTeam,
   exampleNonexistentTeamCreateDto,
   exampleTeamCreateDto,
 } from './teams.mock';
-import { exampleUser, exampleUser3 } from '../src/users/users.mock';
+import { exampleUser, exampleUser3 } from '../users/users.mock';
 import { TeamsNameAlreadyExistsException } from './exceptions/teams-name-already-exists.exception';
-import { UsersService } from '../src/users/users.service';
+import { UsersService } from '../users/users.service';
 
 describe('TeamsService', () => {
   let service: TeamsService;
