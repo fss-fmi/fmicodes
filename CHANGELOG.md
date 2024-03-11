@@ -4,24 +4,21 @@ This file was generated using [@jscutlery/semver](https://github.com/jscutlery/s
 
 ## [1.0.3](https://github.com/fss-fmi/fmicodes/compare/v1.0.2...v1.0.3) (2024-03-10)
 
-
 ### Bug Fixes
 
-* update user data retrieval method in service ([fdee086](https://github.com/fss-fmi/fmicodes/commit/fdee086a527858500af6ac3dfa8b08262cd10d40))
+- update user data retrieval method in service ([fdee086](https://github.com/fss-fmi/fmicodes/commit/fdee086a527858500af6ac3dfa8b08262cd10d40))
 
 ## [1.0.2](https://github.com/fss-fmi/fmicodes/compare/v1.0.1...v1.0.2) (2024-03-10)
 
-
 ### Bug Fixes
 
-* remove timers ([0c4925f](https://github.com/fss-fmi/fmicodes/commit/0c4925f97f2dd2ac1ab1d6a1e57a4f9568602193))
+- remove timers ([0c4925f](https://github.com/fss-fmi/fmicodes/commit/0c4925f97f2dd2ac1ab1d6a1e57a4f9568602193))
 
 ## [1.0.2](https://github.com/fss-fmi/fmicodes/compare/v1.0.1...v1.0.2) (2024-03-10)
 
-
 ### Bug Fixes
 
-* remove timers ([0c4925f](https://github.com/fss-fmi/fmicodes/commit/0c4925f97f2dd2ac1ab1d6a1e57a4f9568602193))
+- remove timers ([0c4925f](https://github.com/fss-fmi/fmicodes/commit/0c4925f97f2dd2ac1ab1d6a1e57a4f9568602193))
 
 ## [1.0.1](https://github.com/fss-fmi/fmicodes/compare/v1.0.0...v1.0.1) (2024-03-10)
 

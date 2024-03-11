@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { I18nContext } from 'nestjs-i18n';
 import { User } from '@prisma/client';
 import Redis from 'ioredis';
@@ -94,6 +94,21 @@ export class TeamsService {
 
     if (teamsCaptainIsPartOf.length > 0) {
       throw new TeamsAlreadyInTeamException();
+    }
+
+    // Check if the maximum of verified teams is not reached
+    const allTeams = await this.getAll();
+    const verifiedTeams = allTeams.filter(
+      (team) =>
+        team.members.length >= libConfig.team.members.min &&
+        team.members.length <= libConfig.team.members.max,
+    );
+    const verifiedTeamsCount = verifiedTeams.length;
+    if (verifiedTeamsCount >= libConfig.team.max) {
+      throw new HttpException(
+        'Максималният брой потвърдени отбори е достигнат!',
+        HttpStatus.CONFLICT,
+      );
     }
 
     // Create the team

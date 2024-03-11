@@ -78,6 +78,33 @@ export default async function TeamsPage() {
     );
   }
 
+  async function CreateTeamButton() {
+    const teams = await ApiClient.TeamsApiService.teamsControllerGetV1({});
+    const verifiedTeams = teams.filter((team) => isTeamVerified(team));
+    if (verifiedTeams.length >= libConfig.team.max) {
+      return null;
+    }
+
+    return (
+      <Alert className="md:flex">
+        <FaUsers className="h-4 w-4" />
+
+        <div className="w-fit">
+          <AlertTitle>{t('want-to-be-a-part-of-a-team')}</AlertTitle>
+          <AlertDescription>
+            {t('create-a-team-or-join-an-existing-one')}
+          </AlertDescription>
+        </div>
+
+        <div className="md:ml-auto mt-2 md:mt-0">
+          <CreateTeamDialog>
+            <Button>{t('create-a-team')}</Button>
+          </CreateTeamDialog>
+        </div>
+      </Alert>
+    );
+  }
+
   return (
     <>
       <h1 className="text-2xl sm:text-4xl md:text-6xl font-black uppercase my-4 truncate text-clip">
@@ -100,22 +127,9 @@ export default async function TeamsPage() {
       )}
 
       {user && !user.teamId && (
-        <Alert className="md:flex">
-          <FaUsers className="h-4 w-4" />
-
-          <div className="w-fit">
-            <AlertTitle>{t('want-to-be-a-part-of-a-team')}</AlertTitle>
-            <AlertDescription>
-              {t('create-a-team-or-join-an-existing-one')}
-            </AlertDescription>
-          </div>
-
-          <div className="md:ml-auto mt-2 md:mt-0">
-            <CreateTeamDialog>
-              <Button>{t('create-a-team')}</Button>
-            </CreateTeamDialog>
-          </div>
-        </Alert>
+        <Suspense>
+          <CreateTeamButton />
+        </Suspense>
       )}
 
       <div className="flex items-center">
