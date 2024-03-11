@@ -2,6 +2,12 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.0.4](https://github.com/fss-fmi/fmicodes/compare/v1.0.3...v1.0.4) (2024-03-11)
+
+### Features
+
+- add verification check for teams limit ([9483715](https://github.com/fss-fmi/fmicodes/commit/948371507e295f85169f114476ba50b337e8b66d))
+
 ## [1.0.3](https://github.com/fss-fmi/fmicodes/compare/v1.0.2...v1.0.3) (2024-03-10)
 
 ## [1.0.2](https://github.com/fss-fmi/fmicodes/compare/v1.0.1...v1.0.2) (2024-03-10)
