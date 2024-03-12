@@ -23,7 +23,10 @@
     "want-to-be-a-part-of-a-team": "Искаш да си част от отбор?",
     "create-an-account-or-login": "Създай акаунт или влез в профила си, за да се присъединиш към отбор или да създадеш нов.",
     "create-a-team-or-join-an-existing-one": "Създай отбор или се присъедини към вече съществуващ такъв.",
-    "create-a-team": "Създай отбор"
+    "create-a-team": "Създай отбор",
+    "fmicodes-has-a-discord-server": "FMI'{Codes'} има Discord сървър!",
+    "join-our-discord-server-to-communicate-with-everyone": "Присъедини се към нашия Discord сървър, за да можеш да комуникираш с отбора си, другите участници и менторите.",
+    "link-your-discord-account": "Свържи своя Discord акаунт"
   },
   "team-page": {
     "title": "Отбор {teamName}",

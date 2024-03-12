@@ -16,11 +16,12 @@ import {
   CardHeader,
   Skeleton,
 } from '@fmicodes/fmicodes-ui/lib/components/common/server';
-import { FaUsers, FaUserTie } from 'react-icons/fa6';
+import { FaDiscord, FaUsers, FaUserTie } from 'react-icons/fa6';
 import { CreateTeamDialog } from '@fmicodes/fmicodes-ui/lib/components/site/client';
 import { Suspense } from 'react';
 import { Metadata } from 'next';
 import { libConfig } from '@fmicodes/fmicodes-services/config/lib.config';
+import Link from 'next/link';
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations('teams-page');
@@ -130,6 +131,33 @@ export default async function TeamsPage() {
         <Suspense>
           <CreateTeamButton />
         </Suspense>
+      )}
+
+      {user && !user.discord && (
+        <Alert className="md:flex">
+          <FaDiscord className="h-4 w-4" />
+
+          <div className="w-fit">
+            <AlertTitle>{t('fmicodes-has-a-discord-server')}</AlertTitle>
+            <AlertDescription>
+              {t('join-our-discord-server-to-communicate-with-everyone')}
+            </AlertDescription>
+          </div>
+
+          <Button
+            type="button"
+            className="w-full md:w-auto my-auto md:ml-auto"
+            asChild
+          >
+            <Link
+              href={`${process.env.NEXT_PUBLIC_API_BASE}/api/v1/auth/login/discord`}
+              target="_blank"
+              rel="opener" // Required, so that the new tab can go back to this window
+            >
+              {t('link-your-discord-account')}
+            </Link>
+          </Button>
+        </Alert>
       )}
 
       <div className="flex items-center">
