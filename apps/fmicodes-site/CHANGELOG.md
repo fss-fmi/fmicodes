@@ -2,6 +2,18 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.1.0](https://github.com/fss-fmi/fmicodes/compare/v1.0.4...v1.1.0) (2024-03-12)
+
+### Features
+
+- add discord server information ([e9678ff](https://github.com/fss-fmi/fmicodes/commit/e9678ff0a83ef3aa1b60cb562c33b25ddf7a59ce))
+- add vercel analytics and speed insights to project ([b54650a](https://github.com/fss-fmi/fmicodes/commit/b54650ad8cc7991563baf65f85cba2744d93c67b))
+- update team page to include open graph and team redirection ([c056802](https://github.com/fss-fmi/fmicodes/commit/c0568027bbf19b027eb213a22c662173d7f8bf62))
+
+### Bug Fixes
+
+- resolve build error ([10d385c](https://github.com/fss-fmi/fmicodes/commit/10d385c4db70c85dd6d2bb63199e8a9d0e06850e))
+
 ## [1.0.4](https://github.com/fss-fmi/fmicodes/compare/v1.0.3...v1.0.4) (2024-03-11)
 
 ### Features
