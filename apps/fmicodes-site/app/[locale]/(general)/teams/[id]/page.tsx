@@ -16,6 +16,7 @@ import { FaSignOutAlt } from 'react-icons/fa';
 import { LeaveTeamDialog } from '@fmicodes/fmicodes-ui/lib/components/site/leave-team-dialog/leave-team-dialog';
 import { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
+import { redirect } from 'next/navigation';
 
 interface TeamPageProps {
   params: { id: string };
@@ -30,8 +31,16 @@ export async function generateMetadata({
   });
 
   return {
+    metadataBase: new URL(
+      process.env.VERCEL_URL
+        ? `https://${process.env.VERCEL_URL}`
+        : `http://localhost:${process.env.PORT || 4200}`,
+    ),
     title: `${t('title', { teamName: team?.name })} | FMI{Codes} 2024`,
-    description: t('description'),
+    description: t('description', { teamName: team?.name }),
+    openGraph: {
+      images: [`/en/teams/${team?.id}/image`],
+    },
   };
 }
 
@@ -44,7 +53,7 @@ export default async function TeamPage({ params }: TeamPageProps) {
   });
 
   if (!team) {
-    return null;
+    redirect(`/${locale}/teams`);
   }
 
   // TODO: this is requested for each subcategory, refactor to get all users once

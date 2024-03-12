@@ -41,6 +41,7 @@
     "@radix-ui/react-toast": "^1.1.5",
     "@songkeys/nestjs-redis": "^10.0.0",
     "@swc/helpers": "~0.5.2",
+    "@vercel/og": "^0.6.2",
     "axios": "^1.0.0",
     "bcryptjs": "^2.4.3",
     "class-transformer": "^0.5.1",
