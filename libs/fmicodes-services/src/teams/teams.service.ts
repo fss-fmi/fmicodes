@@ -102,20 +102,20 @@ export class TeamsService {
       throw new TeamsAlreadyInTeamException();
     }
 
-        // Check if the maximum of verified teams is not reached
-        const allTeams = await this.getAll();
-        const verifiedTeams = allTeams.filter(
-          (team) =>
-            team.members.length >= libConfig.team.members.min &&
-            team.members.length <= libConfig.team.members.max,
-        );
-        const verifiedTeamsCount = verifiedTeams.length;
-        if (verifiedTeamsCount >= libConfig.team.max) {
-          throw new HttpException(
-            'Максималният брой потвърдени отбори е достигнат!',
-            HttpStatus.CONFLICT,
-          );
-        }
+    // Check if the maximum of verified teams is not reached
+    const allTeams = await this.getAll();
+    const verifiedTeams = allTeams.filter(
+      (team) =>
+        team.members.length >= libConfig.team.members.min &&
+        team.members.length <= libConfig.team.members.max,
+    );
+    const verifiedTeamsCount = verifiedTeams.length;
+    if (verifiedTeamsCount >= libConfig.team.max) {
+      throw new HttpException(
+        'Максималният брой потвърдени отбори е достигнат!',
+        HttpStatus.CONFLICT,
+      );
+    }
 
     // Create the team
     const createdTeam = await this.prisma.team.create({
