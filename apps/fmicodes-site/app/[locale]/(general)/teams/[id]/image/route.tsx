@@ -3,11 +3,10 @@
 import { ImageResponse } from 'next/og';
 import { ApiClient } from '@fmicodes/fmicodes-api-client/client';
 import React from 'react';
-import { NextApiRequest } from 'next';
 
 export const runtime = 'edge';
 
-export async function GET(req: NextApiRequest, { params }) {
+export async function GET(req: never, { params }) {
   const { id } = params;
   const team = await ApiClient.TeamsApiService.teamsControllerGetTeamV1({
     teamId: id as string,
@@ -27,7 +26,7 @@ export async function GET(req: NextApiRequest, { params }) {
               fontWeight: 900,
             }}
           >
-            {team.name.toUpperCase()}gosholoshogosholosho
+            {team.name.toUpperCase()}
           </div>
           <div tw="flex items-center px-4 py-2 -mt-3 bg-black text-white">
             <img
