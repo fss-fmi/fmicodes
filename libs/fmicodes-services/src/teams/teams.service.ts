@@ -73,6 +73,12 @@ export class TeamsService {
     });
   }
 
+  async getDiscordRoleForTeam(guild : Guild, teamName: string){
+    return guild.roles.cache.find(
+      (role) => role.name === `🧩 Отбор ${teamName} 🧩`,
+    );
+  }
+
   async create(createTeamDto: TeamsBaseDto, capitanId: string) {
     // Check if team name is already taken
     const teamNameExists = await this.prisma.team.findFirst({
@@ -96,20 +102,20 @@ export class TeamsService {
       throw new TeamsAlreadyInTeamException();
     }
 
-    // Check if the maximum of verified teams is not reached
-    const allTeams = await this.getAll();
-    const verifiedTeams = allTeams.filter(
-      (team) =>
-        team.members.length >= libConfig.team.members.min &&
-        team.members.length <= libConfig.team.members.max,
-    );
-    const verifiedTeamsCount = verifiedTeams.length;
-    if (verifiedTeamsCount >= libConfig.team.max) {
-      throw new HttpException(
-        'Максималният брой потвърдени отбори е достигнат!',
-        HttpStatus.CONFLICT,
-      );
-    }
+        // Check if the maximum of verified teams is not reached
+        const allTeams = await this.getAll();
+        const verifiedTeams = allTeams.filter(
+          (team) =>
+            team.members.length >= libConfig.team.members.min &&
+            team.members.length <= libConfig.team.members.max,
+        );
+        const verifiedTeamsCount = verifiedTeams.length;
+        if (verifiedTeamsCount >= libConfig.team.max) {
+          throw new HttpException(
+            'Максималният брой потвърдени отбори е достигнат!',
+            HttpStatus.CONFLICT,
+          );
+        }
 
     // Create the team
     const createdTeam = await this.prisma.team.create({
@@ -301,6 +307,9 @@ export class TeamsService {
         },
       },
     });
+
+    // Add the team role to the user
+    
 
     return { message: i18n?.t('responses.teams.joinRequestAccepted') };
   }
