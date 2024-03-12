@@ -19,6 +19,8 @@ import Link from 'next/link';
 import { AxiomWebVitals } from 'next-axiom';
 import { Logo } from '@fmicodes/fmicodes-ui/lib/components/site/server';
 import { Metadata } from 'next';
+import { SpeedInsights } from '@vercel/speed-insights/next';
+import { Analytics } from '@vercel/analytics/react';
 import { locales } from '../../i18n';
 
 export { useReportWebVitals } from 'next-axiom';
@@ -50,6 +52,8 @@ export default async function RootLayout({
       <body className="min-h-screen">
         {/* Enable production logging */}
         <AxiomWebVitals />
+        <Analytics />
+        <SpeedInsights />
 
         <NextIntlClientProvider locale={locale} messages={messages}>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
