@@ -307,10 +307,7 @@ export class TeamsService {
         },
       },
     });
-
-    // Add the team role to the user
     
-
     return { message: i18n?.t('responses.teams.joinRequestAccepted') };
   }
 

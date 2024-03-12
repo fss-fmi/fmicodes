@@ -57,10 +57,6 @@ export class TeamsController {
 
     // For all members of the team, check if they have the discord role, and if not, assign it to them
     for (const member of existingTeam.members) {
-      // Get the discordId of the member
-
-
-
       const discordUser = await this.discordClient.users.fetch(member.id);
       const discordMember = await guild.members.fetch(discordUser);
       const hasRole = discordMember.roles.cache.some(
