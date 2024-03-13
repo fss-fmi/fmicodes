@@ -41,5 +41,9 @@
   "regulations-page": {
     "title": "Регламент",
     "description": "Правила на хакатона и критерии за оценяване"
+  },
+  "mentors-page": {
+    "title": "Ментори",
+    "description": ""
   }
 }

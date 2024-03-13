@@ -180,6 +180,11 @@
       "our-silver-sponsors": "our silver sponsors",
       "our-bronze-sponsors": "our bronze sponsors",
       "our-partners": "our partners"
+    },
+    "mentor-card": {
+      "availability": "Availability",
+      "technologies": "Technologies",
+      "add-to-team": "Add to team"
     }
   }
 }

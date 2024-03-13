@@ -41,5 +41,9 @@
   "regulations-page": {
     "title": "Regulations",
     "description": "You can find the hackathon regulations you must follow here."
+  },
+  "mentors-page": {
+    "title": "Mentors",
+    "description": ""
   }
 }
