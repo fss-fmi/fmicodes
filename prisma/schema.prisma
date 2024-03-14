@@ -113,6 +113,10 @@ model Team {
   // Team requests (invitations, send to teams, from players, asking them to join)
   teamRequests TeamRequest[]
 
+  // Team mentor
+  mentorId Int?     @map("mentor_id")
+  mentors  Mentor[]
+
   // Row timestamps
   createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz()
   updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamptz()
@@ -157,16 +161,73 @@ model TeamRequest {
 }
 
 model Sponsor {
-  id          Int         @id @default(autoincrement())
-  name        String
+  // Primary key
+  id Int @id @default(autoincrement())
+
+  // Sponsor information
+  name        String      @unique
   color       String
   type        SponsorType @map("sponsor_type")
   description String
   logo        String
   website     String
-  createdAt   DateTime    @default(now()) @map("created_at") @db.Timestamptz
+
+  // Mentors
+  mentors Mentor[]
+
+  // Row timestamps
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz
 
   @@map("sponsors")
+}
+
+model Mentor {
+  // Primary key
+  id Int @id @default(autoincrement())
+
+  // Mentor information
+  name       String @unique
+  pictureUrl String @map("picture_url")
+  discordId  String @unique @map("discord_id")
+
+  // Company information
+  companyId Int
+  company   Sponsor @relation(fields: [companyId], references: [id])
+  jobTitle  String  @map("job_title")
+
+  // Availability
+  availability String[]
+
+  // Technologies
+  technologies Technology[]
+
+  // Team
+  teamId Int?  @map("team_id")
+  team   Team? @relation(fields: [teamId], references: [id], onDelete: SetNull)
+
+  // Row timestamps
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz()
+  updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamptz()
+
+  @@map("mentors")
+}
+
+model Technology {
+  // Primary key
+  id Int @id @default(autoincrement())
+
+  // Technology information
+  name  String @unique
+  color String
+
+  // Mentors
+  mentors Mentor[]
+
+  // Row timestamps
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz()
+  updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamptz()
+
+  @@map("technologies")
 }
 
 enum Color {

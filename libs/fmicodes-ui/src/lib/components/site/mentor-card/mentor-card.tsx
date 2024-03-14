@@ -13,7 +13,7 @@ import {
 
 interface Mentor {
   name: string;
-  company: string;
+  company: { name: string; color: string };
   jobTitle: string;
   pictureUrl: string;
   availability: string[];
@@ -35,7 +35,7 @@ export async function MentorCard({ mentor }: MentorCardProps) {
           alt={mentor.name}
           width={800}
           height={800}
-          className="object-cover"
+          className="object-cover w-full h-full"
         />
       </CardHeader>
       <CardContent className="flex flex-col gap-y-2 p-3">
@@ -43,15 +43,17 @@ export async function MentorCard({ mentor }: MentorCardProps) {
           <h2 className="text-lg font-bold text-ellipsis overflow-hidden">
             {mentor.name}
           </h2>
-          <p>
-            <span>{mentor.company}</span>
+          <p className="h-12">
+            <span style={{ color: mentor.company.color }}>
+              {mentor.company.name}
+            </span>
             {' - '}
             <span>{mentor.jobTitle}</span>
           </p>
         </div>
         <div>
           <h3 className="font-bold">{t('availability')}</h3>
-          <ul className="h-36 list-disc list-inside">
+          <ul className="h-40 list-disc list-inside">
             {mentor.availability.map((timeSlot) => (
               <li key={timeSlot}>{timeSlot}</li>
             ))}
@@ -59,7 +61,7 @@ export async function MentorCard({ mentor }: MentorCardProps) {
         </div>
         <div>
           <h3 className="font-bold">{t('technologies')}</h3>
-          <ScrollArea className="h-36 flex flex-row justify-center">
+          <ScrollArea className="h-40 flex flex-row justify-center">
             {mentor.technologies.map((technology) => (
               <Badge key={technology.name} className="pointer-events-none">
                 {technology.name}
@@ -67,14 +69,14 @@ export async function MentorCard({ mentor }: MentorCardProps) {
             ))}
           </ScrollArea>
         </div>
-        <div>
-          <Button
-            className={cn('w-full', mentor.team ? 'disabled' : '')}
-            disabled={!!mentor.team}
-          >
-            {mentor.team ? mentor.team.name : t('add-to-team')}
-          </Button>
-        </div>
+        {/* <div> */}
+        {/*  <Button */}
+        {/*    className={cn('w-full', mentor.team ? 'disabled' : '')} */}
+        {/*    disabled={!!mentor.team} */}
+        {/*  > */}
+        {/*    {mentor.team ? mentor.team.name : t('add-to-team')} */}
+        {/*  </Button> */}
+        {/* </div> */}
       </CardContent>
     </Card>
   );

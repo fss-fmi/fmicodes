@@ -7,6 +7,7 @@ import {
 import { Suspense } from 'react';
 import { Metadata } from 'next';
 import { MentorCard } from '@fmicodes/fmicodes-ui/lib/components/site/mentor-card/mentor-card';
+import { ApiClient } from '@fmicodes/fmicodes-api-client/client';
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations('mentors-page');
@@ -23,44 +24,9 @@ export default async function TeamsPage() {
   // const user = await getUser();
 
   async function MentorCards() {
-    // const mentors = await ApiClient.TeamsApiService.teamsControllerGetV1({});
-    const mentors = [
-      {
-        id: 1,
-        name: 'Гошо Лошо Мошо',
-        company: 'SAP',
-        jobTitle: 'Development Expert | Architect',
-        pictureUrl: '/assets/images/mentors/Aleksandar_Stefanov.jpg',
-        availability: [
-          'Петък 18:00 - 19:00',
-          'Събота 13:00 - 16:00',
-          'Петък 18:00 - 19:00',
-          'Събота 13:00 - 16:00',
-          'Петък 18:00 - 19:00',
-          'Събота 13:00 - 16:00',
-        ],
-        technologies: [
-          { name: 'Tensorflow', color: '#e1862f' },
-          { name: 'Tensorflow', color: '#e1862f' },
-          { name: 'Tensorflow', color: '#e1862f' },
-          { name: 'Tensorflow', color: '#e1862f' },
-          { name: 'Tensorflow', color: '#e1862f' },
-          { name: 'Tensorflow', color: '#e1862f' },
-          { name: 'Tensorflow', color: '#e1862f' },
-          { name: 'Tensorflow', color: '#e1862f' },
-          { name: 'Tensorflow', color: '#e1862f' },
-          { name: 'Tensorflow', color: '#e1862f' },
-          { name: 'Tensorflow', color: '#e1862f' },
-          { name: 'Tensorflow', color: '#e1862f' },
-          { name: 'Tensorflow', color: '#e1862f' },
-          { name: 'Tensorflow', color: '#e1862f' },
-          { name: 'Tensorflow', color: '#e1862f' },
-          { name: 'Tensorflow', color: '#e1862f' },
-          { name: 'Tensorflow', color: '#e1862f' },
-        ],
-        team: { name: 'gosho' },
-      },
-    ];
+    const mentors = await ApiClient.MentorsApiService.mentorsControllerGetV1(
+      {},
+    );
 
     return mentors.map((mentor) => (
       <MentorCard key={mentor.id} mentor={mentor} />
