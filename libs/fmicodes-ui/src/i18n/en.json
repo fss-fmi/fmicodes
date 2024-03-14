@@ -18,7 +18,8 @@
     "navbar-links": {
       "home": "Home",
       "teams": "Teams",
-      "regulations": "Regulations"
+      "regulations": "Regulations",
+      "mentors": "Mentors"
     },
     "navbar-user-controls": {
       "preferences-popover": {

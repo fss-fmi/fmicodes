@@ -23,6 +23,10 @@ export function NavbarLinks({ className, variant }: NavbarLinksProps) {
       title: t('regulations'),
       href: `/${locale}/regulations`,
     },
+    {
+      title: t('mentors'),
+      href: `/${locale}/mentors`,
+    },
   ];
 
   if (variant === 'desktop') {

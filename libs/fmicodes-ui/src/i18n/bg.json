@@ -18,7 +18,8 @@
     "navbar-links": {
       "home": "Начало",
       "teams": "Отбори",
-      "regulations": "Регламент"
+      "regulations": "Регламент",
+      "mentors": "Ментори"
     },
     "navbar-user-controls": {
       "preferences-popover": {
