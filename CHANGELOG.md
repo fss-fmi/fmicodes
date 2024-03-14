@@ -2,6 +2,12 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.2.2](https://github.com/fss-fmi/fmicodes/compare/v1.2.1...v1.2.2) (2024-03-14)
+
+### Bug Fixes
+
+- temporary linting disable ([7bf4ee6](https://github.com/fss-fmi/fmicodes/commit/7bf4ee637d8b2a46fe96cfa8ab1a100983e3acbc))
+
 ## [1.2.1](https://github.com/fss-fmi/fmicodes/compare/v1.2.0...v1.2.1) (2024-03-14)
 
 ### Features
