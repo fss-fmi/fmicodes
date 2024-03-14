@@ -180,6 +180,11 @@
       "our-silver-sponsors": "нашите сребърни спонсори",
       "our-bronze-sponsors": "нашите бронзови спонсори",
       "our-partners": "нашите партньори"
+    },
+    "mentor-card": {
+      "availability": "График",
+      "technologies": "Технологии",
+      "add-to-team": "Add to team"
     }
   }
 }

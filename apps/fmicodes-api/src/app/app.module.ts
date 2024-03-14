@@ -14,6 +14,7 @@ import { AuthModule } from '../auth/auth.module';
 import { TeamsModule } from '../teams/teams.module';
 import { appConfig } from './app.config';
 import { SponsorsModule } from '../sponsors/sponsors.module';
+import { MentorsModule } from '../mentors/mentors.module';
 
 @Module({
   imports: [
@@ -38,6 +39,7 @@ import { SponsorsModule } from '../sponsors/sponsors.module';
     AuthModule,
     TeamsModule,
     SponsorsModule,
+    MentorsModule,
   ],
   controllers: [],
   providers: [],
