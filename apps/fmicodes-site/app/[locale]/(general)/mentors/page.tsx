@@ -29,6 +29,8 @@ export default async function TeamsPage() {
     );
 
     return mentors.map((mentor) => (
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
       <MentorCard key={mentor.id} mentor={mentor} />
     ));
   }
