@@ -73,6 +73,12 @@ export class TeamsService {
     });
   }
 
+  async getDiscordRoleForTeam(guild : Guild, teamName: string){
+    return guild.roles.cache.find(
+      (role) => role.name === `🧩 Отбор ${teamName} 🧩`,
+    );
+  }
+
   async create(createTeamDto: TeamsBaseDto, capitanId: string) {
     // Check if team name is already taken
     const teamNameExists = await this.prisma.team.findFirst({
@@ -301,7 +307,7 @@ export class TeamsService {
         },
       },
     });
-
+    
     return { message: i18n?.t('responses.teams.joinRequestAccepted') };
   }
 
