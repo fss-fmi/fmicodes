@@ -373,12 +373,12 @@ export class TeamsService {
 
   async assignRoleToMember(
     discordClient: Client,
-    memberId: string,
+    userId: string,
     guild: Guild,
     role: Role,
   ) {
     // Validate that the user exists
-    const user = await this.usersService.getByIdOrThrow(memberId);
+    const user = await this.usersService.getByIdOrThrow(userId);
 
     // Validate that the user has a discord account linked
     if (!user.discord) {

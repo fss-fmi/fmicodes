@@ -29,13 +29,7 @@ export class UsersGateway {
     const role = await member.guild.roles.fetch('1212836073852375109');
 
     if (mentor) {
-      await this.teamsService.assignRoleToMember(
-        this.client,
-        member.guild.id,
-        member.guild,
-        role,
-      );
-
+      await member.roles.add(role);
       await member.setNickname(mentor.name);
     }
   }
