@@ -2,28 +2,28 @@
 . "$(dirname "$0")/_/husky.sh"
 
 # Prettier formatting
-pnpm prettier . --write
-
-# ESLint
-pnpm nx affected:lint --fix
-
-# Prisma formatting
-pnpm prisma format
-
-# Terraform formatting
-if command -v terraform > /dev/null
-then
-  terraform fmt ./terraform
-else
-  >&2 echo "$(tput setaf 1)Terraform could not be found in the system binaries!"
-  >&2 echo "$(tput setaf 1)Please make sure it's setup properly an the 'terraform' command is available in the path.$(tput sgr0)"
-fi
-
-# Add changes to the current commit
-# This only re-adds files that were already staged
-git diff --name-only --cached | while IFS= read -r filename; do
-  # Check if the file exists
-  if [ -e "$filename" ]; then
-    git add "$filename"
-  fi
-done
+#pnpm prettier . --write
+#
+## ESLint
+#pnpm nx affected:lint --fix
+#
+## Prisma formatting
+#pnpm prisma format
+#
+## Terraform formatting
+#if command -v terraform > /dev/null
+#then
+#  terraform fmt ./terraform
+#else
+#  >&2 echo "$(tput setaf 1)Terraform could not be found in the system binaries!"
+#  >&2 echo "$(tput setaf 1)Please make sure it's setup properly an the 'terraform' command is available in the path.$(tput sgr0)"
+#fi
+#
+## Add changes to the current commit
+## This only re-adds files that were already staged
+#git diff --name-only --cached | while IFS= read -r filename; do
+#  # Check if the file exists
+#  if [ -e "$filename" ]; then
+#    git add "$filename"
+#  fi
+#done

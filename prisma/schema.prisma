@@ -205,11 +205,38 @@ model Mentor {
   teamId Int?  @map("team_id")
   team   Team? @relation(fields: [teamId], references: [id], onDelete: SetNull)
 
+  // Linked mentors as mentorA
+  mentorALinks MentorLink[] @relation("MentorA")
+
+  // Linked mentors as mentorB
+  mentorBLinks MentorLink[] @relation("MentorB")
+
+  // Row timestamps
+  createdAt  DateTime     @default(now()) @map("created_at") @db.Timestamptz()
+  updatedAt  DateTime     @updatedAt @map("updated_at") @db.Timestamptz()
+  MentorLink MentorLink[]
+
+  @@map("mentors")
+}
+
+model MentorLink {
+  // Primary key
+  id Int @id @default(autoincrement())
+
+  // Mentors linked
+  mentorA   Mentor @relation("MentorA", fields: [mentorAId], references: [id])
+  mentorAId Int    @map("mentor_a_id")
+
+  mentorB   Mentor @relation("MentorB", fields: [mentorBId], references: [id])
+  mentorBId Int    @map("mentor_b_id")
+
   // Row timestamps
   createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz()
   updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamptz()
+  Mentor    Mentor?  @relation(fields: [mentorId], references: [id])
+  mentorId  Int?
 
-  @@map("mentors")
+  @@map("mentor_links")
 }
 
 model Technology {

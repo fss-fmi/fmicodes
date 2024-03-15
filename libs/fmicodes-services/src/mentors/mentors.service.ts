@@ -156,4 +156,109 @@ export class MentorsService {
       },
     });
   }
+
+  async assignTeam(id: number, teamId: number) {
+    // Find the mentor and their linked mentors
+    const mentor = await this.prisma.mentor.findUnique({
+      where: {
+        id,
+      },
+      include: {
+        mentorALinks: true,
+        mentorBLinks: true,
+      },
+    });
+
+    if (!mentor) {
+      throw new Error('Mentor not found');
+    }
+
+    if (mentor.teamId) {
+      throw new Error('Mentor already has a team');
+    }
+
+    // Update the mentor's team
+    await this.prisma.mentor.update({
+      where: {
+        id,
+      },
+      data: {
+        team: {
+          connect: {
+            id: teamId,
+          },
+        },
+      },
+    });
+
+    // Update linked mentors' teams
+    // TODO: This is disgusting, please refactor
+    const updatePromisesAA = mentor.mentorALinks.map(async (linkedMentor) => {
+      await this.prisma.mentor.update({
+        where: {
+          id: linkedMentor.mentorAId,
+        },
+        data: {
+          team: {
+            connect: {
+              id: teamId,
+            },
+          },
+        },
+      });
+    });
+
+    const updatePromisesAB = mentor.mentorALinks.map(async (linkedMentor) => {
+      await this.prisma.mentor.update({
+        where: {
+          id: linkedMentor.mentorAId,
+        },
+        data: {
+          team: {
+            connect: {
+              id: teamId,
+            },
+          },
+        },
+      });
+    });
+
+    const updatePromisesBA = mentor.mentorBLinks.map(async (linkedMentor) => {
+      await this.prisma.mentor.update({
+        where: {
+          id: linkedMentor.mentorBId,
+        },
+        data: {
+          team: {
+            connect: {
+              id: teamId,
+            },
+          },
+        },
+      });
+    });
+
+    const updatePromisesBB = mentor.mentorBLinks.map(async (linkedMentor) => {
+      await this.prisma.mentor.update({
+        where: {
+          id: linkedMentor.mentorBId,
+        },
+        data: {
+          team: {
+            connect: {
+              id: teamId,
+            },
+          },
+        },
+      });
+    });
+
+    // Wait for all updates to complete
+    await Promise.all([
+      ...updatePromisesAA,
+      ...updatePromisesAB,
+      ...updatePromisesBA,
+      ...updatePromisesBB,
+    ]);
+  }
 }

@@ -3,6 +3,8 @@ import {
   Get,
   HttpCode,
   HttpStatus,
+  Param,
+  Patch,
   Post,
   Version,
 } from '@nestjs/common';
@@ -33,5 +35,21 @@ export class MentorsController {
   @Post()
   async createAll() {
     return this.mentorsService.createAll();
+  }
+
+  @Patch(':id/assign-team/:teamId')
+  @HttpCode(HttpStatus.OK)
+  @ApiOperation({
+    summary: 'Assign a team to a mentor',
+    description: 'Endpoint for assigning a team to a mentor.',
+  })
+  @ApiOkResponse({
+    description: 'Team assigned to mentor successfully.',
+  })
+  async assignTeam(@Param('id') id: string, @Param('teamId') teamId: string) {
+    return this.mentorsService.assignTeam(
+      parseInt(id, 10),
+      parseInt(teamId, 10),
+    );
   }
 }
