@@ -1,6 +1,9 @@
 import React from 'react';
 import { getTranslations } from 'next-intl/server';
 import Image from 'next/image';
+import ApiClient from '@fmicodes/fmicodes-api-client/client';
+import Link from 'next/link';
+import { useLocale } from 'next-intl';
 import { ScrollArea } from '../../common/scroll-area/components/scroll-area';
 import { cn } from '../../../utils';
 import {
@@ -18,15 +21,17 @@ interface Mentor {
   pictureUrl: string;
   availability: string[];
   technologies: { name: string; color: string }[];
-  team?: { name: string };
+  team?: { id: number; name: string };
 }
 
 interface MentorCardProps {
   mentor: Mentor;
+  user: ApiClient.UserResponseBodyDto;
 }
 
-export async function MentorCard({ mentor }: MentorCardProps) {
+export async function MentorCard({ mentor, user }: MentorCardProps) {
   const t = await getTranslations('site.mentor-card');
+  const locale = useLocale();
   return (
     <Card className="w-full transition hover:-translate-y-1 hover:shadow-lg">
       <CardHeader className="relative p-0 w-full aspect-square space-y-0 overflow-hidden rounded-t-xl">
@@ -69,14 +74,17 @@ export async function MentorCard({ mentor }: MentorCardProps) {
             ))}
           </ScrollArea>
         </div>
-        {/* <div> */}
-        {/*  <Button */}
-        {/*    className={cn('w-full', mentor.team ? 'disabled' : '')} */}
-        {/*    disabled={!!mentor.team} */}
-        {/*  > */}
-        {/*    {mentor.team ? mentor.team.name : t('add-to-team')} */}
-        {/*  </Button> */}
-        {/* </div> */}
+
+        <div>
+          {user && user.team.capitanId === user.id && !mentor.team && (
+            <Button className="w-full">{t('add-to-team')}</Button>
+          )}
+          {mentor.team && (
+            <Link href={`${locale}/teams/${mentor.team.id}`}>
+              <Button>{mentor.team.name}</Button>
+            </Link>
+          )}
+        </div>
       </CardContent>
     </Card>
   );
