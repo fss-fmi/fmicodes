@@ -114,8 +114,7 @@ model Team {
   teamRequests TeamRequest[]
 
   // Team mentor
-  mentorId Int?     @map("mentor_id")
-  mentors  Mentor[]
+  mentors Mentor[]
 
   // Row timestamps
   createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz()

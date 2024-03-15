@@ -4,9 +4,8 @@ import Image from 'next/image';
 import ApiClient from '@fmicodes/fmicodes-api-client/client';
 import Link from 'next/link';
 import { useLocale } from 'next-intl';
-import { getBearerToken } from '@fmicodes/fmicodes-api-client/next';
+import { AddToTeamButton } from './components/add-to-team-button';
 import { ScrollArea } from '../../common/scroll-area/components/scroll-area';
-import { cn } from '../../../utils';
 import {
   Badge,
   Button,
@@ -34,15 +33,6 @@ interface MentorCardProps {
 export async function MentorCard({ mentor, user }: MentorCardProps) {
   const t = await getTranslations('site.mentor-card');
   const locale = useLocale();
-
-  async function assignMentor(mentorId: number) {
-    return ApiClient.MentorsApiService.mentorsControllerAssignTeam({
-      id: `${mentorId}`,
-      teamId: `${user.team?.id}`,
-      authorization: await getBearerToken(),
-      acceptLanguage: locale,
-    });
-  }
 
   return (
     <Card className="w-full transition hover:-translate-y-1 hover:shadow-lg">
@@ -88,14 +78,10 @@ export async function MentorCard({ mentor, user }: MentorCardProps) {
         </div>
 
         <div>
-          {user && user.team.capitanId === user.id && !mentor.team && (
-            <Button onClick={() => assignMentor(mentor.id)} className="w-full">
-              {t('add-to-team')}
-            </Button>
-          )}
+          {!mentor.team && <AddToTeamButton user={user} mentorId={mentor.id} />}
           {mentor.team && (
             <Link href={`${locale}/teams/${mentor.team.id}`}>
-              <Button>{mentor.team.name}</Button>
+              <Button className="w-full">{mentor.team.name}</Button>
             </Link>
           )}
         </div>

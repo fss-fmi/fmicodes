@@ -1,6 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRedis } from '@songkeys/nestjs-redis';
 import Redis from 'ioredis';
+import { User } from '@prisma/client';
+import UsersService from '@fmicodes/fmicodes-services/users/users.service';
 import { PrismaService } from '../prisma/prisma.service';
 
 @Injectable()
@@ -8,6 +10,7 @@ export class MentorsService {
   constructor(
     private readonly prisma: PrismaService,
     @InjectRedis() private readonly redis: Redis,
+    private readonly usersService: UsersService,
   ) {}
 
   getAll() {
@@ -28,136 +31,7 @@ export class MentorsService {
     });
   }
 
-  createAll() {
-    return this.prisma.mentor.create({
-      data: {
-        name: 'Мартин Димитров Несторов',
-        pictureUrl: '/assets/images/mentors/Martin_Nestorov.jpg',
-        discordId: 'anarcroth#6344',
-        company: {
-          connect: {
-            name: 'ROITI',
-          },
-        },
-        jobTitle: 'Senior Cloud Software Engineer',
-        availability: [
-          'Събота 10:00 - 13:00',
-          'Събота 13:00 - 16:00',
-          'Събота 16:00 - 19:00',
-          'Неделя 10:00 - 13:00',
-          'Неделя 13:00 - 16:00',
-        ],
-        technologies: {
-          connect: [
-            {
-              name: 'Уеб програмиране',
-            },
-            {
-              name: 'DevOps',
-            },
-            {
-              name: 'Python',
-            },
-            {
-              name: 'Java',
-            },
-            {
-              name: 'JavaScript',
-            },
-            {
-              name: 'TypeScript',
-            },
-            {
-              name: 'Bash',
-            },
-            {
-              name: 'HTML/CSS',
-            },
-            {
-              name: 'React',
-            },
-            {
-              name: 'jQuery',
-            },
-            {
-              name: 'WebSockets',
-            },
-            {
-              name: 'Electron',
-            },
-            {
-              name: 'Node.js',
-            },
-            {
-              name: 'Express',
-            },
-            {
-              name: 'Flask',
-            },
-            {
-              name: 'Spring Boot',
-            },
-            {
-              name: 'REST',
-            },
-            {
-              name: 'JWT',
-            },
-            {
-              name: 'RabbitMQ',
-            },
-            {
-              name: 'Apache Kafka',
-            },
-            {
-              name: 'SQL (MySQL, PostgreSQL, etc.)',
-            },
-            {
-              name: 'NoSQL (MongoDB, Cassandra, etc.)',
-            },
-            {
-              name: 'Redis (Key-Value store)',
-            },
-            {
-              name: 'InfluxDB (Time Series Database)',
-            },
-            {
-              name: 'Grafana',
-            },
-            {
-              name: 'Elasticsearch',
-            },
-            {
-              name: 'Amazon Web Services',
-            },
-            {
-              name: 'Heroku',
-            },
-            {
-              name: 'Git',
-            },
-            {
-              name: 'GitHub',
-            },
-            {
-              name: 'GitLab',
-            },
-            {
-              name: 'Bitbucket',
-            },
-            {
-              name: 'Docker',
-            },
-            {
-              name: 'Kubernetes',
-            },
-          ],
-        },
-      },
-    });
-  }
-
-  async assignTeam(id: number, teamId: number) {
+  async assignTeam(user: User, id: number, teamId: number) {
     // Find the mentor and their linked mentors
     const mentor = await this.prisma.mentor.findUnique({
       where: {
@@ -175,6 +49,17 @@ export class MentorsService {
 
     if (mentor.teamId) {
       throw new Error('Mentor already has a team');
+    }
+
+    // Get user team mentor by user id
+    const userById = await this.usersService.getById(user.id);
+
+    // If user's team has a mentor, throw
+    if (!userById) {
+      throw Error('How?');
+    }
+    if (userById.team && userById.team.mentors.length > 0) {
+      throw new Error('Team already has a mentor.');
     }
 
     // Update the mentor's team

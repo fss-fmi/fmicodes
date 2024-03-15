@@ -131,7 +131,7 @@ export class UsersController {
   })
   @ApiUnauthorizedResponse({ description: 'Invalid authentication token.' })
   getCurrentV1(@UserAuth() user: Omit<User, 'passwordHash'>) {
-    return user;
+    return this.usersService.getById(user.id);
   }
 
   @Patch('current/onboarding')

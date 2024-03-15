@@ -27,6 +27,11 @@ export class TeamResponseBodyDto extends TeamsBaseDto {
   capitanId!: string;
 
   @ApiProperty({
+    description: 'Mentor',
+  })
+  mentors!: [string];
+
+  @ApiProperty({
     description: 'Team creation date',
   })
   @IsDateString(

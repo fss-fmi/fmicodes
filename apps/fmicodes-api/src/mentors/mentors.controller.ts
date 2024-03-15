@@ -6,11 +6,20 @@ import {
   Param,
   Patch,
   Post,
+  UseGuards,
   Version,
 } from '@nestjs/common';
-import { ApiOkResponse, ApiOperation, ApiTags } from '@nestjs/swagger';
+import {
+  ApiBearerAuth,
+  ApiOkResponse,
+  ApiOperation,
+  ApiTags,
+} from '@nestjs/swagger';
 import { MentorsService } from '@fmicodes/fmicodes-services/mentors/mentors.service';
 import MentorResponseBodyDto from '@fmicodes/fmicodes-services/mentors/dto/mentor-response-body.dto';
+import { User } from '@prisma/client';
+import JwtAuthGuard from '@fmicodes/fmicodes-services/auth/guards/jwt-auth.guard';
+import UserAuth from '../users/user-auth.decorator';
 
 @Controller('mentors')
 @ApiTags('Mentors API')
@@ -32,13 +41,10 @@ export class MentorsController {
     return this.mentorsService.getAll();
   }
 
-  @Post()
-  async createAll() {
-    return this.mentorsService.createAll();
-  }
-
   @Patch(':id/assign-team/:teamId')
   @HttpCode(HttpStatus.OK)
+  @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth()
   @ApiOperation({
     summary: 'Assign a team to a mentor',
     description: 'Endpoint for assigning a team to a mentor.',
@@ -46,8 +52,13 @@ export class MentorsController {
   @ApiOkResponse({
     description: 'Team assigned to mentor successfully.',
   })
-  async assignTeam(@Param('id') id: string, @Param('teamId') teamId: string) {
+  async assignTeam(
+    @UserAuth() user: User,
+    @Param('id') id: string,
+    @Param('teamId') teamId: string,
+  ) {
     return this.mentorsService.assignTeam(
+      user,
       parseInt(id, 10),
       parseInt(teamId, 10),
     );

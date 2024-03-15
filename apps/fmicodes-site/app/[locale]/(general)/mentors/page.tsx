@@ -8,6 +8,7 @@ import { Suspense } from 'react';
 import { Metadata } from 'next';
 import { MentorCard } from '@fmicodes/fmicodes-ui/lib/components/site/mentor-card/mentor-card';
 import { ApiClient } from '@fmicodes/fmicodes-api-client/client';
+import { getUser } from '@fmicodes/fmicodes-api-client/next';
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations('mentors-page');
@@ -21,7 +22,7 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function TeamsPage() {
   const t = await getTranslations('mentors-page');
 
-  // const user = await getUser();
+  const user = await getUser();
 
   async function MentorCards() {
     const mentors = await ApiClient.MentorsApiService.mentorsControllerGetV1(
@@ -31,7 +32,7 @@ export default async function TeamsPage() {
     return mentors.map((mentor) => (
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
-      <MentorCard key={mentor.id} mentor={mentor} />
+      <MentorCard key={mentor.id} mentor={mentor} user={user} />
     ));
   }
 

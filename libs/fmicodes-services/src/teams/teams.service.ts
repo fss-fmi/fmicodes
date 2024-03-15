@@ -43,6 +43,7 @@ export class TeamsService {
             avatarUrl: true,
           },
         },
+        mentors: true,
       },
     });
   }

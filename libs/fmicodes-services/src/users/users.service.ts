@@ -38,6 +38,14 @@ export class UsersService {
       },
       include: {
         discord: true,
+        team: {
+          select: {
+            id: true,
+            name: true,
+            capitanId: true,
+            mentors: true,
+          },
+        },
       },
     });
 
@@ -84,6 +92,7 @@ export class UsersService {
       },
       include: {
         discord: true,
+        team: true,
       },
     });
 
@@ -117,6 +126,7 @@ export class UsersService {
       },
       include: {
         discord: true,
+        team: true,
       },
     });
 
