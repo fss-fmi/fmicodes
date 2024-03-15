@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.2.5](https://github.com/fss-fmi/fmicodes/compare/v1.2.4...v1.2.5) (2024-03-15)
+
+
+### Features
+
+* add to team button ([9cb53a5](https://github.com/fss-fmi/fmicodes/commit/9cb53a5447a0ee325d0b19218ccad344124501ce))
+
 ## [1.2.4](https://github.com/fss-fmi/fmicodes/compare/v1.2.3...v1.2.4) (2024-03-15)
 
 ## [1.2.3](https://github.com/fss-fmi/fmicodes/compare/v1.2.2...v1.2.3) (2024-03-15)
