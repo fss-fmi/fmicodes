@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRedis } from '@songkeys/nestjs-redis';
 import Redis from 'ioredis';
 import { User } from '@prisma/client';
-import UsersService from '@fmicodes/fmicodes-services/users/users.service';
+import { UsersService } from '../users/users.service';
 import { PrismaService } from '../prisma/prisma.service';
 
 @Injectable()
@@ -78,25 +78,10 @@ export class MentorsService {
 
     // Update linked mentors' teams
     // TODO: This is disgusting, please refactor
-    const updatePromisesAA = mentor.mentorALinks.map(async (linkedMentor) => {
-      await this.prisma.mentor.update({
-        where: {
-          id: linkedMentor.mentorAId,
-        },
-        data: {
-          team: {
-            connect: {
-              id: teamId,
-            },
-          },
-        },
-      });
-    });
-
     const updatePromisesAB = mentor.mentorALinks.map(async (linkedMentor) => {
       await this.prisma.mentor.update({
         where: {
-          id: linkedMentor.mentorAId,
+          id: linkedMentor.mentorBId,
         },
         data: {
           team: {
@@ -111,22 +96,7 @@ export class MentorsService {
     const updatePromisesBA = mentor.mentorBLinks.map(async (linkedMentor) => {
       await this.prisma.mentor.update({
         where: {
-          id: linkedMentor.mentorBId,
-        },
-        data: {
-          team: {
-            connect: {
-              id: teamId,
-            },
-          },
-        },
-      });
-    });
-
-    const updatePromisesBB = mentor.mentorBLinks.map(async (linkedMentor) => {
-      await this.prisma.mentor.update({
-        where: {
-          id: linkedMentor.mentorBId,
+          id: linkedMentor.mentorAId,
         },
         data: {
           team: {
@@ -139,11 +109,6 @@ export class MentorsService {
     });
 
     // Wait for all updates to complete
-    await Promise.all([
-      ...updatePromisesAA,
-      ...updatePromisesAB,
-      ...updatePromisesBA,
-      ...updatePromisesBB,
-    ]);
+    await Promise.all([...updatePromisesAB, ...updatePromisesBA]);
   }
 }
