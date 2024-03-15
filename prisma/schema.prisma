@@ -211,9 +211,8 @@ model Mentor {
   mentorBLinks MentorLink[] @relation("MentorB")
 
   // Row timestamps
-  createdAt  DateTime     @default(now()) @map("created_at") @db.Timestamptz()
-  updatedAt  DateTime     @updatedAt @map("updated_at") @db.Timestamptz()
-  MentorLink MentorLink[]
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz()
+  updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamptz()
 
   @@map("mentors")
 }
@@ -232,8 +231,6 @@ model MentorLink {
   // Row timestamps
   createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz()
   updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamptz()
-  Mentor    Mentor?  @relation(fields: [mentorId], references: [id])
-  mentorId  Int?
 
   @@map("mentor_links")
 }
