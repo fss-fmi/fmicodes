@@ -4,6 +4,7 @@ import { User } from '@prisma/client';
 import Redis from 'ioredis';
 import { InjectRedis } from '@songkeys/nestjs-redis';
 import { CategoryChannel, ChannelType, Client, Guild, Role } from 'discord.js';
+import { TeamEditDto } from './dto/team-edit.dto';
 import { TeamsUserNotInTeamException } from './exceptions/teams-user-not-in-team.exception';
 import { TeamsCaptainCanNotLeaveException } from './exceptions/teams-captain-can-not-leave.exception';
 import { UsersNoDiscordAccountLinkedException } from '../users/exceptions/users-no-discord-account-linked.exception';
@@ -129,6 +130,35 @@ export class TeamsService {
     await this.redis.publish('teams:team-created', JSON.stringify(createdTeam));
 
     return createdTeam;
+  }
+
+  async update(
+    user: Omit<User, 'passwordHash'>,
+    teamId: number,
+    updateTeamDto: TeamEditDto,
+  ) {
+    // Check if the user is the captain of the team
+    const team = await this.getByIdOrThrow(teamId);
+    if (team.capitanId !== user.id) {
+      throw new TeamsNotCapitanException();
+    }
+
+    // Update the team
+    return this.prisma.team.update({
+      where: {
+        id: teamId,
+      },
+      data: {
+        color: updateTeamDto.color,
+        projectName: updateTeamDto.projectName,
+        projectDescription: updateTeamDto.projectDescription,
+        projectRepositories:
+          updateTeamDto.projectRepositories.length > 0
+            ? updateTeamDto.projectRepositories.split(',')
+            : [],
+        projectWebsite: updateTeamDto.projectWebsite,
+      },
+    });
   }
 
   async getInvitationsSent(teamId: number, user: Omit<User, 'passwordHash'>) {

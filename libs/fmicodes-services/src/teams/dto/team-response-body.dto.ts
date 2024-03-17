@@ -16,6 +16,26 @@ export class TeamResponseBodyDto extends TeamsBaseDto {
   id!: number;
 
   @ApiProperty({
+    description: 'Project name.',
+  })
+  projectName!: string;
+
+  @ApiProperty({
+    description: 'Project description.',
+  })
+  projectDescription!: string;
+
+  @ApiProperty({
+    description: 'Project repositories.',
+  })
+  projectRepositories!: string[];
+
+  @ApiProperty({
+    description: 'Project website.',
+  })
+  projectWebsite!: string;
+
+  @ApiProperty({
     description: 'Team members.',
     type: UserResponseBodyDto,
   })

@@ -30,7 +30,11 @@
   },
   "team-page": {
     "title": "Отбор {teamName}",
-    "description": "Страница на отбор {teamName}."
+    "description": "Страница на отбор {teamName}.",
+    "no-project-name": "Няма име на проект",
+    "no-project-description": "Няма описание на проекта",
+    "repository": "Хранилища",
+    "website": "Уебсайт"
   },
   "account-linked-page": {
     "title-success": "Акаунтът е свързан успешно!",

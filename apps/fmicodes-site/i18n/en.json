@@ -30,7 +30,11 @@
   },
   "team-page": {
     "title": "Team {teamName}",
-    "description": "Team page of {teamName}."
+    "description": "Team page of {teamName}.",
+    "no-project-name": "No project name",
+    "no-project-description": "No project description",
+    "repositories": "Repositories",
+    "website": "Website"
   },
   "account-linked-page": {
     "title-success": "Account linked successfully!",

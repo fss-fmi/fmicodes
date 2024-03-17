@@ -6,7 +6,14 @@ import {
   CardContent,
   CardHeader,
 } from '@fmicodes/fmicodes-ui/lib/components/common/server';
-import { FaArrowLeft, FaPeopleGroup, FaUserPlus } from 'react-icons/fa6';
+import {
+  FaArrowLeft,
+  FaGithub,
+  FaGlobe,
+  FaPencil,
+  FaPeopleGroup,
+  FaUserPlus,
+} from 'react-icons/fa6';
 import Link from 'next/link';
 import { UsersSearch } from '@fmicodes/fmicodes-ui/lib/components/site/client';
 import React, { Suspense } from 'react';
@@ -17,6 +24,7 @@ import { LeaveTeamDialog } from '@fmicodes/fmicodes-ui/lib/components/site/leave
 import { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 import { redirect } from 'next/navigation';
+import { EditTeamDialog } from '@fmicodes/fmicodes-ui/lib/components/site/edit-team-dialog/edit-team-dialog';
 
 interface TeamPageProps {
   params: { id: string };
@@ -45,6 +53,7 @@ export async function generateMetadata({
 }
 
 export default async function TeamPage({ params }: TeamPageProps) {
+  const t = await getTranslations('team-page');
   const locale = useLocale();
   const user = await getUser();
 
@@ -130,7 +139,7 @@ export default async function TeamPage({ params }: TeamPageProps) {
           className="absolute top-1 left-1 rounded-xl"
           asChild
         >
-          <Link href={`/${locale}//teams`}>
+          <Link href={`/${locale}/teams`}>
             <FaArrowLeft className="h-4 w-4" />
           </Link>
         </Button>
@@ -163,17 +172,66 @@ export default async function TeamPage({ params }: TeamPageProps) {
                     <FaUserPlus className="h-4 w-4" />
                   </Button>
                 </UsersSearch>
+
+                <EditTeamDialog team={team}>
+                  <Button>
+                    <FaPencil className="h-4 w-4" />
+                  </Button>
+                </EditTeamDialog>
               </Suspense>
             )}
           </div>
         </div>
-        {/* <div className="h-80"> */}
-        {/*  <div className="p-4"> */}
-        {/*    <h2 className="text-md sm:text-lg md:text-xl font-semibold"> */}
-        {/*      Matches */}
-        {/*    </h2> */}
-        {/*  </div> */}
-        {/* </div> */}
+        <div>
+          <div className="p-4">
+            <h2 className="text-md sm:text-lg md:text-xl font-semibold">
+              {team.projectName || t('no-project-name')}
+            </h2>
+            <p className="text-sm sm:text-md md:text-lg">
+              {team.projectDescription || t('no-project-description')}
+            </p>
+            {team.projectRepositories.length !== 0 && (
+              <div>
+                <h3 className="text-md sm:text-lg md:text-xl font-semibold">
+                  {t('repository')}
+                </h3>
+                <div className="flex gap-2">
+                  {team.projectRepositories.map((repository) => (
+                    <Button asChild variant="secondary">
+                      <Link
+                        key={repository}
+                        href={repository}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="text-sm sm:text-md md:text-lg"
+                      >
+                        <FaGithub className="w-4 h-4 mr-2" /> {repository}
+                      </Link>
+                    </Button>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {team.projectWebsite && (
+              <div>
+                <h3 className="text-md sm:text-lg md:text-xl font-semibold">
+                  Website
+                </h3>
+                <Button asChild variant="secondary">
+                  <Link
+                    href={team.projectWebsite}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-sm sm:text-md md:text-lg"
+                  >
+                    <FaGlobe className="w-4 h-4 mr-2" /> {team.projectWebsite}
+                  </Link>
+                </Button>
+              </div>
+            )}
+          </div>
+        </div>
       </CardContent>
     </Card>
   );

@@ -10,7 +10,6 @@ import { Color } from '@prisma/client';
 import libConfig from '@fmicodes/fmicodes-services/config/lib.config';
 import ApiClient from '@fmicodes/fmicodes-api-client/client';
 import { getBearerToken } from '@fmicodes/fmicodes-api-client/next';
-import { useRouter } from 'next/navigation';
 import { Button } from '../../common/button/button';
 import {
   Drawer,
@@ -32,50 +31,66 @@ import { Logo } from '../server';
 
 interface CreateTeamDialogProps {
   children: React.ReactNode;
+  team: ApiClient.TeamResponseBodyDto;
 }
 
-export function CreateTeamDialog({ children }: CreateTeamDialogProps) {
-  const t = useTranslations('site.create-team-dialog');
+export function EditTeamDialog({ children, team }: CreateTeamDialogProps) {
+  const t = useTranslations('site.edit-team-dialog');
   const colors = Object.values(Color);
   const locale = useLocale();
-  const router = useRouter();
 
   const formSchema = z.object({
-    name: z
-      .string({
-        required_error: t('is-required'),
-      })
-      .min(
-        libConfig.team.name.minLength,
-        t('too-short', { length: libConfig.team.name.minLength }),
-      )
-      .max(
-        libConfig.team.name.maxLength,
-        t('too-long', { length: libConfig.team.name.maxLength }),
-      ),
     color: z.enum(
       Object.values(libConfig.team.color.enum) as [string, ...string[]],
       {
         required_error: t('is-required'),
       },
     ),
+    projectName: z
+      .string()
+      .max(
+        libConfig.team.projectName.maxLength,
+        t('too-long', { length: libConfig.team.projectName.maxLength }),
+      ),
+    projectDescription: z
+      .string()
+      .max(
+        libConfig.team.projectDescription.maxLength,
+        t('too-long', { length: libConfig.team.projectDescription.maxLength }),
+      ),
+    projectRepositories: z.string({
+      required_error: t('is-required'),
+    }),
+    projectWebsite: z
+      .string()
+      .max(
+        libConfig.team.projectWebsite.maxLength,
+        t('too-long', { length: libConfig.team.projectWebsite.maxLength }),
+      ),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     mode: 'all',
     defaultValues: {
-      name: '',
-      color: 'BLUE',
+      color: team.color,
+      projectName: team.projectName,
+      projectDescription: team.projectDescription,
+      projectRepositories: '',
+      projectWebsite: team.projectWebsite,
     },
   });
 
-  async function createTeam(requestBody: z.infer<typeof formSchema>) {
+  async function editTeam(requestBody: z.infer<typeof formSchema>) {
     try {
-      return await ApiClient.TeamsApiService.teamsControllerPostV1({
+      return ApiClient.TeamsApiService.teamsControllerPatchV1({
+        teamId: `${team.id}`,
         requestBody: {
-          name: requestBody.name,
           color: requestBody.color,
+          projectName: requestBody.projectName,
+          projectDescription: requestBody.projectDescription,
+          projectRepositories: requestBody.projectRepositories,
+          projectWebsite: requestBody.projectWebsite,
         },
         acceptLanguage: locale,
         authorization: await getBearerToken(),
@@ -89,7 +104,7 @@ export function CreateTeamDialog({ children }: CreateTeamDialogProps) {
   }
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    const response = await createTeam(values);
+    const response = await editTeam(values);
 
     if (response?.error) {
       toast({
@@ -97,8 +112,6 @@ export function CreateTeamDialog({ children }: CreateTeamDialogProps) {
         title: response.error,
         description: t('try-again'),
       });
-    } else {
-      router.push(`/${locale}/teams/${response.id}`);
     }
   }
 
@@ -114,7 +127,7 @@ export function CreateTeamDialog({ children }: CreateTeamDialogProps) {
             style={{ backgroundColor: form.watch('color') }}
           >
             <span className="w-fit h-12 px-2 py-1 text-3xl font-bold bg-white text-black dark:bg-black dark:text-white">
-              {form.watch('name')}
+              {team.name}
             </span>
             <Logo className="px-4 py-2 scale-50 -mt-3 bg-white text-black dark:bg-black dark:text-white" />
           </div>
@@ -124,20 +137,6 @@ export function CreateTeamDialog({ children }: CreateTeamDialogProps) {
               onSubmit={form.handleSubmit(onSubmit)}
               className="space-y-4 max-w-xl m-4 mx-auto"
             >
-              <FormField
-                control={form.control}
-                name="name"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>{t('name')}</FormLabel>
-                    <FormControl>
-                      <Input placeholder={t('name-placeholder')} {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-
               <FormField
                 control={form.control}
                 name="color"
@@ -162,6 +161,74 @@ export function CreateTeamDialog({ children }: CreateTeamDialogProps) {
                           </FormItem>
                         ))}
                       </RadioGroup>
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="projectName"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>{t('project-name')}</FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder={t('project-name-placeholder')}
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="projectDescription"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>{t('project-name')}</FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder={t('project-description-placeholder')}
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="projectRepositories"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>{t('project-repositories')}</FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder={t('project-repositories-placeholder')}
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="projectWebsite"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>{t('project-website')}</FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder={t('project-website-placeholder')}
+                        {...field}
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>

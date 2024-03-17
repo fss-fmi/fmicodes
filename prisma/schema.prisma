@@ -100,6 +100,12 @@ model Team {
   name  String @unique
   color Color
 
+  // Project information
+  projectName         String?  @map("project_name")
+  projectDescription  String?  @map("project_description")
+  projectRepositories String[] @map("project_repositories")
+  projectWebsite      String?  @map("project_website")
+
   // Team members
   members User[] @relation("TeamMembers")
 

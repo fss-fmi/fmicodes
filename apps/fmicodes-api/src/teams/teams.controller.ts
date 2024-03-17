@@ -6,6 +6,7 @@ import {
   HttpCode,
   HttpStatus,
   Param,
+  Patch,
   Post,
   UseGuards,
   Version,
@@ -32,6 +33,7 @@ import { TeamsPostJoinRequestsRespondParamsDto } from '@fmicodes/fmicodes-servic
 import { TeamsPostJoinRequestsParamsDto } from '@fmicodes/fmicodes-services//teams/dto/teams-post-join-requests-params.dto';
 import { TeamResponseBodyDto } from '@fmicodes/fmicodes-services//teams/dto/team-response-body.dto';
 import { TeamMemberMembershipState } from 'discord.js';
+import { TeamEditDto } from '@fmicodes/fmicodes-services/teams/dto/team-edit.dto';
 import { UserAuth } from '../users/user-auth.decorator';
 
 @Controller('teams')
@@ -158,6 +160,39 @@ export class TeamsController {
   })
   async getJoinRequestsV1(@UserAuth() user: Omit<User, 'passwordHash'>) {
     return this.teamsService.getJoinRequests(user.teamId, user);
+  }
+
+  @Patch(':teamId')
+  @Version(['1'])
+  @UseGuards(JwtAuthGuard)
+  @HttpCode(HttpStatus.OK)
+  @ApiBearerAuth()
+  @ApiOperation({
+    summary: 'Edit a team',
+    description: 'Endpoint for team captains to edit their team.',
+  })
+  @ApiBody({ type: TeamEditDto })
+  @ApiOkResponse({
+    description: 'team edited successfully.',
+  })
+  @ApiUnauthorizedResponse({ description: 'Invalid user credentials.' })
+  @ApiNotFoundResponse({
+    schema: {
+      anyOf: [
+        { description: 'The user no longer exists.' },
+        { description: 'The team specified does not exist.' },
+      ],
+    },
+  })
+  @ApiForbiddenResponse({
+    description: 'The user is not the captain of the team.',
+  })
+  async patchV1(
+    @Param('teamId') teamId: string,
+    @Body() editTeamDto: TeamEditDto,
+    @UserAuth() user: Omit<User, 'passwordHash'>,
+  ) {
+    return this.teamsService.update(user, parseInt(teamId, 10), editTeamDto);
   }
 
   @Post(':teamId/join-requests')

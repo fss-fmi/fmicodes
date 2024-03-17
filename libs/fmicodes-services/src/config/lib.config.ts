@@ -144,6 +144,19 @@ export const libConfig = {
       max: 6,
     },
     max: 18,
+    projectName: {
+      maxLength: 50,
+    },
+    projectDescription: {
+      maxLength: 1500,
+    },
+    projectRepositories: {
+      maxLength: 1500,
+    },
+    projectWebsite: {
+      minLength: 3,
+      maxLength: 50,
+    },
   },
   discord: {
     clientID: process.env['DISCORD_CLIENT_ID'],

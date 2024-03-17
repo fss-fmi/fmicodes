@@ -134,6 +134,25 @@
       "too-short": "Полето трябва да има поне {length} символа.",
       "too-long": "Полето трябва да има най-много {length} символа."
     },
+    "edit-team-dialog": {
+      "color": "Цвят",
+      "project-name": "Име на проекта",
+      "project-name-placeholder": "Примерно име на проекта",
+      "project-description": "Описание на проекта",
+      "project-description-placeholder": "Примерно описание на проекта",
+      "project-repositories": "Кодови хранилища на проекта",
+      "project-repositories-placeholder": "https://github.com/example/project-1, https://github.com/example/project-2",
+      "project-repositories-description": "Ако имате множество хранилища, разделете ги със запетая.",
+      "project-website": "Уебсайт на проекта",
+      "project-website-placeholder": "https://example.project-website.com",
+      "project-technologies": "Технологии на проекта",
+      "submit": "Потвърди",
+      "error-occurred": "Възникна грешка.",
+      "try-again": "Моля, опитайте отново.",
+      "is-required": "Полето е задължително.",
+      "too-short": "Полето трябва да има поне {length} символа.",
+      "too-long": "Полето трябва да има най-много {length} символа."
+    },
     "users-search": {
       "search-placeholder": "Въведете име за търсене...",
       "no-results": "Няма намерени резултати.",

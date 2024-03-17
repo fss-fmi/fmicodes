@@ -134,6 +134,25 @@
       "too-short": "The field should contain at least {length} symbols.",
       "too-long": "The field should contain at most {length} symbols."
     },
+    "edit-team-dialog": {
+      "color": "Color",
+      "project-name": "Project name",
+      "project-name-placeholder": "Example project name",
+      "project-description": "Project description",
+      "project-description-placeholder": "Example project description",
+      "project-repositories": "Project repositories",
+      "project-repositories-placeholder": "https://github.com/example/project-1, https://github.com/example/project-2",
+      "project-repositories-description": "If you have multiple repositories, separate them with a comma.",
+      "project-website": "Project website",
+      "project-website-placeholder": "https://example.project-website.com",
+      "project-technologies": "Project technologies",
+      "submit": "Submit",
+      "error-occurred": "An error occurred.",
+      "try-again": "Please, try again.",
+      "is-required": "This field is required.",
+      "too-short": "The field should contain at least {length} symbols.",
+      "too-long": "The field should contain at most {length} symbols."
+    },
     "users-search": {
       "search-placeholder": "Type a name to search...",
       "no-results": "No results found.",
