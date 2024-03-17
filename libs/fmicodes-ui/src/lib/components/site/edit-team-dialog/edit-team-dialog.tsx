@@ -17,6 +17,7 @@ import {
   DrawerTrigger,
   Form,
   FormControl,
+  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -214,6 +215,9 @@ export function EditTeamDialog({ children, team }: CreateTeamDialogProps) {
                       />
                     </FormControl>
                     <FormMessage />
+                    <FormDescription>
+                      {t('project-repositories-description')}
+                    </FormDescription>
                   </FormItem>
                 )}
               />
