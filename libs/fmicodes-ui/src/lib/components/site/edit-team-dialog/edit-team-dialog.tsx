@@ -189,7 +189,7 @@ export function EditTeamDialog({ children, team }: CreateTeamDialogProps) {
                 name="projectDescription"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>{t('project-name')}</FormLabel>
+                    <FormLabel>{t('project-description')}</FormLabel>
                     <FormControl>
                       <Input
                         placeholder={t('project-description-placeholder')}
