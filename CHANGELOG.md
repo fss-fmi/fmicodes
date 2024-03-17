@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.3.0](https://github.com/fss-fmi/fmicodes/compare/v1.2.7...v1.3.0) (2024-03-17)
+
+
+### Features
+
+* update team project ([b3a1a58](https://github.com/fss-fmi/fmicodes/commit/b3a1a58092d7affbb1f90c001a063bcc2820ecdb))
+
 ## [1.2.7](https://github.com/fss-fmi/fmicodes/compare/v1.2.6...v1.2.7) (2024-03-15)
 
 
