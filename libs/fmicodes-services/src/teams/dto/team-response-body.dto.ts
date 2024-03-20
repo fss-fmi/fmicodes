@@ -36,6 +36,11 @@ export class TeamResponseBodyDto extends TeamsBaseDto {
   projectWebsite!: string;
 
   @ApiProperty({
+    description: 'Total points',
+  })
+  totalPoints!: number;
+
+  @ApiProperty({
     description: 'Team members.',
     type: UserResponseBodyDto,
   })

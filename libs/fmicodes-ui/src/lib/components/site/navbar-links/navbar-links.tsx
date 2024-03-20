@@ -27,6 +27,10 @@ export function NavbarLinks({ className, variant }: NavbarLinksProps) {
       title: t('mentors'),
       href: `/${locale}/mentors`,
     },
+    {
+      title: t('ranking'),
+      href: `/${locale}/ranking`,
+    },
   ];
 
   if (variant === 'desktop') {

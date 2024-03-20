@@ -30,7 +30,7 @@ export class TeamsService {
   ) {}
 
   async getById(id: number) {
-    return this.prisma.team.findUnique({
+    const team = await this.prisma.team.findUnique({
       where: {
         id,
       },
@@ -45,8 +45,29 @@ export class TeamsService {
           },
         },
         mentors: true,
+        teamPoints: true,
       },
     });
+
+    if (team && team.teamPoints) {
+      const { teamPoints } = team;
+      const sumOfPoints =
+        teamPoints.relevance +
+        teamPoints.originality +
+        teamPoints.applicability +
+        teamPoints.completion +
+        teamPoints.complexity +
+        teamPoints.authenticity +
+        teamPoints.quality +
+        teamPoints.projectTechnologiesChoice +
+        teamPoints.projectStructure +
+        teamPoints.presentation +
+        teamPoints.demo +
+        teamPoints.questions;
+      return { ...team, sumOfPoints };
+    }
+
+    return team;
   }
 
   async getByIdOrThrow(id: number) {
@@ -59,8 +80,8 @@ export class TeamsService {
     return team;
   }
 
-  getAll() {
-    return this.prisma.team.findMany({
+  async getAll() {
+    const teams = await this.prisma.team.findMany({
       include: {
         members: {
           select: {
@@ -71,7 +92,29 @@ export class TeamsService {
             avatarUrl: true,
           },
         },
+        teamPoints: true,
       },
+    });
+
+    return teams.map((team) => {
+      if (team && team.teamPoints) {
+        const { teamPoints, ...teamWithoutPoints } = team;
+        const totalPoints =
+          teamPoints.relevance +
+          teamPoints.originality +
+          teamPoints.applicability +
+          teamPoints.completion +
+          teamPoints.complexity +
+          teamPoints.authenticity +
+          teamPoints.quality +
+          teamPoints.projectTechnologiesChoice +
+          teamPoints.projectStructure +
+          teamPoints.presentation +
+          teamPoints.demo +
+          teamPoints.questions;
+        return { ...teamWithoutPoints, totalPoints };
+      }
+      return team;
     });
   }
 

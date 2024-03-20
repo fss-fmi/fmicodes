@@ -106,45 +106,6 @@ async function populateDatabase() {
       });
 
     for (const record of records) {
-      console.log(record);
-      console.log(
-        [
-          ...record.familiar_with_fields.split(',').map((field) => ({
-            name: field.trim(),
-          })),
-          ...record.programming_languages.split(',').map((lang) => ({
-            name: lang.trim(),
-          })),
-          ...record.web_technologies.split(',').map((tech) => ({
-            name: tech.trim(),
-          })),
-          ...record.server_technologies.split(',').map((tech) => ({
-            name: tech.trim(),
-          })),
-          ...record.database_tools.split(',').map((tool) => ({
-            name: tool.trim(),
-          })),
-          ...record.mobile_apps.split(',').map((app) => ({
-            name: app.trim(),
-          })),
-          ...record.machine_learning.split(',').map((ml) => ({
-            name: ml.trim(),
-          })),
-          ...record.game_development.split(',').map((game) => ({
-            name: game.trim(),
-          })),
-          ...record.hardware.split(',').map((hw) => ({
-            name: hw.trim(),
-          })),
-          ...record.cloud_technologies.split(',').map((cloud) => ({
-            name: cloud.trim(),
-          })),
-          ...record.tools.split(',').map((tool) => ({
-            name: tool.trim(),
-          })),
-        ].filter((record) => record.name !== ''),
-      );
-
       await prisma.mentor.create({
         data: {
           name: record.full_name,

@@ -19,7 +19,7 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default async function TeamsPage() {
+export default async function MentorsPage() {
   const t = await getTranslations('mentors-page');
 
   const user = await getUser();

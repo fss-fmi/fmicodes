@@ -48,6 +48,10 @@
   },
   "mentors-page": {
     "title": "Mentors",
-    "description": ""
+    "description": "List of all mentors that will be available during the hackathon."
+  },
+  "ranking-page": {
+    "title": "Ranking",
+    "description": "Final ranking of the FMI'{Codes'} 2024 teams."
   }
 }

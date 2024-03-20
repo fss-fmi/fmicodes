@@ -97,14 +97,19 @@ model Team {
   id Int @id @default(autoincrement())
 
   // Team information
-  name  String @unique
-  color Color
+  name     String  @unique
+  color    Color
+  imageUrl String? @map("image_url")
 
   // Project information
   projectName         String?  @map("project_name")
   projectDescription  String?  @map("project_description")
   projectRepositories String[] @map("project_repositories")
   projectWebsite      String?  @map("project_website")
+
+  // Team points
+  teamPointsId Int?        @unique @map("team_points_id")
+  teamPoints   TeamPoints? @relation(fields: [teamPointsId], references: [id])
 
   // Team members
   members User[] @relation("TeamMembers")
@@ -163,6 +168,38 @@ model TeamRequest {
   createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz
 
   @@map("team_requests")
+}
+
+model TeamPoints {
+  // Primary key
+  id Int @id @default(autoincrement())
+
+  // Team relation
+  team Team?
+
+  // Idea points
+  relevance     Int
+  originality   Int
+  applicability Int
+
+  // Execution points
+  completion                Int
+  complexity                Int
+  authenticity              Int
+  quality                   Int
+  projectTechnologiesChoice Int
+  projectStructure          Int
+
+  // Presentation points
+  presentation Int
+  demo         Int
+  questions    Int
+
+  // Row timestamps
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamptz
+
+  @@map("team_points")
 }
 
 model Sponsor {
