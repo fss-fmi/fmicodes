@@ -18,10 +18,9 @@ This file was generated using [@jscutlery/semver](https://github.com/jscutlery/s
 
 ## [1.2.4](https://github.com/fss-fmi/fmicodes/compare/v1.2.3...v1.2.4) (2024-03-15)
 
-
 ### Features
 
-* discord mentor assignment ([92ac769](https://github.com/fss-fmi/fmicodes/commit/92ac769643210634856ab650e67d74b78490e69e))
+- discord mentor assignment ([92ac769](https://github.com/fss-fmi/fmicodes/commit/92ac769643210634856ab650e67d74b78490e69e))
 
 ## [1.2.3](https://github.com/fss-fmi/fmicodes/compare/v1.2.2...v1.2.3) (2024-03-15)
 

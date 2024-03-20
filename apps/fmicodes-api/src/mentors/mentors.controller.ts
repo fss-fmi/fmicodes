@@ -19,7 +19,7 @@ import { MentorsService } from '@fmicodes/fmicodes-services/mentors/mentors.serv
 import MentorResponseBodyDto from '@fmicodes/fmicodes-services/mentors/dto/mentor-response-body.dto';
 import { User } from '@prisma/client';
 import JwtAuthGuard from '@fmicodes/fmicodes-services/auth/guards/jwt-auth.guard';
-import UserAuth from '../users/user-auth.decorator';
+import { UserAuth } from '../users/user-auth.decorator';
 
 @Controller('mentors')
 @ApiTags('Mentors API')

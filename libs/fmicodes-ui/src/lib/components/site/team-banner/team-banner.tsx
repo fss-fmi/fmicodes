@@ -1,7 +1,7 @@
 import React from 'react';
 import libConfig from '@fmicodes/fmicodes-services/config/lib.config';
 import { ApiClient } from '@fmicodes/fmicodes-api-client/client';
-import { cn } from '@fmicodes/fmicodes-ui/lib/utils';
+import { cn } from '../../../utils';
 import { Logo } from '../logo/logo';
 import { TeamMemberAvatar } from '../team-member-avatar/team-member-avatar';
 

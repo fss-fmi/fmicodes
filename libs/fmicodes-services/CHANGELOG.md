@@ -4,10 +4,9 @@ This file was generated using [@jscutlery/semver](https://github.com/jscutlery/s
 
 ## [1.4.0](https://github.com/fss-fmi/fmicodes/compare/v1.3.2...v1.4.0) (2024-03-20)
 
-
 ### Features
 
-* add team-ranking feature and points calculation ([ab51e65](https://github.com/fss-fmi/fmicodes/commit/ab51e6559ce42125554553e98fa1696657c4745c))
+- add team-ranking feature and points calculation ([ab51e65](https://github.com/fss-fmi/fmicodes/commit/ab51e6559ce42125554553e98fa1696657c4745c))
 
 ## [1.3.2](https://github.com/fss-fmi/fmicodes/compare/v1.3.1...v1.3.2) (2024-03-17)
 
@@ -15,38 +14,33 @@ This file was generated using [@jscutlery/semver](https://github.com/jscutlery/s
 
 ## [1.3.0](https://github.com/fss-fmi/fmicodes/compare/v1.2.7...v1.3.0) (2024-03-17)
 
-
 ### Features
 
-* update team project ([b3a1a58](https://github.com/fss-fmi/fmicodes/commit/b3a1a58092d7affbb1f90c001a063bcc2820ecdb))
+- update team project ([b3a1a58](https://github.com/fss-fmi/fmicodes/commit/b3a1a58092d7affbb1f90c001a063bcc2820ecdb))
 
 ## [1.2.7](https://github.com/fss-fmi/fmicodes/compare/v1.2.6...v1.2.7) (2024-03-15)
 
-
 ### Bug Fixes
 
-* mentor linking ([b7c945c](https://github.com/fss-fmi/fmicodes/commit/b7c945c6bc5656249253923fabe339ec9a7addb4))
+- mentor linking ([b7c945c](https://github.com/fss-fmi/fmicodes/commit/b7c945c6bc5656249253923fabe339ec9a7addb4))
 
 ## [1.2.6](https://github.com/fss-fmi/fmicodes/compare/v1.2.5...v1.2.6) (2024-03-15)
 
-
 ### Features
 
-* add to team mentors ([2cb0e5d](https://github.com/fss-fmi/fmicodes/commit/2cb0e5d9f32e5302a2c63dce2dcb5a6683023baf))
+- add to team mentors ([2cb0e5d](https://github.com/fss-fmi/fmicodes/commit/2cb0e5d9f32e5302a2c63dce2dcb5a6683023baf))
 
 ## [1.2.5](https://github.com/fss-fmi/fmicodes/compare/v1.2.4...v1.2.5) (2024-03-15)
 
-
 ### Features
 
-* assign mentors to team ([11b3797](https://github.com/fss-fmi/fmicodes/commit/11b379785f464863d23e89f871726660f94b68cf))
+- assign mentors to team ([11b3797](https://github.com/fss-fmi/fmicodes/commit/11b379785f464863d23e89f871726660f94b68cf))
 
 ## [1.2.4](https://github.com/fss-fmi/fmicodes/compare/v1.2.3...v1.2.4) (2024-03-15)
 
-
 ### Features
 
-* discord mentor assignment ([92ac769](https://github.com/fss-fmi/fmicodes/commit/92ac769643210634856ab650e67d74b78490e69e))
+- discord mentor assignment ([92ac769](https://github.com/fss-fmi/fmicodes/commit/92ac769643210634856ab650e67d74b78490e69e))
 
 ## [1.2.3](https://github.com/fss-fmi/fmicodes/compare/v1.2.2...v1.2.3) (2024-03-15)
 

@@ -84,7 +84,7 @@ export function EditTeamDialog({ children, team }: CreateTeamDialogProps) {
 
   async function editTeam(requestBody: z.infer<typeof formSchema>) {
     try {
-      return ApiClient.TeamsApiService.teamsControllerPatchV1({
+      return await ApiClient.TeamsApiService.teamsControllerPatchV1({
         teamId: `${team.id}`,
         requestBody: {
           color: requestBody.color,
