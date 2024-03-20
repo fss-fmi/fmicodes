@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.4.0](https://github.com/fss-fmi/fmicodes/compare/v1.3.2...v1.4.0) (2024-03-20)
+
+
+### Features
+
+* add team-ranking feature and points calculation ([ab51e65](https://github.com/fss-fmi/fmicodes/commit/ab51e6559ce42125554553e98fa1696657c4745c))
+
 ## [1.3.2](https://github.com/fss-fmi/fmicodes/compare/v1.3.1...v1.3.2) (2024-03-17)
 
 ## [1.3.1](https://github.com/fss-fmi/fmicodes/compare/v1.3.0...v1.3.1) (2024-03-17)
