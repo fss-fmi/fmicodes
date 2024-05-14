@@ -25,10 +25,13 @@ import { libConfig } from '../config/lib.config';
 import { UsersNoDiscordAccountLinkedException } from './exceptions/users-no-discord-account-linked.exception';
 import { UsersNoSuchDiscordGuildRoleException } from './exceptions/users-no-such-discord-guild-role.exception';
 import { UsersPhoneAlreadyInUseException } from './exceptions/users-phone-already-in-use.exception';
+import { InjectRedis } from '@songkeys/nestjs-redis';
+import Redis from 'ioredis';
 
 @Injectable()
 export class UsersService {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(private readonly prisma: PrismaService,
+    @InjectRedis() private readonly redis: Redis,) {}
 
   async getById(id: string) {
     // Get user information from the database
@@ -506,6 +509,9 @@ export class UsersService {
         },
       },
     });
+
+    // Notify the discord microservice
+    await this.redis.publish('teams:team-joined',JSON.stringify(team),);
 
     return { message: i18n?.t('responses.users.teamInviteAccepted') };
   }
