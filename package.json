@@ -3,7 +3,7 @@
   "version": "1.4.1",
   "license": "MIT",
   "scripts": {
-    "prepare": "husky install"
+    "prepare": "husky"
   },
   "private": true,
   "dependencies": {
