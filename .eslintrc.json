@@ -26,7 +26,7 @@
       "extends": [
         "airbnb-base",
         "airbnb-typescript/base",
-        "plugin:@nrwl/nx/typescript",
+        "plugin:@nx/typescript",
         "plugin:prettier/recommended"
       ],
       "rules": {}
@@ -35,7 +35,7 @@
       "files": ["*.js", "*.jsx"],
       "extends": [
         "airbnb-base",
-        "plugin:@nrwl/nx/javascript",
+        "plugin:@nx/javascript",
         "plugin:prettier/recommended"
       ],
       "rules": {}
@@ -45,7 +45,7 @@
       "extends": [
         "airbnb",
         "airbnb-typescript",
-        "plugin:@nrwl/nx/react-typescript",
+        "plugin:@nx/react-typescript",
         "plugin:prettier/recommended"
       ],
       "rules": {
