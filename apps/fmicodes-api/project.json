@@ -21,7 +21,6 @@
         "main": "apps/fmicodes-api/src/main.ts",
         "tsConfig": "apps/fmicodes-api/tsconfig.app.json",
         "assets": ["apps/fmicodes-api/assets"],
-        "isolatedConfig": true,
         "webpackConfig": "apps/fmicodes-api/webpack.config.js",
         "generatePackageJson": true
       },

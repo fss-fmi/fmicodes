@@ -21,7 +21,6 @@
         "main": "apps/fmicodes-discord/src/main.ts",
         "tsConfig": "apps/fmicodes-discord/tsconfig.app.json",
         "assets": ["apps/fmicodes-discord/assets"],
-        "isolatedConfig": true,
         "webpackConfig": "apps/fmicodes-discord/webpack.config.js",
         "generatePackageJson": true
       },
