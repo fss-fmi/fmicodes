@@ -21,7 +21,7 @@ export async function login(email: string, password: string) {
     });
 
     const { accessToken, refreshToken } = response;
-    const cookieStore = cookies();
+    const cookieStore = await cookies();
     setTokens(cookieStore, accessToken, refreshToken);
   } catch (error) {
     if (error instanceof ApiClient.ApiError) {
@@ -42,7 +42,7 @@ export async function loginDiscord(code: string) {
       });
 
     const { accessToken, refreshToken } = response;
-    const cookieStore = cookies();
+    const cookieStore = await cookies();
     setTokens(cookieStore, accessToken, refreshToken);
   } catch (error) {
     if (error instanceof ApiClient.ApiError) {
@@ -80,7 +80,7 @@ export async function completeOnboarding() {
 
 export async function getRefreshedTokens() {
   noStore();
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const refreshToken = cookieStore.get('refresh_token');
 
   if (!refreshToken) {
@@ -105,7 +105,7 @@ export async function refreshTokens(cookieStore: ResponseCookies) {
 
 export async function getAuth() {
   // Get access token from cookies
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   let accessToken = cookieStore.get('access_token');
 
   // Refresh existing access and refresh tokens if the access token is expired
