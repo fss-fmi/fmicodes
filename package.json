@@ -84,6 +84,8 @@
   "devDependencies": {
     "@commitlint/cli": "^19.7.1",
     "@commitlint/config-conventional": "^19.7.1",
+    "@eslint/eslintrc": "^3.3.0",
+    "@eslint/js": "^9.21.0",
     "@jscutlery/semver": "^5.6.0",
     "@nestjs/schematics": "^11.0.1",
     "@nestjs/testing": "^11.0.10",
@@ -146,6 +148,7 @@
     "eslint-plugin-prettier": "^5.2.3",
     "eslint-plugin-react": "7.37.4",
     "eslint-plugin-react-hooks": "5.1.0",
+    "globals": "^16.0.0",
     "husky": "^9.1.7",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
