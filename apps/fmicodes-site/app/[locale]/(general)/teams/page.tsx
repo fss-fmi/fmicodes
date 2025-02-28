@@ -27,7 +27,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations('teams-page');
 
   return {
-    title: `${t('title')} | FMI{Codes} 2024`,
+    title: `${t('title')} | FMI{Codes} 2025`,
     description: t('description'),
   };
 }

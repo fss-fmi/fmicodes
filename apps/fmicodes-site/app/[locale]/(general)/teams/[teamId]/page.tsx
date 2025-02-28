@@ -45,7 +45,7 @@ export async function generateMetadata({
         ? `https://${process.env.VERCEL_URL}`
         : `http://localhost:${process.env.PORT || 4200}`,
     ),
-    title: `${t('title', { teamName: team?.name })} | FMI{Codes} 2024`,
+    title: `${t('title', { teamName: team?.name })} | FMI{Codes} 2025`,
     description: t('description', { teamName: team?.name }),
     openGraph: {
       images: [`/en/teams/${team?.id}/image`],

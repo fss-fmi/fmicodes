@@ -1,6 +1,6 @@
 {
   "layout": {
-    "title": "FMI'{Codes'} 2024",
+    "title": "FMI'{Codes'} 2025",
     "description": "FMI'{Codes'} is the annual hackathon organized by FMI, where teams have two days to create an original project on a theme set by the organizers, using any technology. The doors of the Faculty are open all the time, and we from the FSS at FMI are at your disposal on both days."
   },
   "login-page": {
@@ -8,7 +8,7 @@
     "heading": "Welcome back!",
     "description": "Log back in your account using your email and password or with a linked third-party account.",
     "by-signing-in-you-agree-to-our": "By signing in, you agree to our",
-    "hackathon-regulations": "FMI'{Codes'} 2024 Regulations"
+    "hackathon-regulations": "FMI'{Codes'} 2025 Regulations"
   },
   "sign-up-page": {
     "title": "Sign up",
@@ -52,6 +52,6 @@
   },
   "ranking-page": {
     "title": "Ranking",
-    "description": "Final ranking of the FMI'{Codes'} 2024 teams."
+    "description": "Final ranking of the FMI'{Codes'} 2025 teams."
   }
 }

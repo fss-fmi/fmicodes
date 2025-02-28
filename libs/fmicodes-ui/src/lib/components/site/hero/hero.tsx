@@ -13,7 +13,7 @@ export function Hero() {
       <div className="absolute inset-0 w-full h-full flex justify-center flex-col items-center">
         <Image
           src="/assets/images/heading.png"
-          alt="FMI{Codes} 2024"
+          alt="FMI{Codes} 2025"
           className="w-[69vw]"
           width={3492}
           height={579}

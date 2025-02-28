@@ -36,7 +36,7 @@ interface CSVRecord {
 async function populateDatabase() {
   try {
     const data = fs.readFileSync(
-      'C:\\Users\\tsb\\Downloads\\Ментор - FMI{Codes} 2024 (отговори) - Отговори от формуляр 1.tsv',
+      'C:\\Users\\tsb\\Downloads\\Ментор - FMI{Codes} 2025 (отговори) - Отговори от формуляр 1.tsv',
       'utf8',
     );
     console.log(data);
