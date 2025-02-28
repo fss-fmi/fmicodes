@@ -5,6 +5,9 @@
   "scripts": {
     "prepare": "husky"
   },
+  "prisma": {
+    "seed": "ts-node prisma/seed.ts"
+  },
   "private": true,
   "dependencies": {
     "@dicebear/collection": "^9.2.2",
