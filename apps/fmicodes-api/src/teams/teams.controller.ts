@@ -32,7 +32,6 @@ import { TeamsPostJoinRequestsRespondRequestBodyDto } from '@fmicodes/fmicodes-s
 import { TeamsPostJoinRequestsRespondParamsDto } from '@fmicodes/fmicodes-services//teams/dto/teams-post-join-requests-respond-params.dto';
 import { TeamsPostJoinRequestsParamsDto } from '@fmicodes/fmicodes-services//teams/dto/teams-post-join-requests-params.dto';
 import { TeamResponseBodyDto } from '@fmicodes/fmicodes-services//teams/dto/team-response-body.dto';
-import { TeamMemberMembershipState } from 'discord.js';
 import { TeamEditDto } from '@fmicodes/fmicodes-services/teams/dto/team-edit.dto';
 import { UserAuth } from '../users/user-auth.decorator';
 
@@ -52,7 +51,7 @@ export class TeamsController {
     description: 'teams retrieved successfully.',
     type: [TeamResponseBodyDto],
   })
-  async getV1() {
+  async get() {
     return this.teamsService.getAll();
   }
 
@@ -82,7 +81,7 @@ export class TeamsController {
       ],
     },
   })
-  async postV1(
+  async post(
     @Body() createTeamDto: TeamsBaseDto,
     @UserAuth() user: Omit<User, 'passwordHash'>,
   ) {
@@ -101,7 +100,7 @@ export class TeamsController {
     type: TeamResponseBodyDto,
   })
   @ApiNotFoundResponse({ description: 'The team specified does not exist.' })
-  async getTeamV1(@Param('teamId') teamId: string) {
+  async getTeam(@Param('teamId') teamId: string) {
     return this.teamsService.getById(parseInt(teamId, 10)); // TODO: better way to handle this
   }
 
@@ -130,7 +129,7 @@ export class TeamsController {
   @ApiForbiddenResponse({
     description: 'The user is not the captain of the team.',
   })
-  async getInvitationsSentV1(@UserAuth() user: Omit<User, 'passwordHash'>) {
+  async getInvitationsSent(@UserAuth() user: Omit<User, 'passwordHash'>) {
     return this.teamsService.getInvitationsSent(user.teamId, user);
   }
 
@@ -158,7 +157,7 @@ export class TeamsController {
   @ApiForbiddenResponse({
     description: 'The user is not the captain of the team.',
   })
-  async getJoinRequestsV1(@UserAuth() user: Omit<User, 'passwordHash'>) {
+  async getJoinRequests(@UserAuth() user: Omit<User, 'passwordHash'>) {
     return this.teamsService.getJoinRequests(user.teamId, user);
   }
 
@@ -187,7 +186,7 @@ export class TeamsController {
   @ApiForbiddenResponse({
     description: 'The user is not the captain of the team.',
   })
-  async patchV1(
+  async patch(
     @Param('teamId') teamId: string,
     @Body() editTeamDto: TeamEditDto,
     @UserAuth() user: Omit<User, 'passwordHash'>,
@@ -220,7 +219,7 @@ export class TeamsController {
   @ApiConflictResponse({
     description: 'The user is already part of the specified team.',
   })
-  async postJoinRequestV1(
+  async postJoinRequest(
     @Param() params: TeamsPostJoinRequestsParamsDto,
     @UserAuth() user: Omit<User, 'passwordHash'>,
   ) {
@@ -257,7 +256,7 @@ export class TeamsController {
   @ApiConflictResponse({
     description: 'The user, you are trying to add, is already part of a team.',
   })
-  async postJoinRequestsRespondV1(
+  async postJoinRequestsRespond(
     @Param() params: TeamsPostJoinRequestsRespondParamsDto,
     @Body() requestBody: TeamsPostJoinRequestsRespondRequestBodyDto,
     @UserAuth() user: Omit<User, 'passwordHash'>,
@@ -294,7 +293,7 @@ export class TeamsController {
   @ApiForbiddenResponse({
     description: 'The user is not the captain of the team.',
   })
-  async deleteMemberV1(
+  async deleteMember(
     @Param('teamId') teamId: string,
     @Param('userId') userId: string,
     @UserAuth() user: Omit<User, 'passwordHash'>,

@@ -26,7 +26,7 @@ export class HealthController {
     description:
       'Healthcheck endpoint, validating the correct operation of the API and its dependencies (such as prisma, external APIs, etc.)',
   })
-  getV1() {
+  get() {
     return this.health.check([
       () =>
         this.prismaHealth.pingCheck('prisma', this.prismaService, {
@@ -36,5 +36,3 @@ export class HealthController {
     ]);
   }
 }
-
-export default HealthController;

@@ -37,7 +37,7 @@ export class MentorsController {
     description: 'Mentors retrieved successfully.',
     type: [MentorResponseBodyDto],
   })
-  async getV1() {
+  async get() {
     return this.mentorsService.getAll();
   }
 

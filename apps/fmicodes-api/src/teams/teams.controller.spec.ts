@@ -33,10 +33,10 @@ describe('TeamsController', () => {
     expect(controller).toBeDefined();
   });
 
-  describe('postV1', () => {
+  describe('post', () => {
     it('should return a new team on correct information', async () => {
       // Act
-      const result = await controller.postV1(
+      const result = await controller.post(
         exampleNonexistentTeamCreateDto,
         exampleUserWithoutPassword3,
       );

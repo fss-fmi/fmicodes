@@ -27,7 +27,7 @@ export class SponsorsController {
     description: 'Sponsors retrieved successfully.',
     type: [SponsorResponseBodyDto],
   })
-  async getV1(@Param('type') type: string) {
+  async get(@Param('type') type: string) {
     return this.sponsorsService.getAllFromType(type as SponsorType);
   }
 }
