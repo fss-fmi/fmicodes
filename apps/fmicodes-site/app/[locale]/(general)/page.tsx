@@ -5,6 +5,14 @@ import { SponsorsShowcase } from '@fmicodes/fmicodes-ui/lib/components/site/clie
 import { ApiClient } from '@fmicodes/fmicodes-api-client/client';
 import { Hero } from '@fmicodes/fmicodes-ui/lib/components/site/hero/hero';
 
+const Loader = () => (
+  <div className="flex justify-center items-center h-full mt-16">
+    {' '}
+    {/* Added mt-16 for margin-top */}
+    <div className="w-16 h-16 border-t-4 border-[#725979] dark:border-[#eaa19a] border-solid rounded-full animate-spin"></div>
+  </div>
+);
+
 export default function Index() {
   const [sponsors, setSponsors] = useState({
     gold: [],
@@ -48,7 +56,7 @@ export default function Index() {
       <div className="relative mx-auto max-w-[88rem] px-4 sm:-mt-16 lg:-mt-28 z-5">
         <div className="pt-8 px-8 rounded-t-lg shadow-lg">
           {loading ? (
-            <></>
+            <Loader />
           ) : (
             <>
               {sponsors.gold.length > 0 && (
