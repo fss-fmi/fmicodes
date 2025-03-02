@@ -44,7 +44,7 @@
       "options": {
         "commands": [
           {
-            "command": "start-server-and-test \"nx serve fmicodes-api:serve\" \"3000/api-json\" \"pnpm openapi generate -i http://localhost:3000/api-json -o ./libs/fmicodes-api-client/src/client/src -c fetch --useOptions\""
+            "command": "start-server-and-test \"nx run fmicodes-api:serve\" \"3000/api-json\" \"pnpm openapi generate -i http://localhost:3000/api-json -o ./libs/fmicodes-api-client/src/client/src -c fetch --useOptions\""
           }
         ]
       }
