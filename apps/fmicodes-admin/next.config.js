@@ -1,6 +1,8 @@
 //@ts-check
+const createNextIntlPlugin = require('next-intl/plugin');
+
 const { composePlugins, withNx } = require('@nx/next');
-const withNextIntl = require('next-intl/plugin')('./app/i18n.ts');
+const withNextIntl = createNextIntlPlugin();
 
 /**
  * @type {import('@nx/next/plugins/with-nx').WithNxOptions}
