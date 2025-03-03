@@ -34,9 +34,6 @@ const DialogOverlay = React.forwardRef<
   />
 ));
 DialogOverlay.displayName = DialogPrimitive.Overlay.displayName;
-DialogOverlay.defaultProps = {
-  className: '',
-};
 
 type DialogContentProps = React.ComponentPropsWithoutRef<
   typeof DialogPrimitive.Content
@@ -67,9 +64,6 @@ const DialogContent = React.forwardRef<
   </DialogPortal>
 ));
 DialogContent.displayName = DialogPrimitive.Content.displayName;
-DialogContent.defaultProps = {
-  className: '',
-};
 
 type DialogHeaderProps = React.HTMLAttributes<HTMLDivElement> & {
   className?: string;
@@ -127,9 +121,6 @@ const DialogTitle = React.forwardRef<
   />
 ));
 DialogTitle.displayName = DialogPrimitive.Title.displayName;
-DialogTitle.defaultProps = {
-  className: '',
-};
 
 type DialogDescriptionProps = React.ComponentPropsWithoutRef<
   typeof DialogPrimitive.Description
@@ -148,9 +139,6 @@ const DialogDescription = React.forwardRef<
   />
 ));
 DialogDescription.displayName = DialogPrimitive.Description.displayName;
-DialogDescription.defaultProps = {
-  className: '',
-};
 
 export {
   Dialog,

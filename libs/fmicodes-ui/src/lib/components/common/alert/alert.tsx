@@ -48,9 +48,6 @@ const AlertTitle = React.forwardRef<HTMLParagraphElement, AlertTitleProps>(
   ),
 );
 AlertTitle.displayName = 'AlertTitle';
-AlertTitle.defaultProps = {
-  className: '',
-};
 
 type AlertDescriptionType = React.HTMLAttributes<HTMLParagraphElement> & {
   className?: string;
@@ -67,8 +64,5 @@ const AlertDescription = React.forwardRef<
   />
 ));
 AlertDescription.displayName = 'AlertDescription';
-AlertDescription.defaultProps = {
-  className: '',
-};
 
 export { Alert, AlertTitle, AlertDescription };

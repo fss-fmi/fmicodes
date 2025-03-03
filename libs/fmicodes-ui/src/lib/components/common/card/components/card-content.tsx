@@ -12,6 +12,3 @@ export const CardContent = React.forwardRef<
   <div ref={ref} className={cn('p-6 pt-0', className)} {...props} />
 ));
 CardContent.displayName = 'CardContent';
-CardContent.defaultProps = {
-  className: '',
-};

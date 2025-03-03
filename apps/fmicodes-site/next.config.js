@@ -1,7 +1,6 @@
 //@ts-check
 const createNextIntlPlugin = require('next-intl/plugin');
 
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 const { composePlugins, withNx } = require('@nx/next');
 const { withAxiom } = require('next-axiom');
 const withNextIntl = createNextIntlPlugin();

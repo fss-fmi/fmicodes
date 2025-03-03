@@ -27,15 +27,16 @@ import { redirect } from 'next/navigation';
 import { EditTeamDialog } from '@fmicodes/fmicodes-ui/lib/components/site/edit-team-dialog/edit-team-dialog';
 
 interface TeamPageProps {
-  params: { id: string };
+  params: Promise<{ teamId: string }>;
 }
 
 export async function generateMetadata({
   params,
 }: TeamPageProps): Promise<Metadata> {
+  const { teamId } = await params;
   const t = await getTranslations('team-page');
   const team = await ApiClient.TeamsApiService.teamsControllerGetTeamV1({
-    teamId: params.id,
+    teamId,
   });
 
   return {
@@ -53,12 +54,13 @@ export async function generateMetadata({
 }
 
 export default async function TeamPage({ params }: TeamPageProps) {
+  const { teamId } = await params;
   const t = await getTranslations('team-page');
   const locale = useLocale();
   const user = await getUser();
 
   const team = await ApiClient.TeamsApiService.teamsControllerGetTeamV1({
-    teamId: params.id,
+    teamId,
   });
 
   if (!team) {

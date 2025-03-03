@@ -32,6 +32,3 @@ export const NavbarDropdownItem = React.forwardRef<
   );
 });
 NavbarDropdownItem.displayName = 'ListItem';
-NavbarDropdownItem.defaultProps = {
-  className: '',
-};

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { ReactNode, useState } from 'react';
+import React, { ReactNode, SetStateAction, useState } from 'react';
 import { ApiClient } from '@fmicodes/fmicodes-api-client/client';
 import { useTranslations } from 'next-intl';
 import { InviteConfirmationDialog } from './components/invite-confirmation-dialog';
@@ -35,7 +35,7 @@ export function UsersSearch({
 }: UsersSearchProps) {
   const t = useTranslations('site.users-search');
   const [isOpen, setIsOpen] = useState(false);
-  const [dialog, setDialog] = useState<JSX.Element | undefined>();
+  const [dialog, setDialog] = useState<ReactNode | undefined>();
   const [usersWithoutATeamState, setUsersWithoutATeamState] =
     useState(usersWithoutATeam);
   const [usersWithATeamState, setUsersWithATeamState] =

@@ -33,10 +33,5 @@ const HoverCardContent = React.forwardRef<
   />
 ));
 HoverCardContent.displayName = HoverCardPrimitive.Content.displayName;
-HoverCardContent.defaultProps = {
-  className: '',
-  align: 'center',
-  sideOffset: 4,
-};
 
 export { HoverCard, HoverCardTrigger, HoverCardContent };

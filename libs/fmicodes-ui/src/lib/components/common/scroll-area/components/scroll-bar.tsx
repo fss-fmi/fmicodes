@@ -30,7 +30,3 @@ export const ScrollBar = React.forwardRef<
   </ScrollAreaPrimitive.ScrollAreaScrollbar>
 ));
 ScrollBar.displayName = ScrollAreaPrimitive.ScrollAreaScrollbar.displayName;
-ScrollBar.defaultProps = {
-  orientation: 'vertical',
-  className: '',
-};

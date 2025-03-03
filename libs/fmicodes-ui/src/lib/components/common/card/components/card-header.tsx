@@ -16,6 +16,3 @@ export const CardHeader = React.forwardRef<HTMLDivElement, CardHeaderProps>(
 );
 
 CardHeader.displayName = 'CardHeader';
-CardHeader.defaultProps = {
-  className: '',
-};

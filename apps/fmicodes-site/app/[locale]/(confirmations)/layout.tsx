@@ -7,18 +7,21 @@ import { getMessages } from 'next-intl/server';
 import { AxiomWebVitals } from 'next-axiom';
 import { NextIntlClientProvider } from 'next-intl';
 import { ThemeProvider } from '@fmicodes/fmicodes-ui/lib/providers/theme-provider';
-import { locales } from '../../i18n';
+import { routing } from '../../../i18n/routing';
 
 export default async function RootLayout({
   children,
-  params: { locale },
+  params,
 }: {
   children: React.ReactNode;
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }) {
-  if (!locales.includes(locale)) {
+  // Ensure that the incoming `locale` is valid
+  const { locale } = await params;
+  if (!(routing.locales as readonly string[]).includes(locale)) {
     notFound();
   }
+
   const messages = await getMessages();
 
   return (

@@ -17,6 +17,3 @@ export const CardDescription = React.forwardRef<
 ));
 
 CardDescription.displayName = 'CardDescription';
-CardDescription.defaultProps = {
-  className: '',
-};

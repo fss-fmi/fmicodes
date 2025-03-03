@@ -19,6 +19,3 @@ export const SheetDescription = React.forwardRef<
   />
 ));
 SheetDescription.displayName = SheetPrimitive.Description.displayName;
-SheetDescription.defaultProps = {
-  className: '',
-};

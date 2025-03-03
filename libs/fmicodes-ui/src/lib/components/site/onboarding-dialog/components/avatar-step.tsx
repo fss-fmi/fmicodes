@@ -266,7 +266,7 @@ export function AvatarStep({ previousStep, nextStep }: AvatarStepProps) {
   return (
     <div className="px-12 flex flex-col justify-center">
       <div className="flex justify-center items-center">
-        <img src={avatar.toDataUriSync()} alt="" width="150" height="150" />
+        <img src={avatar.toDataUri()} alt="" width="150" height="150" />
       </div>
       <div>
         <div className="flex flex-col items-center text-center w-full">
@@ -360,7 +360,7 @@ export function AvatarStep({ previousStep, nextStep }: AvatarStepProps) {
         <Button onClick={previousStep} variant="secondary">
           {t('previous')}
         </Button>
-        <Button onClick={() => nextStep(dataURLtoFile(avatar.toDataUriSync()))}>
+        <Button onClick={() => nextStep(dataURLtoFile(avatar.toDataUri()))}>
           {t('continue')}
         </Button>
       </DialogFooter>

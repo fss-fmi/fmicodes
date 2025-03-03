@@ -22,6 +22,3 @@ export const SheetTitle = React.forwardRef<
   />
 ));
 SheetTitle.displayName = SheetPrimitive.Title.displayName;
-SheetTitle.defaultProps = {
-  className: '',
-};

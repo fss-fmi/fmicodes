@@ -41,9 +41,6 @@ const SelectTrigger = React.forwardRef<
   </SelectPrimitive.Trigger>
 ));
 SelectTrigger.displayName = SelectPrimitive.Trigger.displayName;
-SelectTrigger.defaultProps = {
-  className: '',
-};
 
 type SelectScrollUpButtonProps = React.ComponentPropsWithoutRef<
   typeof SelectPrimitive.ScrollUpButton
@@ -67,9 +64,6 @@ const SelectScrollUpButton = React.forwardRef<
   </SelectPrimitive.ScrollUpButton>
 ));
 SelectScrollUpButton.displayName = SelectPrimitive.ScrollUpButton.displayName;
-SelectScrollUpButton.defaultProps = {
-  className: '',
-};
 
 type SelectScrollDownButtonProps = React.ComponentPropsWithoutRef<
   typeof SelectPrimitive.ScrollDownButton
@@ -94,9 +88,6 @@ const SelectScrollDownButton = React.forwardRef<
 ));
 SelectScrollDownButton.displayName =
   SelectPrimitive.ScrollDownButton.displayName;
-SelectScrollDownButton.defaultProps = {
-  className: '',
-};
 
 type SelectContentProps = React.ComponentPropsWithoutRef<
   typeof SelectPrimitive.Content
@@ -136,9 +127,6 @@ const SelectContent = React.forwardRef<
   </SelectPrimitive.Portal>
 ));
 SelectContent.displayName = SelectPrimitive.Content.displayName;
-SelectContent.defaultProps = {
-  className: '',
-};
 
 type SelectLabelProps = React.ComponentPropsWithoutRef<
   typeof SelectPrimitive.Label
@@ -157,9 +145,6 @@ const SelectLabel = React.forwardRef<
   />
 ));
 SelectLabel.displayName = SelectPrimitive.Label.displayName;
-SelectLabel.defaultProps = {
-  className: '',
-};
 
 type SelectItemProps = React.ComponentPropsWithoutRef<
   typeof SelectPrimitive.Item
@@ -188,9 +173,6 @@ const SelectItem = React.forwardRef<
   </SelectPrimitive.Item>
 ));
 SelectItem.displayName = SelectPrimitive.Item.displayName;
-SelectItem.defaultProps = {
-  className: '',
-};
 
 type SelectSeparatorProps = React.ComponentPropsWithoutRef<
   typeof SelectPrimitive.Separator
@@ -209,9 +191,6 @@ const SelectSeparator = React.forwardRef<
   />
 ));
 SelectSeparator.displayName = SelectPrimitive.Separator.displayName;
-SelectSeparator.defaultProps = {
-  className: '',
-};
 
 export {
   Select,

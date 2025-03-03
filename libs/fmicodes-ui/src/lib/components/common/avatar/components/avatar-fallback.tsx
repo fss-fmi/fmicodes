@@ -22,6 +22,3 @@ export const AvatarFallback = React.forwardRef<
   />
 ));
 AvatarFallback.displayName = AvatarPrimitive.Fallback.displayName;
-AvatarFallback.defaultProps = {
-  className: '',
-};

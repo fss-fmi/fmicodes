@@ -23,7 +23,8 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Analytics } from '@vercel/analytics/react';
 import { routing } from '../../../i18n/routing';
 
-export { useReportWebVitals } from 'next-axiom';
+// TODO: Re-enable
+// export { useReportWebVitals } from 'next-axiom';
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations('layout');
@@ -42,7 +43,7 @@ export default async function RootLayout({
 }) {
   // Ensure that the incoming `locale` is valid
   const { locale } = await params;
-  if (!routing.locales.includes(locale)) {
+  if (!(routing.locales as readonly string[]).includes(locale)) {
     notFound();
   }
 

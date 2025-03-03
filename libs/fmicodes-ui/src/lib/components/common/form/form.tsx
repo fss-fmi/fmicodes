@@ -88,9 +88,6 @@ const FormItem = React.forwardRef<HTMLDivElement, FormItemProps>(
   },
 );
 FormItem.displayName = 'FormItem';
-FormItem.defaultProps = {
-  className: '',
-};
 
 type FormLabelProps = React.ComponentPropsWithoutRef<
   typeof LabelPrimitive.Root
@@ -114,9 +111,6 @@ const FormLabel = React.forwardRef<
   );
 });
 FormLabel.displayName = 'FormLabel';
-FormLabel.defaultProps = {
-  className: '',
-};
 
 const FormControl = React.forwardRef<
   React.ElementRef<typeof Slot>,
@@ -161,9 +155,6 @@ const FormDescription = React.forwardRef<
   );
 });
 FormDescription.displayName = 'FormDescription';
-FormDescription.defaultProps = {
-  className: '',
-};
 
 type FormMessageProps = React.HTMLAttributes<HTMLParagraphElement> & {
   className?: string;
@@ -191,9 +182,6 @@ const FormMessage = React.forwardRef<HTMLParagraphElement, FormMessageProps>(
   },
 );
 FormMessage.displayName = 'FormMessage';
-FormMessage.defaultProps = {
-  className: '',
-};
 
 export {
   useFormField,

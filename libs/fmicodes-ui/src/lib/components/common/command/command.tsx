@@ -27,9 +27,6 @@ const Command = React.forwardRef<
   />
 ));
 Command.displayName = CommandPrimitive.displayName;
-Command.defaultProps = {
-  className: '',
-};
 
 interface CommandDialogProps extends DialogProps {
   trigger?: ReactNode;
@@ -78,9 +75,6 @@ const CommandInput = React.forwardRef<
 ));
 
 CommandInput.displayName = CommandPrimitive.Input.displayName;
-CommandInput.defaultProps = {
-  className: '',
-};
 
 type CommandListProps = React.ComponentPropsWithoutRef<
   typeof CommandPrimitive.List
@@ -100,9 +94,6 @@ const CommandList = React.forwardRef<
 ));
 
 CommandList.displayName = CommandPrimitive.List.displayName;
-CommandList.defaultProps = {
-  className: '',
-};
 
 const CommandEmpty = React.forwardRef<
   React.ElementRef<typeof CommandPrimitive.Empty>,
@@ -138,9 +129,6 @@ const CommandGroup = React.forwardRef<
 ));
 
 CommandGroup.displayName = CommandPrimitive.Group.displayName;
-CommandGroup.defaultProps = {
-  className: '',
-};
 
 type CommandSeparatorProps = React.ComponentPropsWithoutRef<
   typeof CommandPrimitive.Separator
@@ -159,9 +147,6 @@ const CommandSeparator = React.forwardRef<
   />
 ));
 CommandSeparator.displayName = CommandPrimitive.Separator.displayName;
-CommandSeparator.defaultProps = {
-  className: '',
-};
 
 type CommandItemProps = React.ComponentPropsWithoutRef<
   typeof CommandPrimitive.Item
@@ -184,9 +169,6 @@ const CommandItem = React.forwardRef<
 ));
 
 CommandItem.displayName = CommandPrimitive.Item.displayName;
-CommandItem.defaultProps = {
-  className: '',
-};
 
 type CommandShortcutProps = React.HTMLAttributes<HTMLSpanElement> & {
   className?: '';
