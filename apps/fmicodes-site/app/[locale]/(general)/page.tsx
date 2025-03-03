@@ -53,7 +53,7 @@ export default function Index() {
   return (
     <div className="relative">
       <Hero />
-      <div className="relative mx-auto max-w-[88rem] px-4 sm:-mt-16 lg:-mt-28 z-5">
+      <div className="relative mx-auto max-w-[88rem] px-4 -mt-16 z-5">
         <div className="pt-8 px-8 rounded-t-lg shadow-lg">
           {loading ? (
             <Loader />
