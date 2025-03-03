@@ -46,6 +46,10 @@
     "title": "Regulations",
     "description": "You can find the hackathon regulations you must follow here."
   },
+  "schedule-page": {
+    "title": "Schedule",
+    "description": "Hackathon schedule"
+  },
   "mentors-page": {
     "title": "Mentors",
     "description": "List of all mentors that will be available during the hackathon."

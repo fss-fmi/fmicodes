@@ -24,6 +24,10 @@ export function NavbarLinks({ className, variant }: NavbarLinksProps) {
       href: `/${locale}/regulations`,
     },
     {
+      title: t('schedule'),
+      href: `/${locale}/schedule`,
+    },
+    {
       title: t('mentors'),
       href: `/${locale}/mentors`,
     },
