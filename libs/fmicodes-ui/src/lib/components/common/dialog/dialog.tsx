@@ -72,7 +72,6 @@ DialogContent.defaultProps = {
 };
 
 type DialogHeaderProps = React.HTMLAttributes<HTMLDivElement> & {
-  // eslint-disable-next-line react/require-default-props
   className?: string;
 };
 
@@ -91,7 +90,6 @@ function DialogHeader({ className, ...props }: DialogHeaderProps) {
 DialogHeader.displayName = 'DialogHeader';
 
 type DialogFooterProps = React.HTMLAttributes<HTMLDivElement> & {
-  // eslint-disable-next-line react/require-default-props
   className?: string;
 };
 

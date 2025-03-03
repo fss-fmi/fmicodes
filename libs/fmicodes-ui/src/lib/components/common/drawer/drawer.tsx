@@ -6,7 +6,6 @@ import { Drawer as DrawerPrimitive } from 'vaul';
 import { cn } from '../../../utils';
 
 type DrawerProps = React.ComponentProps<typeof DrawerPrimitive.Root> & {
-  // eslint-disable-next-line react/require-default-props
   shouldScaleBackground?: boolean;
 };
 
@@ -42,9 +41,6 @@ const DrawerOverlay = React.forwardRef<
   />
 ));
 DrawerOverlay.displayName = DrawerPrimitive.Overlay.displayName;
-DrawerOverlay.defaultProps = {
-  className: '',
-};
 
 type DrawerContentProps = React.ComponentPropsWithoutRef<
   typeof DrawerPrimitive.Content
@@ -72,12 +68,8 @@ const DrawerContent = React.forwardRef<
   </DrawerPortal>
 ));
 DrawerContent.displayName = 'DrawerContent';
-DrawerContent.defaultProps = {
-  className: '',
-};
 
 type DrawerHeaderProps = React.HTMLAttributes<HTMLDivElement> & {
-  // eslint-disable-next-line react/require-default-props
   className?: string;
 };
 
@@ -92,7 +84,6 @@ function DrawerHeader({ className, ...props }: DrawerHeaderProps) {
 DrawerHeader.displayName = 'DrawerHeader';
 
 type DrawerFooterProps = React.HTMLAttributes<HTMLDivElement> & {
-  // eslint-disable-next-line react/require-default-props
   className?: string;
 };
 
@@ -109,7 +100,6 @@ DrawerFooter.displayName = 'DrawerFooter';
 type DrawerTitleProps = React.ComponentPropsWithoutRef<
   typeof DrawerPrimitive.Title
 > & {
-  // eslint-disable-next-line react/require-default-props
   className?: string;
 };
 
@@ -131,7 +121,6 @@ DrawerTitle.displayName = DrawerPrimitive.Title.displayName;
 type DrawerDescriptionProps = React.ComponentPropsWithoutRef<
   typeof DrawerPrimitive.Description
 > & {
-  // eslint-disable-next-line react/require-default-props
   className?: string;
 };
 

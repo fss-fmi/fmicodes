@@ -32,7 +32,6 @@ Command.defaultProps = {
 };
 
 interface CommandDialogProps extends DialogProps {
-  // eslint-disable-next-line react/require-default-props
   trigger?: ReactNode;
 }
 
@@ -190,7 +189,6 @@ CommandItem.defaultProps = {
 };
 
 type CommandShortcutProps = React.HTMLAttributes<HTMLSpanElement> & {
-  // eslint-disable-next-line react/require-default-props
   className?: '';
 };
 

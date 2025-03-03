@@ -22,7 +22,6 @@ import { Button } from '../../common/server';
 interface TeamMemberAvatarProps {
   team: ApiClient.TeamResponseBodyDto;
   member: ApiClient.UserResponseBodyDto;
-  // eslint-disable-next-line react/require-default-props
   enableTeamCapitanControls?: boolean;
 }
 

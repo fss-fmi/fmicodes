@@ -3,7 +3,6 @@
 import React, { ReactNode } from 'react';
 
 interface NavbarProps {
-  // eslint-disable-next-line react/require-default-props
   children?: ReactNode;
 }
 

@@ -7,9 +7,7 @@ import { TeamMemberAvatar } from '../team-member-avatar/team-member-avatar';
 
 interface TeamBannerProps {
   team: ApiClient.TeamResponseBodyDto;
-  // eslint-disable-next-line react/require-default-props
   enableTeamCapitanControls?: boolean;
-  // eslint-disable-next-line react/require-default-props
   className?: string;
 }
 

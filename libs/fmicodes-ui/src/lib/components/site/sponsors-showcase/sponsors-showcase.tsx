@@ -79,7 +79,7 @@ export function SponsorsShowcase({ sponsors, variant }: SponsorsShowcaseProps) {
       </div>
 
       {sponsors.map((sponsor) => (
-        <Dialog>
+        <Dialog key={sponsor.id}>
           <DialogTrigger asChild>
             <div
               className="flex flex-col justify-center items-center border cursor-pointer p-4"

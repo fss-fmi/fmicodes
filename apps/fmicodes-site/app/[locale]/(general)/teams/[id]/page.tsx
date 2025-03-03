@@ -197,7 +197,7 @@ export default async function TeamPage({ params }: TeamPageProps) {
                 </h3>
                 <div className="flex gap-2">
                   {team.projectRepositories.map((repository) => (
-                    <Button asChild variant="secondary">
+                    <Button key={repository} asChild variant="secondary">
                       <Link
                         key={repository}
                         href={repository}

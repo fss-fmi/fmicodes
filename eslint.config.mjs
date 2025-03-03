@@ -1,110 +1,44 @@
-import nx from '@nx/eslint-plugin';
 import globals from 'globals';
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
-import js from '@eslint/js';
-import { FlatCompat } from '@eslint/eslintrc';
+import pluginJs from '@eslint/js';
+import tseslint from 'typescript-eslint';
+import pluginReact from 'eslint-plugin-react';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-  recommendedConfig: js.configs.recommended,
-  allConfig: js.configs.all,
-});
-
+/** @type {import('eslint').Linter.Config[]} */
 export default [
   {
-    ignores: ['**/node_modules', '**/pnpm-lock.yaml'],
+    ignores: [
+      'node_modules',
+      'dist',
+      '.nx',
+      'apps/*/.next',
+      'jest.preset.js',
+      'libs/fmicodes-api-client/src/client',
+      '**/tailwind.config.js',
+      '**/webpack.config.js',
+      '**/postcss.config.js',
+      '**/next.config.js',
+    ],
   },
+  { files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'] },
+  { languageOptions: { globals: { ...globals.browser, ...globals.node } } },
+  pluginJs.configs.recommended,
+  pluginReact.configs.flat.recommended,
+  ...tseslint.configs.recommended,
   {
-    plugins: {
-      '@nx': nx,
-    },
-    rules: {
-      '@stylistic/semi': 'error',
-    },
-  },
-  {
-    files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx'],
-
-    rules: {
-      '@nx/enforce-module-boundaries': [
-        'error',
-        {
-          enforceBuildableLibDependency: true,
-          allow: [],
-
-          depConstraints: [
-            {
-              sourceTag: '*',
-              onlyDependOnLibsWithTags: ['*'],
-            },
-          ],
-        },
-      ],
-    },
-  },
-  ...compat
-    .extends(
-      'airbnb-base',
-      'airbnb-typescript/base',
-      'plugin:@nx/typescript',
-      'plugin:prettier/recommended',
-    )
-    .map((config) => ({
-      ...config,
-      files: ['**/*.ts', '**/*.tsx'],
-    })),
-  {
-    files: ['**/*.ts', '**/*.tsx'],
-    rules: {},
-  },
-  ...compat
-    .extends(
-      'airbnb-base',
-      'plugin:@nx/javascript',
-      'plugin:prettier/recommended',
-    )
-    .map((config) => ({
-      ...config,
-      files: ['**/*.js', '**/*.jsx'],
-    })),
-  {
-    files: ['**/*.js', '**/*.jsx'],
-    rules: {},
-  },
-  ...compat
-    .extends(
-      'airbnb',
-      'airbnb-typescript',
-      'plugin:@nx/react-typescript',
-      'plugin:prettier/recommended',
-    )
-    .map((config) => ({
-      ...config,
-      files: ['**/*.ts', '**/*.tsx'],
-    })),
-  {
-    files: ['**/*.ts', '**/*.tsx'],
-
     rules: {
       'react/react-in-jsx-scope': 'off',
       'import/no-extraneous-dependencies': 'off',
       'class-methods-use-this': 'off',
       'import/prefer-default-export': 'off',
       'react/jsx-props-no-spreading': 'off',
+      '@typescript-eslint/no-unused-vars': 'off',
     },
   },
   {
-    files: ['**/*.spec.ts', '**/*.spec.tsx', '**/*.spec.js', '**/*.spec.jsx'],
-
-    languageOptions: {
-      globals: {
-        ...globals.jest,
+    settings: {
+      react: {
+        version: 'detect',
       },
     },
-
-    rules: {},
   },
 ];

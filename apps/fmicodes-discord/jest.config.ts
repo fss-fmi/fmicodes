@@ -1,4 +1,3 @@
-/* eslint-disable */
 export default {
   displayName: 'fmicodes-discord',
   preset: '../../jest.preset.js',

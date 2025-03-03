@@ -2,7 +2,6 @@ import React from 'react';
 import { cn } from '../../../utils';
 
 function Skeleton({
-  // eslint-disable-next-line react/prop-types
   className = '',
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) {
