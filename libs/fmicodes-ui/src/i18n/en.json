@@ -197,10 +197,10 @@
     },
     "sponsors-showcase": {
       "with-the-support-of": "With the support of",
-      "our-gold-sponsors": "our gold sponsors",
-      "our-silver-sponsors": "our silver sponsors",
-      "our-bronze-sponsors": "our bronze sponsors",
-      "our-partners": "our partners"
+      "our-gold-sponsors": "our gold partners",
+      "our-silver-sponsors": "our silver partners",
+      "our-bronze-sponsors": "our bronze partners",
+      "our-partners": "our in-kind partners"
     },
     "mentor-card": {
       "availability": "Availability",
