@@ -6,7 +6,7 @@ export function Hero() {
   const aspectRatio = (bannerHeight / bannerWidth) * 100;
 
   return (
-    <div className="mx-auto w-full px-4 md:px-6 lg:px-32 mb-8">
+    <div className="mx-auto w-full px-4 md:px-6 lg:px-32 mb-8 pointer-events-none">
       <div className="relative w-full z-10">
         <div
           className="relative w-full h-0"
