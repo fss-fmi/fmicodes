@@ -177,7 +177,7 @@ export default async function RankingPage() {
 
   return (
     <>
-      <h1 className="text-2xl sm:text-4xl md:text-6xl font-black uppercase my-4 truncate text-clip">
+      <h1 className="text-center text-2xl sm:text-4xl md:text-6xl font-black uppercase my-4 truncate text-clip">
         {t('title')}
       </h1>
 
