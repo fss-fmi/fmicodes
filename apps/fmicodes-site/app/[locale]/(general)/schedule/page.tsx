@@ -116,35 +116,30 @@ export default function SchedulePage() {
 
   // Day 1 events
   const day1Events = [
-    { time: '16:00', description: 'Присъствена регистрация (фоайе на ФМИ)' },
-    { time: '17:00', description: 'Официално откриване (зала 325)' },
-    { time: '18:00', description: 'Обявяване на темата на хакатона' },
-    { time: '18:30', description: 'Представяне на менторите и спонсорите' },
-    { time: '20:00', description: 'Начало на хакатона' },
+    { time: '17:00', description: 'Регистрация' },
+    { time: '18:00', description: 'Откриване' },
+    { time: '19:00', description: 'Хап и Yap' },
   ];
 
   // Day 2 events
   const day2Events = [
-    { time: '09:00', description: 'Закуска (осигурена от спонсорите)' },
-    { time: '10:00', description: 'Работа по проектите' },
-    { time: '12:00', description: 'Обяд (осигурен от спонсорите)' },
-    { time: '14:00', description: 'Сесия с ментори - въпроси и отговори' },
+    { time: '09:00', description: 'Закуска' },
+    { time: '10:00', description: 'Mentor tour' },
+    { time: '11:30', description: 'Mentor pick' },
+    { time: '12:30', description: 'Обяд' },
     { time: '14:00 - 18:00', description: 'Фотобудка' },
-    { time: '18:00', description: 'Вечеря (осигурена от спонсорите)' },
-    { time: '19:00', description: 'Работа по проектите до полунощ' },
+    { time: '19:30', description: 'Вечеря' },
   ];
 
   // Day 3 events
   const day3Events = [
-    { time: '09:00', description: 'Закуска (осигурена от спонсорите)' },
-    { time: '10:00', description: 'Финализация на проектите' },
-    { time: '12:00', description: 'Обяд (осигурен от спонсорите)' },
-    { time: '14:00', description: 'Тестване на проектите' },
+    { time: '09:00', description: 'Закуска' },
+    { time: '13:30', description: 'Обяд' },
+    { time: '14:00', description: 'Тестване (Зала 325)' },
     {
-      time: '15:00',
-      description: 'Официални презентации пред журито (зала 325)',
+      time: '16:00',
+      description: 'Представяне и закриване',
     },
-    { time: '19:00', description: 'Обявяване на победителите и награждаване' },
   ];
 
   return (
@@ -161,7 +156,7 @@ export default function SchedulePage() {
         <div className="flex flex-col md:flex-row items-center mb-16">
           <div className="md:w-1/2 z-10">
             <DaySchedule
-              date="Петък, 22 март"
+              date="Петък, 14 март"
               title="Откриване и започване"
               events={day1Events}
               className="ml-auto mr-4 md:mr-8 transform hover:rotate-1"
@@ -189,7 +184,7 @@ export default function SchedulePage() {
           </div>
           <div className="md:w-1/2 z-10">
             <DaySchedule
-              date="Събота, 23 март"
+              date="Събота, 15 март"
               title="Ден за разработка"
               events={day2Events}
               className="ml-4 md:ml-8 transform hover:rotate-1"
@@ -201,7 +196,7 @@ export default function SchedulePage() {
         <div className="flex flex-col md:flex-row items-center">
           <div className="md:w-1/2 z-10">
             <DaySchedule
-              date="Неделя, 24 март"
+              date="Неделя, 16 март"
               title="Финализация и презентации"
               events={day3Events}
               className="ml-auto mr-4 md:mr-8 transform hover:rotate-1"
@@ -243,23 +238,24 @@ export default function SchedulePage() {
             <div className="border p-4 rounded-lg">
               <h3 className="font-bold mb-2">Локации</h3>
               <p>Основните събития ще се проведат в зала 325.</p>
-              <p>Регистрацията и храненето ще бъдат във фоайето на ФМИ.</p>
             </div>
           </div>
         </Card>
       </div>
 
-      <p className="text-xl py-4 text-center">
-        При промени в програмата, участниците ще бъдат уведомени своевременно.
-        За допълнителни въпроси участниците могат да се свържат с организаторите
-        във всички{' '}
-        <a
-          className="underline"
-          href="https://linktr.ee/lifeinfmi?utm_source=linktree_profile_share&ltsid=e27fd093-5fa0-4920-b9cc-1590081815de"
-        >
-          социални мрежи
-        </a>
-      </p>
+      <div className="flex items-center justify-center">
+        <p className="text-xl py-4 text-center max-w-screen-lg">
+          При промени в програмата, участниците ще бъдат уведомени своевременно.
+          За допълнителни въпроси участниците могат да се свържат с
+          организаторите във всички{' '}
+          <a
+            className="underline"
+            href="https://linktr.ee/lifeinfmi?utm_source=linktree_profile_share&ltsid=e27fd093-5fa0-4920-b9cc-1590081815de"
+          >
+            социални мрежи
+          </a>
+        </p>
+      </div>
     </>
   );
 }
