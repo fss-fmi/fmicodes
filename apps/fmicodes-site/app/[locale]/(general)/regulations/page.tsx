@@ -478,17 +478,19 @@ export default function RegulationsPage() {
           </div>
         ))}
 
-        <p className="text-xl py-4 text-center">
-          Организаторите от ФСС при ФМИ пожелаваме на участниците успех! За
-          допълнителни въпроси участниците могат да се свържат с организаторите
-          във всички{' '}
-          <a
-            className=" underline"
-            href="https://linktr.ee/lifeinfmi?utm_source=linktree_profile_share&ltsid=e27fd093-5fa0-4920-b9cc-1590081815de"
-          >
-            социални мрежи
-          </a>
-        </p>
+        <div className="flex items-center justify-center">
+          <p className="text-xl py-4 text-center max-w-screen-lg">
+            Организаторите от ФСС при ФМИ пожелаваме на участниците успех! За
+            допълнителни въпроси участниците могат да се свържат с
+            организаторите във всички{' '}
+            <a
+              className=" underline"
+              href="https://linktr.ee/lifeinfmi?utm_source=linktree_profile_share&ltsid=e27fd093-5fa0-4920-b9cc-1590081815de"
+            >
+              социални мрежи
+            </a>
+          </p>
+        </div>
       </Card>
     </>
   );
