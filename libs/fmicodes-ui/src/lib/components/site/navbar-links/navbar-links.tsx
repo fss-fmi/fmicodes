@@ -27,6 +27,7 @@ export function NavbarLinks({ className, variant }: NavbarLinksProps) {
       title: t('schedule'),
       href: `/${locale}/schedule`,
     },
+    /*
     {
       title: t('mentors'),
       href: `/${locale}/mentors`,
@@ -35,6 +36,7 @@ export function NavbarLinks({ className, variant }: NavbarLinksProps) {
       title: t('ranking'),
       href: `/${locale}/ranking`,
     },
+    */
   ];
 
   if (variant === 'desktop') {
