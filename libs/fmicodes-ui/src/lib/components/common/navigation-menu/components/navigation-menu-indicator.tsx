@@ -26,6 +26,3 @@ export const NavigationMenuIndicator = React.forwardRef<
 ));
 NavigationMenuIndicator.displayName =
   NavigationMenuPrimitive.Indicator.displayName;
-NavigationMenuIndicator.defaultProps = {
-  className: '',
-};

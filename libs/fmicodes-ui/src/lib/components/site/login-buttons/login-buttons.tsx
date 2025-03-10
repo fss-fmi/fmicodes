@@ -5,7 +5,6 @@ import { cn } from '../../../utils';
 import { Button } from '../../common/server';
 
 interface LoginButtonsProps {
-  // eslint-disable-next-line react/require-default-props
   className?: string;
 }
 

@@ -1,8 +1,6 @@
 import { IsBoolean, IsDateString, IsNotEmpty } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 import { i18nValidationMessage } from 'nestjs-i18n';
-// TODO:fix
-// eslint-disable-next-line import/no-cycle
 import { TeamResponseBodyDto } from '../../teams/dto/team-response-body.dto';
 import { UserBaseDto } from './user-base.dto';
 

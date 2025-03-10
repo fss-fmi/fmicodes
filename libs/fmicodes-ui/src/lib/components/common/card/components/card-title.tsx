@@ -18,6 +18,3 @@ export const CardTitle = React.forwardRef<HTMLParagraphElement, CardTitleProps>(
 );
 
 CardTitle.displayName = 'CardTitle';
-CardTitle.defaultProps = {
-  className: '',
-};

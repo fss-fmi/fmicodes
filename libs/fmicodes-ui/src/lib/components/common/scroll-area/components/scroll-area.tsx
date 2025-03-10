@@ -29,6 +29,3 @@ export const ScrollArea = React.forwardRef<
   </ScrollAreaPrimitive.Root>
 ));
 ScrollArea.displayName = ScrollAreaPrimitive.Root.displayName;
-ScrollArea.defaultProps = {
-  className: '',
-};

@@ -1,4 +1,3 @@
-/* eslint-disable */
 export default {
   displayName: 'fmicodes-api-client',
   preset: '../../jest.preset.js',

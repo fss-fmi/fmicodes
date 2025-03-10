@@ -22,6 +22,3 @@ export const SheetOverlay = React.forwardRef<
   />
 ));
 SheetOverlay.displayName = SheetPrimitive.Overlay.displayName;
-SheetOverlay.defaultProps = {
-  className: '',
-};

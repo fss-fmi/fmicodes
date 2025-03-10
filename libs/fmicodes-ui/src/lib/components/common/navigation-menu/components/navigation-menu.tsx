@@ -26,6 +26,3 @@ export const NavigationMenu = React.forwardRef<
   </NavigationMenuPrimitive.Root>
 ));
 NavigationMenu.displayName = NavigationMenuPrimitive.Root.displayName;
-NavigationMenu.defaultProps = {
-  className: '',
-};

@@ -22,6 +22,3 @@ export const NavigationMenuList = React.forwardRef<
   />
 ));
 NavigationMenuList.displayName = NavigationMenuPrimitive.List.displayName;
-NavigationMenuList.defaultProps = {
-  className: '',
-};

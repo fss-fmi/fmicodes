@@ -9,7 +9,7 @@
       "options": {
         "commands": [
           {
-            "command": "start-server-and-test \"nx serve fmicodes-api:serve\" \"3000/api/v1/health\" \"nx _e2e fmicodes-admin-e2e\""
+            "command": "start-server-and-test \"nx run fmicodes-api:serve\" \"3000/api/v1/health\" \"nx _e2e fmicodes-admin-e2e\""
           }
         ]
       }
@@ -28,7 +28,7 @@
       }
     },
     "lint": {
-      "executor": "@nx/linter:eslint",
+      "executor": "@nx/eslint:lint",
       "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": ["apps/fmicodes-admin-e2e/**/*.{js,ts}"]

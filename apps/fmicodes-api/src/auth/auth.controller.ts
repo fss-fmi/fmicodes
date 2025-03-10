@@ -50,7 +50,7 @@ export class AuthController {
     type: LoginDto,
   })
   @ApiUnauthorizedResponse({ description: 'Invalid user credentials.' })
-  async postLoginV1(
+  async postLogin(
     @UserAuth() user: Omit<User, 'passwordHash'>,
   ): Promise<LoginDto> {
     return this.authService.login(user);
@@ -76,7 +76,7 @@ export class AuthController {
   @ApiConflictResponse({
     description: 'Discord account already linked to an user.',
   })
-  async postLoginDiscordV1(
+  async postLoginDiscord(
     @UserAuth() user: Omit<User, 'passwordHash'>,
     @Query() _: DiscordLoginQueryDto,
   ) {
@@ -101,9 +101,7 @@ export class AuthController {
     type: LoginDto,
   })
   @ApiUnauthorizedResponse({ description: 'Invalid refresh token.' })
-  async postRefreshV1(@UserAuth() user: Omit<User, 'passwordHash'>) {
+  async postRefresh(@UserAuth() user: Omit<User, 'passwordHash'>) {
     return this.authService.login(user);
   }
 }
-
-export default AuthController;

@@ -25,9 +25,6 @@ const TabsList = React.forwardRef<
   />
 ));
 TabsList.displayName = TabsPrimitive.List.displayName;
-TabsList.defaultProps = {
-  className: '',
-};
 
 type TabsTriggerProps = React.ComponentPropsWithoutRef<
   typeof TabsPrimitive.Trigger
@@ -49,9 +46,6 @@ const TabsTrigger = React.forwardRef<
   />
 ));
 TabsTrigger.displayName = TabsPrimitive.Trigger.displayName;
-TabsTrigger.defaultProps = {
-  className: '',
-};
 
 type TabsContentProps = React.ComponentPropsWithoutRef<
   typeof TabsPrimitive.Content
@@ -73,8 +67,5 @@ const TabsContent = React.forwardRef<
   />
 ));
 TabsContent.displayName = TabsPrimitive.Content.displayName;
-TabsContent.defaultProps = {
-  className: '',
-};
 
 export { Tabs, TabsList, TabsTrigger, TabsContent };

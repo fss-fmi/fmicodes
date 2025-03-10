@@ -16,14 +16,14 @@
     "baseUrl": ".",
     "paths": {
       "@fmicodes/fmicodes-api-client/client": [
-        "libs/fmicodes-api-client/src/client",
+        "libs/fmicodes-api-client/src/client"
       ],
       "@fmicodes/fmicodes-api-client/next": [
-        "libs/fmicodes-api-client/src/next",
+        "libs/fmicodes-api-client/src/next"
       ],
       "@fmicodes/fmicodes-services/*": ["libs/fmicodes-services/src/*"],
       "@fmicodes/fmicodes-ui": ["libs/fmicodes-ui/src/index.ts"],
-      "@fmicodes/fmicodes-ui/*": ["libs/fmicodes-ui/src/*"],
+      "@fmicodes/fmicodes-ui/*": ["libs/fmicodes-ui/src/*"]
     },
     "jsx": "react",
     "removeComments": true,
@@ -35,12 +35,12 @@
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false,
-    "useDefineForClassFields": true,
+    "useDefineForClassFields": true
   },
   "exclude": ["node_modules", "tmp"],
   "ts-node": {
     "compilerOptions": {
-      "module": "commonjs",
-    },
-  },
+      "module": "commonjs"
+    }
+  }
 }

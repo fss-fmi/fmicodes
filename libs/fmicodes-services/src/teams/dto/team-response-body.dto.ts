@@ -1,8 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsDateString, IsNotEmpty } from 'class-validator';
 import { i18nValidationMessage } from 'nestjs-i18n';
-// TODO: Fix circular dependency
-// eslint-disable-next-line import/no-cycle
 import { UserResponseBodyDto } from '../../users/dto/user-response-body.dto';
 import { TeamsBaseDto } from './teams-base.dto';
 

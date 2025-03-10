@@ -4,7 +4,6 @@ import {
   Get,
   HttpCode,
   HttpStatus,
-  ImATeapotException,
   Param,
   Patch,
   Post,
@@ -57,7 +56,7 @@ export class UsersController {
     description: 'Users returned successfully.',
     type: [UserResponseBodyDto], // TODO: Refactor to use correct DTO
   })
-  getAllV1() {
+  getAll() {
     return this.usersService.getAllUsers();
   }
 
@@ -105,14 +104,10 @@ export class UsersController {
       ],
     },
   })
-  async postUsersV1(
+  async postUsers(
     @Body() user: UserRequestBodyDto,
     @UploadedFiles() universityProofImages: Array<Express.Multer.File>,
   ) {
-    // const registrationStartDate = '2024/03/10 18:00:00';
-    // if (Date.now() < new Date(registrationStartDate).getTime()) {
-    //   throw new ImATeapotException('Nice try :) but not yet!');
-    // }
     return this.usersService.registerUser(user, universityProofImages);
   }
 
@@ -130,7 +125,7 @@ export class UsersController {
     type: UserResponseBodyDto,
   })
   @ApiUnauthorizedResponse({ description: 'Invalid authentication token.' })
-  getCurrentV1(@UserAuth() user: Omit<User, 'passwordHash'>) {
+  getCurrent(@UserAuth() user: Omit<User, 'passwordHash'>) {
     return this.usersService.getById(user.id);
   }
 
@@ -149,7 +144,7 @@ export class UsersController {
       'The user is authenticated and onboarding is marked as complete.',
   })
   @ApiUnauthorizedResponse({ description: 'Invalid authentication token.' })
-  patchCurrentOnboardingV1(@UserAuth() user: Omit<User, 'passwordHash'>) {
+  patchCurrentOnboarding(@UserAuth() user: Omit<User, 'passwordHash'>) {
     return this.usersService.completeOnboarding(user);
   }
 
@@ -167,7 +162,7 @@ export class UsersController {
   @ApiNotFoundResponse({
     description: 'The image does not exist.',
   })
-  getAvatarFileV1(@Param('filename') filename: string, @Res() res) {
+  getAvatarFile(@Param('filename') filename: string, @Res() res) {
     return res.sendFile(filename, {
       root: `${appConfig.multer.destination}/avatars`,
     });
@@ -201,7 +196,7 @@ export class UsersController {
   @ApiOkResponse({
     description: 'User avatar updated successfully.',
   })
-  async patchCurrentAvatarV1(
+  async patchCurrentAvatar(
     @UserAuth() user: Omit<User, 'passwordHash'>,
     @UploadedFile() avatar: Express.Multer.File,
   ) {
@@ -224,7 +219,7 @@ export class UsersController {
   @ApiNotFoundResponse({
     description: 'The user does not exist.',
   })
-  getUserTeamInvitesV1(@UserAuth() user: Omit<User, 'passwordHash'>) {
+  getUserTeamInvites(@UserAuth() user: Omit<User, 'passwordHash'>) {
     return this.usersService.getUserTeamInvites(user);
   }
 
@@ -259,7 +254,7 @@ export class UsersController {
   @ApiNotFoundResponse({
     description: 'The user to invite does not exist.',
   })
-  postTeamInviteV1(
+  postTeamInvite(
     @Param('inviteeId') inviteeId: string,
     @UserAuth() user: Omit<User, 'passwordHash'>,
   ) {
@@ -294,8 +289,7 @@ export class UsersController {
   @ApiConflictResponse({
     description: 'The user is already part of a team.',
   })
-  async postCurrentTeamInvitesRespondV1(
-    // @Param() params: UsersPostCurrentTeamInvitesRespondParamsDto,
+  async postCurrentTeamInvitesRespond(
     @Param('inviteId') inviteId: string,
     @UserAuth() user: Omit<User, 'passwordHash'>,
     @Body() requestBody: UsersPostCurrentTeamInvitesRespondRequestBodyDto,

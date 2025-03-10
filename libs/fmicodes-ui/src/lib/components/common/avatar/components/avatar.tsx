@@ -25,6 +25,3 @@ export const Avatar = React.forwardRef<
   />
 ));
 Avatar.displayName = AvatarPrimitive.Root.displayName;
-Avatar.defaultProps = {
-  className: '',
-};

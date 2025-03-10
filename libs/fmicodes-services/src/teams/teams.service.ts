@@ -118,7 +118,7 @@ export class TeamsService {
     });
   }
 
-  async getDiscordRoleForTeam(guild : Guild, teamName: string){
+  async getDiscordRoleForTeam(guild: Guild, teamName: string) {
     return guild.roles.cache.find(
       (role) => role.name === `🧩 Отбор ${teamName} 🧩`,
     );
@@ -381,7 +381,7 @@ export class TeamsService {
         },
       },
     });
-    
+
     return { message: i18n?.t('responses.teams.joinRequestAccepted') };
   }
 

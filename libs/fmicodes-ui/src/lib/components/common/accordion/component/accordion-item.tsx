@@ -21,6 +21,3 @@ export const AccordionItem = React.forwardRef<
   />
 ));
 AccordionItem.displayName = 'AccordionItem';
-AccordionItem.defaultProps = {
-  className: '',
-};

@@ -106,7 +106,7 @@ export default async function RankingPage() {
 
         <div className="max-w-2xl m-auto w-full flex flex-col gap-2">
           {otherTeams.map((team) => (
-            <Card>
+            <Card key={team.id}>
               <CardContent className="p-3">
                 <div className="flex items-center">
                   <FaPeopleGroup className="w-6 h-6 mr-2" />

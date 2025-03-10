@@ -3,7 +3,6 @@ import React from 'react';
 import { cn } from '../../../utils';
 
 export function Logo(props: React.HTMLAttributes<HTMLDivElement>) {
-  // eslint-disable-next-line react/prop-types
   const { className, ...otherProps } = props;
   return (
     <div

@@ -151,7 +151,10 @@ export function CreateTeamDialog({ children }: CreateTeamDialogProps) {
                         className="grid grid-cols-8 grid-rows-2 grid-flow-row space-y-1"
                       >
                         {colors.map((color) => (
-                          <FormItem className="flex items-center space-x-3 space-y-0">
+                          <FormItem
+                            key={color}
+                            className="flex items-center space-x-3 space-y-0"
+                          >
                             <FormControl>
                               <RadioGroupItem
                                 className="w-16 h-16"

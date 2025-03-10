@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 
-function useCountdown(targetDate) {
+function useCountdown(targetDate: string) {
   const [days, setDays] = useState(0);
   const [hours, setHours] = useState(0);
   const [minutes, setMinutes] = useState(0);
@@ -33,8 +33,6 @@ function useCountdown(targetDate) {
       setSeconds(Math.max(s, 0));
     }, 1000);
 
-    // #TODO: resolve this linting error
-    // eslint-disable-next-line consistent-return
     return () => clearInterval(interval);
   }, [targetDate]);
 

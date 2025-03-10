@@ -23,8 +23,3 @@ export const PopoverContent = React.forwardRef<
   </PopoverPrimitive.Portal>
 ));
 PopoverContent.displayName = PopoverPrimitive.Content.displayName;
-PopoverContent.defaultProps = {
-  className: '',
-  align: 'center',
-  sideOffset: 4,
-};

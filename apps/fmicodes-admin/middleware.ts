@@ -1,11 +1,17 @@
-import createMiddleware from 'next-intl/middleware';
-import { defaultLocale, locales } from './app/i18n';
-
-export default createMiddleware({
-  defaultLocale,
-  locales,
-});
+import createIntlMiddleware from 'next-intl/middleware';
+import { NextRequest } from 'next/server';
+import { routing } from './i18n/routing';
 
 export const config = {
-  matcher: ['/', '/(bg|en)/:path*'],
+  matcher: ['/', '/(bg|en)/:path*', '/api/:path*'],
 };
+
+export async function middleware(request: NextRequest) {
+  // next-intl configuration
+  const defaultLocale = request.headers.get('x-default-locale') || 'en';
+  const handleI18nRouting = createIntlMiddleware(routing);
+  const response = handleI18nRouting(request);
+  response.headers.set('x-default-locale', defaultLocale);
+
+  return response;
+}

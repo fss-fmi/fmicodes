@@ -53,8 +53,5 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   },
 );
 Button.displayName = 'Button';
-Button.defaultProps = {
-  asChild: false,
-};
 
 export { Button, buttonVariants };

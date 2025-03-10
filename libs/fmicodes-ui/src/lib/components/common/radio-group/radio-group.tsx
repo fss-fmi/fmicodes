@@ -24,9 +24,6 @@ const RadioGroup = React.forwardRef<
   );
 });
 RadioGroup.displayName = RadioGroupPrimitive.Root.displayName;
-RadioGroup.defaultProps = {
-  className: '',
-};
 
 type RadioGroupItemProps = React.ComponentPropsWithoutRef<
   typeof RadioGroupPrimitive.Item
@@ -54,8 +51,5 @@ const RadioGroupItem = React.forwardRef<
   );
 });
 RadioGroupItem.displayName = RadioGroupPrimitive.Item.displayName;
-RadioGroupItem.defaultProps = {
-  className: '',
-};
 
 export { RadioGroup, RadioGroupItem };

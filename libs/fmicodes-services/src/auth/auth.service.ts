@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import ms from 'ms';
+import ms, { StringValue } from 'ms';
 import { UsersService } from '../users/users.service';
 import { libConfig } from '../config/lib.config';
 
@@ -33,7 +33,7 @@ export class AuthService {
       refreshToken: this.jwtService.sign(payload, libConfig.jwtRefreshToken),
       expiresIn: new Date().setTime(
         new Date().getTime() +
-          ms(libConfig.jwtAccessToken.signOptions.expiresIn),
+          ms(libConfig.jwtAccessToken.signOptions.expiresIn as StringValue),
       ),
     };
   }

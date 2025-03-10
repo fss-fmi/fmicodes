@@ -12,7 +12,7 @@ export const EnableMethodLoggerDecorator = () => {
     const logger = new Logger(target.constructor.name);
 
     // Rewrite the original method with try/catch wrapper
-    // eslint-disable-next-line no-param-reassign
+
     descriptor.value = async (...args: never) => {
       logger.log(`START: ${propertyKey}()`);
       try {

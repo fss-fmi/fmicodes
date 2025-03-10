@@ -21,9 +21,10 @@ import { Logo } from '@fmicodes/fmicodes-ui/lib/components/site/server';
 import { Metadata } from 'next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Analytics } from '@vercel/analytics/react';
-import { locales } from '../../i18n';
+import { routing } from '../../../i18n/routing';
 
-export { useReportWebVitals } from 'next-axiom';
+// TODO: Re-enable
+// export { useReportWebVitals } from 'next-axiom';
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations('layout');
@@ -35,12 +36,14 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function RootLayout({
   children,
-  params: { locale },
+  params,
 }: {
   children: React.ReactNode;
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }) {
-  if (!locales.includes(locale)) {
+  // Ensure that the incoming `locale` is valid
+  const { locale } = await params;
+  if (!(routing.locales as readonly string[]).includes(locale)) {
     notFound();
   }
 

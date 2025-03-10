@@ -172,3 +172,5 @@ export const ImageInput = forwardRef(
     );
   },
 );
+
+ImageInput.displayName = 'ImageInput';

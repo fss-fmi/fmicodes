@@ -32,8 +32,5 @@ const Checkbox = React.forwardRef<
   </CheckboxPrimitive.Root>
 ));
 Checkbox.displayName = CheckboxPrimitive.Root.displayName;
-Checkbox.defaultProps = {
-  className: '',
-};
 
 export { Checkbox };
