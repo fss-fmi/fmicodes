@@ -22,7 +22,7 @@ import { useLocale } from 'next-intl';
 import { FaSignOutAlt } from 'react-icons/fa';
 import { LeaveTeamDialog } from '@fmicodes/fmicodes-ui/lib/components/site/leave-team-dialog/leave-team-dialog';
 import { Metadata } from 'next';
-import { getTranslations } from 'next-intl/server';
+import { getLocale, getTranslations } from 'next-intl/server';
 import { redirect } from 'next/navigation';
 import { EditTeamDialog } from '@fmicodes/fmicodes-ui/lib/components/site/edit-team-dialog/edit-team-dialog';
 
@@ -56,7 +56,7 @@ export async function generateMetadata({
 export default async function TeamPage({ params }: TeamPageProps) {
   const { teamId } = await params;
   const t = await getTranslations('team-page');
-  const locale = useLocale();
+  const locale = await getLocale();
   const user = await getUser();
 
   const team = await ApiClient.TeamsApiService.teamsControllerGetTeamV1({
