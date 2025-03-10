@@ -6,3 +6,4 @@
 /.nx/workspace-data
 
 /pnpm-lock.yaml
+/libs/fmicodes-api-client/src/client/src

@@ -6,6 +6,7 @@ import { notFound } from 'next/navigation';
 import { NextIntlClientProvider, useMessages } from 'next-intl';
 import { ThemeProvider } from '@fmicodes/fmicodes-ui/lib/providers/theme-provider';
 import { routing } from 'apps/fmicodes-admin/i18n/routing';
+import { getMessages } from 'next-intl/server';
 
 export const metadata = {
   title: 'Welcome to fmicodes-admin',
@@ -25,7 +26,7 @@ export default async function RootLayout({
     notFound();
   }
 
-  const messages = useMessages();
+  const messages = await getMessages();
   return (
     <NextIntlClientProvider locale={locale} messages={messages}>
       <html lang={locale}>

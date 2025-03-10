@@ -2,6 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { I18nContext } from 'nestjs-i18n';
 import { UsersService } from './users.service';
 import { PrismaService } from '../prisma/prisma.service';
+import { getRedisToken } from '@songkeys/nestjs-redis';
 import prismaServiceMock from '../prisma/prisma.service.mock';
 import { exampleUser, exampleUserCredentials } from './users.mock';
 import { UsersNoSuchUserException } from './exceptions/users-no-such-user.exception';
@@ -14,9 +15,20 @@ describe('UsersService', () => {
     t: () => jest.fn(),
   });
 
+  const redisServiceMock = {
+    get: jest.fn(),
+    set: jest.fn(),
+    del: jest.fn(),
+    publish: jest.fn(),
+  };
+
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [UsersService, PrismaService],
+      providers: [
+        { provide: getRedisToken('default'), useValue: redisServiceMock },
+        UsersService,
+        PrismaService,
+      ],
     })
       .overrideProvider(PrismaService)
       .useValue(prismaServiceMock)

@@ -2,6 +2,12 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.4.2](https://github.com/fss-fmi/fmicodes-2024/compare/v1.4.1...v1.4.2) (2025-03-10)
+
+### Bug Fixes
+
+- resolve fmicodes-site build errors ([5a80523](https://github.com/fss-fmi/fmicodes-2024/commit/5a8052366b451a3337218f7683ae67e793206719))
+
 ## [1.4.1](https://github.com/fss-fmi/fmicodes/compare/v1.4.0...v1.4.1) (2024-03-20)
 
 ## [1.4.0](https://github.com/fss-fmi/fmicodes/compare/v1.3.2...v1.4.0) (2024-03-20)
