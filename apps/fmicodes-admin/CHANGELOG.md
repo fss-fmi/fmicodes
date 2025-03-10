@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.4.2](https://github.com/fss-fmi/fmicodes-2024/compare/v1.4.1...v1.4.2) (2025-03-10)
+
+### Bug Fixes
+
+- next-intl runtime error in fmicodes-admin ([e66b972](https://github.com/fss-fmi/fmicodes-2024/commit/e66b9724dc543c8bab6e13c6c520221946b4c97c))
+- tailwind configuration in fmicodes-admin ([ffc7d0f](https://github.com/fss-fmi/fmicodes-2024/commit/ffc7d0fe6fa1014a08ba6a33851e068fc343060f))
+
 ## [1.4.1](https://github.com/fss-fmi/fmicodes/compare/v1.4.0...v1.4.1) (2024-03-20)
 
 ## [1.4.0](https://github.com/fss-fmi/fmicodes/compare/v1.3.2...v1.4.0) (2024-03-20)

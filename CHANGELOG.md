@@ -2,6 +2,16 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.4.2](https://github.com/fss-fmi/fmicodes-2024/compare/v1.4.1...v1.4.2) (2025-03-10)
+
+### Bug Fixes
+
+- correct ms usage type ([bf9cdd8](https://github.com/fss-fmi/fmicodes-2024/commit/bf9cdd8478cf8cf781ddef4c4c68742252db85f5))
+- correct serve command ([29aa9bc](https://github.com/fss-fmi/fmicodes-2024/commit/29aa9bc7cd146a9318517b35526cc7ab55648f27))
+- next-intl runtime error in fmicodes-admin ([e66b972](https://github.com/fss-fmi/fmicodes-2024/commit/e66b9724dc543c8bab6e13c6c520221946b4c97c))
+- resolve fmicodes-site build errors ([5a80523](https://github.com/fss-fmi/fmicodes-2024/commit/5a8052366b451a3337218f7683ae67e793206719))
+- tailwind configuration in fmicodes-admin ([ffc7d0f](https://github.com/fss-fmi/fmicodes-2024/commit/ffc7d0fe6fa1014a08ba6a33851e068fc343060f))
+
 ## [1.4.1](https://github.com/fss-fmi/fmicodes/compare/v1.4.0...v1.4.1) (2024-03-20)
 
 ## [1.4.0](https://github.com/fss-fmi/fmicodes/compare/v1.3.2...v1.4.0) (2024-03-20)
