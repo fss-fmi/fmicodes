@@ -3,7 +3,7 @@ import { getTranslations } from 'next-intl/server';
 import Image from 'next/image';
 import ApiClient from '@fmicodes/fmicodes-api-client/client';
 import Link from 'next/link';
-import { useLocale } from 'next-intl';
+import { getLocale } from 'next-intl/server';
 import { AddToTeamButton } from './components/add-to-team-button';
 import { ScrollArea } from '../../common/scroll-area/components/scroll-area';
 import {
@@ -32,7 +32,7 @@ interface MentorCardProps {
 
 export async function MentorCard({ mentor, user }: MentorCardProps) {
   const t = await getTranslations('site.mentor-card');
-  const locale = useLocale();
+  const locale = await getLocale();
 
   return (
     <Card className="w-full transition hover:-translate-y-1 hover:shadow-lg">

@@ -4,7 +4,7 @@ import { cookies } from 'next/headers';
 import { jwtDecode } from 'jwt-decode';
 import { ResponseCookies } from 'next/dist/compiled/@edge-runtime/cookies';
 import { unstable_noStore as noStore } from 'next/cache';
-import { useLocale } from 'next-intl';
+import { getLocale } from 'next-intl/server';
 import { ApiClient } from '../client';
 import { UsersPostCurrentTeamInvitesRespondRequestBodyDto } from '../client/src';
 import TeamInviteResponse = UsersPostCurrentTeamInvitesRespondRequestBodyDto.response;
@@ -17,7 +17,7 @@ export async function login(email: string, password: string) {
         email,
         password,
       },
-      acceptLanguage: useLocale(),
+      acceptLanguage: await getLocale(),
     });
 
     const { accessToken, refreshToken } = response;
@@ -38,7 +38,7 @@ export async function loginDiscord(code: string) {
       await ApiClient.AuthApiService.authControllerPostLoginDiscordV1({
         code,
         authorization: await getBearerToken(),
-        acceptLanguage: useLocale(),
+        acceptLanguage: await getLocale(),
       });
 
     const { accessToken, refreshToken } = response;
@@ -58,7 +58,7 @@ export async function signUp(formData: FormData) {
     method: 'POST',
     body: formData,
     headers: {
-      'Accept-Language': useLocale(),
+      'Accept-Language': await getLocale(),
     },
   });
 }
@@ -67,7 +67,7 @@ export async function completeOnboarding() {
   try {
     await ApiClient.UsersApiService.usersControllerPatchCurrentOnboardingV1({
       authorization: await getBearerToken(),
-      acceptLanguage: useLocale(),
+      acceptLanguage: await getLocale(),
     });
   } catch (error) {
     if (error instanceof ApiClient.ApiError) {
