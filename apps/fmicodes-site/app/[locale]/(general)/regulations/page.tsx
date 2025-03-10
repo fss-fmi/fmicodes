@@ -50,8 +50,14 @@ export default function RegulationsPage() {
           </ul>
           <p>
             Право на участие във FMI{'{Codes}'} нямат лицата, които са изрично
-            посочени в списъка с дисквалифицирани участници на уебсайта на
-            събитието.
+            посочени в{' '}
+            <a
+              className="font-bold underline transition-colors duration-200 ease-in-out hover:text-[#725979]"
+              href="https://docs.google.com/document/d/1wej5IlbaT7MoyaW89tG8QigZN9H_5IS7_wPXHIzc0T4/edit?usp=sharing"
+            >
+              списъка с дисквалифицирани участници
+            </a>{' '}
+            на уебсайта на събитието.
           </p>
         </>
       ),
