@@ -22,6 +22,7 @@ import { Suspense } from 'react';
 import { Metadata } from 'next';
 import { libConfig } from '@fmicodes/fmicodes-services/config/lib.config';
 import Link from 'next/link';
+import { notFound } from 'next/navigation';
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations('teams-page');
@@ -33,6 +34,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function TeamsPage() {
+  notFound();
   const t = await getTranslations('teams-page');
   const user = await getUser();
 

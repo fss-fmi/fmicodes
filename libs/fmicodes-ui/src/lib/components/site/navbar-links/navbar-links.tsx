@@ -15,10 +15,10 @@ export function NavbarLinks({ className, variant }: NavbarLinksProps) {
       title: t('home'),
       href: `/${locale}`,
     },
-    {
-      title: t('teams'),
-      href: `/${locale}/teams`,
-    },
+    // {
+    //   title: t('teams'),
+    //   href: `/${locale}/teams`,
+    // },
     {
       title: t('regulations'),
       href: `/${locale}/regulations`,
