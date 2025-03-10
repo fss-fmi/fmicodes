@@ -88,9 +88,7 @@ export default async function RootLayout({
 
             <Blobcho />
 
-            <main className="max-w-[88rem] m-auto px-4 overflow-x-hidden">
-              {children}
-            </main>
+            <main>{children}</main>
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>

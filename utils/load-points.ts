@@ -6,7 +6,7 @@ const prisma = new PrismaClient();
 async function populateDatabase() {
   try {
     const filePath =
-      'C:\\Users\\tsb\\Downloads\\Критерии FMI{Codes} 2024 - Total.tsv';
+      'C:\\Users\\tsb\\Downloads\\Критерии FMI{Codes} 2025 - Total.tsv';
     const csvData = fs.readFileSync(filePath, 'utf-8');
 
     const rows = csvData.trim().split('\n').slice(1); // Skip the header row

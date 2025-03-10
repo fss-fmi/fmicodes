@@ -19,6 +19,7 @@
       "home": "Home",
       "teams": "Teams",
       "regulations": "Regulations",
+      "schedule": "Schedule",
       "mentors": "Mentors",
       "ranking": "Ranking"
     },
@@ -53,9 +54,9 @@
       "password": "Password",
       "password-confirmation": "Password Confirmation",
       "passwords-dont-match": "Passwords don't match.",
-      "accept-hackathon-regulations": "I accept the FMI'{Codes'} 2024 regulations.",
+      "accept-hackathon-regulations": "I accept the FMI'{Codes'} 2025 regulations.",
       "please-read-the": "Please, read the",
-      "hackathon-regulations": "FMI'{Codes'} 2024 regulations",
+      "hackathon-regulations": "FMI'{Codes'} 2025 regulations",
       "before-signing-up": "before signing up",
       "university": "University",
       "university-major": "University Major",
@@ -118,7 +119,7 @@
       },
       "completed-step": {
         "title": "We're all set!",
-        "description": "You are now ready to start your journey in FMI'{Codes'} 2024. Let's go!",
+        "description": "You are now ready to start your journey in FMI'{Codes'} 2025. Let's go!",
         "previous": "Previous",
         "lets-go": "Let's go!",
         "try-again": "Please, try again. If the problem persists, contact us."
@@ -197,10 +198,10 @@
     },
     "sponsors-showcase": {
       "with-the-support-of": "With the support of",
-      "our-gold-sponsors": "our gold sponsors",
-      "our-silver-sponsors": "our silver sponsors",
-      "our-bronze-sponsors": "our bronze sponsors",
-      "our-partners": "our partners"
+      "our-gold-sponsors": "our gold partners",
+      "our-silver-sponsors": "our silver partners",
+      "our-bronze-sponsors": "our bronze partners",
+      "our-partners": "our in-kind partners"
     },
     "mentor-card": {
       "availability": "Availability",

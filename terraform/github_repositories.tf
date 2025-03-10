@@ -1,6 +1,6 @@
 resource "github_repository" "github_repository" {
   name         = "fmicodes"
-  description  = "Website of the FMI{Codes} 2024 hackathon."
+  description  = "Website of the FMI{Codes} 2025 hackathon."
   homepage_url = "https://fmicodes.com"
 
   visibility = "public"

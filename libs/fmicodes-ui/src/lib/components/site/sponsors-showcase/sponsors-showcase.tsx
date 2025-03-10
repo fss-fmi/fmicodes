@@ -43,71 +43,74 @@ export function SponsorsShowcase({ sponsors, variant }: SponsorsShowcaseProps) {
     }
   }
 
-  return (
-    <Card
-      className={cn(
-        'grid w-full mt-2  overflow-hidden',
-        variant === 'gold' || variant === 'silver'
-          ? 'grid-cols-2 grid-rows-5 md:grid-rows-none md:grid-cols-5 md:aspect-[5/2]'
-          : '',
-        variant === 'bronze'
-          ? 'grid-cols-2 grid-rows-2 md:grid-rows-none md:grid-cols-4 md:aspect-[4/1]'
-          : '',
-      )}
-    >
-      <div
-        className={cn(
-          'flex flex-col justify-center items-center border  p-4',
-          variant === 'gold' || variant === 'silver'
-            ? 'col-span-2 row-span-2'
-            : '',
-          variant === 'bronze' ? 'col-span-2 row-span-1' : '',
-        )}
-      >
-        <span className="font-semibold uppercase text-2xl text-center">
-          {t('with-the-support-of')}
-        </span>
-        <span
-          className="text-4xl font-bold uppercase transition-all text-center"
-          style={{
-            color: highlightedSponsor?.color,
-            scale: highlightedSponsor ? 1.3 : 1,
-          }}
-        >
-          {highlightedSponsor?.name || renderSponsorVariant()}
-        </span>
-      </div>
+  // Default text colors per section
+  const variantTextColors: Record<typeof variant, string> = {
+    gold: 'text-yellow-500',
+    silver: 'text-gray-500',
+    bronze: 'text-orange-600',
+    partners: 'text-blue-500',
+  };
 
-      {sponsors.map((sponsor) => (
-        <Dialog key={sponsor.id}>
-          <DialogTrigger asChild>
-            <div
-              className="flex flex-col justify-center items-center border cursor-pointer p-4"
-              onMouseEnter={() => setHighlightedSponsor(sponsor)}
-              onMouseLeave={() => setHighlightedSponsor(undefined)}
-            >
-              <Image
-                src={`/assets/images/sponsors/${sponsor.logo}`}
-                alt={sponsor.name}
-                width={256}
-                height={256}
-              />
-            </div>
-          </DialogTrigger>
-          <DialogContent>
-            <DialogTitle>{sponsor.name}</DialogTitle>
-            <ScrollArea className="max-h-72">
-              <p className="pr-2">{sponsor.description}</p>
-            </ScrollArea>
-            <Button asChild>
-              <Link href={sponsor.website}>
-                <FaLink className="mr-2 h-4 w-4" />
-                Visit
-              </Link>
-            </Button>
-          </DialogContent>
-        </Dialog>
-      ))}
+  return (
+    <Card className="w-full mt-2 p-4">
+      <div className="grid gap-4 md:grid-cols-[auto,1fr]">
+        {/* Mobile: Sponsor Type on Top */}
+        <div className="flex flex-col justify-center items-center border p-4 rounded-lg shadow-md w-full text-center md:w-64 md:text-left">
+          <span className="font-semibold uppercase text-lg">
+            {t('with-the-support-of')}
+          </span>
+          <span
+            className={cn(
+              'text-3xl font-bold uppercase transition-all duration-200 text-center',
+              highlightedSponsor
+                ? '' // Remove default class when hovering
+                : variantTextColors[variant], // Default variant color
+            )}
+            style={{
+              color: highlightedSponsor?.color || '', // Change to sponsor color on hover
+              scale: highlightedSponsor ? 1.3 : 1,
+            }}
+          >
+            {highlightedSponsor?.name || renderSponsorVariant()}
+          </span>
+        </div>
+
+        {/* Sponsors Grid (2 columns on mobile, 3 on desktop) */}
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 p-4">
+          {sponsors.map((sponsor) => (
+            <Dialog key={sponsor.name}>
+              <DialogTrigger asChild>
+                <div
+                  className="flex flex-col justify-center items-center border cursor-pointer p-4 transition-transform hover:scale-105 rounded-lg shadow-md"
+                  style={{ height: '180px', backgroundColor: 'transparent' }}
+                  onMouseEnter={() => setHighlightedSponsor(sponsor)}
+                  onMouseLeave={() => setHighlightedSponsor(undefined)}
+                >
+                  <Image
+                    src={`/assets/images/sponsors/${sponsor.logo}`}
+                    alt={sponsor.name}
+                    width={150}
+                    height={100}
+                    className="object-contain max-h-20"
+                  />
+                </div>
+              </DialogTrigger>
+              <DialogContent>
+                <DialogTitle>{sponsor.name}</DialogTitle>
+                <ScrollArea className="max-h-72">
+                  <p className="pr-2">{sponsor.description}</p>
+                </ScrollArea>
+                <Button asChild>
+                  <Link href={sponsor.website} target="_blank">
+                    <FaLink className="mr-2 h-4 w-4" />
+                    Visit
+                  </Link>
+                </Button>
+              </DialogContent>
+            </Dialog>
+          ))}
+        </div>
+      </div>
     </Card>
   );
 }
