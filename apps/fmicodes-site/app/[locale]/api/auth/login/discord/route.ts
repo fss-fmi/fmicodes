@@ -1,11 +1,11 @@
 import { getUser, loginDiscord } from '@fmicodes/fmicodes-api-client/next';
 import { redirect, RedirectType } from 'next/navigation';
-import { useLocale } from 'next-intl';
+import { getLocale } from 'next-intl/server';
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const code = searchParams.get('code');
-  const locale = useLocale();
+  const locale = await getLocale();
 
   const preLoginUser = await getUser();
   const response = await loginDiscord(code);

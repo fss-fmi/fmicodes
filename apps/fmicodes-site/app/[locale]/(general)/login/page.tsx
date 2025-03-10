@@ -3,13 +3,12 @@ import { getUser } from '@fmicodes/fmicodes-api-client/next';
 import { redirect, RedirectType } from 'next/navigation';
 import Link from 'next/link';
 import { Card } from '@fmicodes/fmicodes-ui/lib/components/common/server';
-import { getTranslations } from 'next-intl/server';
+import { getLocale, getTranslations } from 'next-intl/server';
 import { Logo } from '@fmicodes/fmicodes-ui/lib/components/site/server';
-import { useLocale } from 'next-intl';
 import { Metadata } from 'next';
 
 interface LoginPageProps {
-  searchParams?: { [key: string]: string | string[] | undefined };
+  params: Promise<{ error?: string }>;
 }
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -21,14 +20,14 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default async function LoginPage({ searchParams }: LoginPageProps) {
+export default async function LoginPage({ params }: LoginPageProps) {
   if (await getUser()) {
     redirect('/', RedirectType.replace);
   }
 
   const t = await getTranslations('login-page');
-  const error = searchParams?.error as string | undefined;
-  const locale = useLocale();
+  const { error } = await params;
+  const locale = await getLocale();
 
   return (
     <Card className="mx-auto mt-10 grid h-5/6 w-5/6 md:w-2/3 flex-col items-center justify-center xl:grid-cols-2 xl:px-0 overflow-hidden">
@@ -36,15 +35,6 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
         <div className="relative z-20 flex items-center text-lg font-medium">
           <Logo />
         </div>
-
-        {/* <div className="relative z-20 mt-auto"> */}
-        {/*  <blockquote className="space-y-2"> */}
-        {/*    <p className="text-lg"> */}
-        {/*      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed */}
-        {/*    </p> */}
-        {/*    <footer className="text-sm">{`FMI{Codes}`}</footer> */}
-        {/*  </blockquote> */}
-        {/* </div> */}
       </div>
 
       <div className="p-8">
