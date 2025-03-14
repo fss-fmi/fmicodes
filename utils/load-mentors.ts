@@ -3,6 +3,49 @@ import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
+const categoryColors: Record<string, string> = {
+  familiar_with_fields: '#FF5733', // Bright orange
+  programming_languages: '#4285F4', // Google blue
+  web_technologies: '#34A853', // Google green
+  server_technologies: '#FBBC05', // Google yellow
+  database_tools: '#A142F4', // Purple
+  mobile_apps: '#E91E63', // Pink
+  machine_learning: '#9C27B0', // Deep purple
+  game_development: '#3F51B5', // Indigo
+  hardware: '#009688', // Teal
+  cloud_technologies: '#FF9800', // Amber
+  tools: '#795548', // Brown
+};
+
+function lightenColor(hex: string, percent: number): string {
+  const num = parseInt(hex.slice(1), 16),
+    amt = Math.round(255 * (percent / 100)),
+    r = Math.min(255, (num >> 16) + amt),
+    g = Math.min(255, ((num >> 8) & 0x00ff) + amt),
+    b = Math.min(255, (num & 0x0000ff) + amt);
+
+  return `#${((r << 16) | (g << 8) | b).toString(16).padStart(6, '0')}`;
+}
+
+function getCategoryEntries(
+  category: string,
+  data: string,
+): { where: { name: string }; create: { name: string; color: string } }[] {
+  return data
+    .split(',')
+    .filter((item) => item.trim() !== '')
+    .map((item, index, array) => ({
+      where: { name: item.trim() },
+      create: {
+        name: item.trim(),
+        color: lightenColor(
+          categoryColors[category] || '#000000',
+          (index / array.length) * 15,
+        ), // Adjust brightness gradually
+      },
+    }));
+}
+
 interface CSVRecord {
   time_stamp: string;
   email: string;
@@ -36,7 +79,7 @@ interface CSVRecord {
 async function populateDatabase() {
   try {
     const data = fs.readFileSync(
-      'C:\\Users\\tsb\\Downloads\\Ментор - FMI{Codes} 2025 (отговори) - Отговори от формуляр 1.tsv',
+      '/Users/mihaildobroslavski/Documents/FMI CODES/fmicodes-2024/utils/Answers.tsv',
       'utf8',
     );
     console.log(data);
@@ -109,7 +152,7 @@ async function populateDatabase() {
       await prisma.mentor.create({
         data: {
           name: record.full_name,
-          pictureUrl: '',
+          pictureUrl: record.picture_url,
           discordId: record.discord_account,
           company: {
             connect: {
@@ -131,42 +174,42 @@ async function populateDatabase() {
               .filter((slot) => slot.trim() !== '')
               .map((slot) => `Неделя ${slot.trim()}`),
           ],
+
           technologies: {
-            connect: [
-              ...record.familiar_with_fields.split(',').map((field) => ({
-                name: field.trim(),
-              })),
-              ...record.programming_languages.split(',').map((lang) => ({
-                name: lang.trim(),
-              })),
-              ...record.web_technologies.split(',').map((tech) => ({
-                name: tech.trim(),
-              })),
-              ...record.server_technologies.split(',').map((tech) => ({
-                name: tech.trim(),
-              })),
-              ...record.database_tools.split(',').map((tool) => ({
-                name: tool.trim(),
-              })),
-              ...record.mobile_apps.split(',').map((app) => ({
-                name: app.trim(),
-              })),
-              ...record.machine_learning.split(',').map((ml) => ({
-                name: ml.trim(),
-              })),
-              ...record.game_development.split(',').map((game) => ({
-                name: game.trim(),
-              })),
-              ...record.hardware.split(',').map((hw) => ({
-                name: hw.trim(),
-              })),
-              ...record.cloud_technologies.split(',').map((cloud) => ({
-                name: cloud.trim(),
-              })),
-              ...record.tools.split(',').map((tool) => ({
-                name: tool.trim(),
-              })),
-            ].filter((record) => record.name !== ''),
+            connectOrCreate: [
+              ...getCategoryEntries(
+                'familiar_with_fields',
+                record.familiar_with_fields,
+              ),
+              ...getCategoryEntries(
+                'programming_languages',
+                record.programming_languages,
+              ),
+              ...getCategoryEntries(
+                'web_technologies',
+                record.web_technologies,
+              ),
+              ...getCategoryEntries(
+                'server_technologies',
+                record.server_technologies,
+              ),
+              ...getCategoryEntries('database_tools', record.database_tools),
+              ...getCategoryEntries('mobile_apps', record.mobile_apps),
+              ...getCategoryEntries(
+                'machine_learning',
+                record.machine_learning,
+              ),
+              ...getCategoryEntries(
+                'game_development',
+                record.game_development,
+              ),
+              ...getCategoryEntries('hardware', record.hardware),
+              ...getCategoryEntries(
+                'cloud_technologies',
+                record.cloud_technologies,
+              ),
+              ...getCategoryEntries('tools', record.tools),
+            ],
           },
         },
       });

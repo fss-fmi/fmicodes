@@ -4,7 +4,7 @@ import Image from 'next/image';
 import ApiClient from '@fmicodes/fmicodes-api-client/client';
 import Link from 'next/link';
 import { getLocale } from 'next-intl/server';
-import { AddToTeamButton } from './components/add-to-team-button';
+//import { AddToTeamButton } from './components/add-to-team-button';
 import { ScrollArea } from '../../common/scroll-area/components/scroll-area';
 import {
   Badge,
@@ -70,20 +70,15 @@ export async function MentorCard({ mentor, user }: MentorCardProps) {
           <h3 className="font-bold">{t('technologies')}</h3>
           <ScrollArea className="h-40 flex flex-row justify-center">
             {mentor.technologies.map((technology) => (
-              <Badge key={technology.name} className="pointer-events-none">
+              <Badge
+                key={technology.name}
+                className="pointer-events-none"
+                style={{ color: technology.color }}
+              >
                 {technology.name}
               </Badge>
             ))}
           </ScrollArea>
-        </div>
-
-        <div>
-          {!mentor.team && <AddToTeamButton user={user} mentorId={mentor.id} />}
-          {mentor.team && (
-            <Link href={`${locale}/teams/${mentor.team.id}`}>
-              <Button className="w-full">{mentor.team.name}</Button>
-            </Link>
-          )}
         </div>
       </CardContent>
     </Card>
