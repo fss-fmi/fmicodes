@@ -1,4 +1,5 @@
 'use client';
+//TODO ^: move this file to the fmicodes-ui library rather than the fmicodes-site app
 
 import React, { useState } from 'react';
 import { InfoIcon, X } from 'lucide-react';
@@ -20,6 +21,7 @@ export const TechColorLegend = () => {
     tools: '#795548', // Brown
   };
 
+  //TODO : localize with i18n in the future
   const categoryNamesBG: Record<string, string> = {
     familiar_with_fields: 'Области на познание',
     programming_languages: 'Програмни езици',
@@ -47,6 +49,7 @@ export const TechColorLegend = () => {
       {isVisible && (
         <div className="absolute bottom-full right-0 mb-2 bg-black dark:bg-white rounded-lg shadow-xl p-4 w-72 border border-gray-200 max-h-96 overflow-y-auto">
           <div className="flex justify-between items-center mb-3 border-b pb-2">
+            {/* TODO : localize with i18n in the future */}
             <h3 className="text-lg font-bold">
               Цветова легенда на технологиите
             </h3>

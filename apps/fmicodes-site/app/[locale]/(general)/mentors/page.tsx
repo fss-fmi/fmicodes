@@ -49,6 +49,7 @@ export default async function MentorsPage() {
   const t = await getTranslations('mentors-page');
   const user = await getUser();
 
+  //TODO : localize with i18n in the future
   const infoCards = [
     {
       icon: Lightbulb,
@@ -102,6 +103,7 @@ export default async function MentorsPage() {
     const mentorCards = mentors.map((mentor) => (
       <MentorCard
         key={mentor.id}
+        // TODO IMPORTANT : REMOVE THIS ts-ignore comment
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         mentor={mentor}
