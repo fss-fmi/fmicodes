@@ -2,25 +2,26 @@ import Image from 'next/image';
 
 export function Hero() {
   const bannerWidth = 611;
-  const bannerHeight = 210;
+  const bannerHeight = 500;
   const aspectRatio = (bannerHeight / bannerWidth) * 100;
 
   return (
-    <div className="mx-auto w-full px-4 md:px-6 lg:px-32 mb-8 pointer-events-none">
-      <div className="relative w-full z-10">
+    <div className="mx-auto w-full px-4 md:px-6 lg:px-32 mb-8 pointer-events-none flex justify-center">
+      <div className="relative w-full md:w-1/2 flex justify-center">
         <div
-          className="relative w-full h-0"
+          className="relative w-full h-0 flex justify-center"
           style={{ paddingBottom: `${aspectRatio}%` }}
         >
           <Image
-            src="/assets/images/banner.svg"
+            src="/assets/images/banner2.svg"
             alt="FMI{Codes} event banner with decorative background"
-            className="absolute top-0 left-0 right-0 w-full h-full object-cover"
+            className="absolute top-0 w-full h-full object-contain"
             fill
             priority
             quality={90}
             sizes="100vw"
           />
+          {/*
           <div className="absolute inset-0 flex items-center justify-center mt-6 md:mt-16">
             <div className="relative w-full max-w-[90%]">
               <Image
@@ -35,6 +36,7 @@ export function Hero() {
               />
             </div>
           </div>
+          */}
         </div>
       </div>
     </div>
