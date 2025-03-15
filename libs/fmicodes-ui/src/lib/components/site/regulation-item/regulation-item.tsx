@@ -17,7 +17,7 @@ export function RegulationItem({ title, content }: RegulationItemProps) {
   return (
     <Accordion type="single" collapsible>
       <AccordionItem value="item-1">
-        <AccordionTrigger className="text-xl underline hover:text-2xl">
+        <AccordionTrigger className="text-left text-xl underline hover:text-2xl">
           {title}
         </AccordionTrigger>
         <AccordionContent className="flex flex-col space-y-4 text-lg">
