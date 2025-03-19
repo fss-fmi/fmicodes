@@ -1,16 +1,127 @@
 import { getTranslations } from 'next-intl/server';
+import React from 'react';
+import { Metadata } from 'next';
 import {
   Card,
   CardContent,
   CardHeader,
   Skeleton,
+  Badge,
 } from '@fmicodes/fmicodes-ui/lib/components/common/server';
-import React, { Suspense } from 'react';
-import { Metadata } from 'next';
-import { ApiClient } from '@fmicodes/fmicodes-api-client/client';
-import { FaPeopleGroup } from 'react-icons/fa6';
-import { TeamBanner } from '@fmicodes/fmicodes-ui/lib/components/site/team-banner/team-banner';
 import Image from 'next/image';
+import { Trophy, Medal, Github } from 'lucide-react';
+
+// Hardcoded teams data
+const teamsData = [
+  {
+    id: 1,
+    name: 'The Commiters',
+    totalPoints: 74,
+    github: 'https://github.com/Alexander759/CellularAutomaton',
+  },
+  {
+    id: 2,
+    name: 'Kopengafen',
+    totalPoints: 74,
+    github: 'https://github.com/RamiHennawi/fmi-codes-2025',
+  },
+  {
+    id: 3,
+    name: 'Exodia',
+    totalPoints: 74,
+    github: 'https://github.com/ExodiaFMI/',
+  },
+  {
+    id: 4,
+    name: 'Zafira',
+    totalPoints: 72,
+    github: 'https://github.com/MartinM2304/hackathon2025/tree/main',
+  },
+  {
+    id: 5,
+    name: 'Corgi Lovers',
+    totalPoints: 71,
+    github: 'https://github.com/Hackaton-2025-ASN/ASN',
+  },
+  {
+    id: 6,
+    name: 'Hummingbird',
+    totalPoints: 70,
+    github: 'https://github.com/Hummingbird-FMI-Codes',
+  },
+  {
+    id: 7,
+    name: 'The Social Butterflies',
+    totalPoints: 70,
+    github: 'https://github.com/Alexander1022/social-flutter',
+  },
+  {
+    id: 8,
+    name: 'Жълта Книжка',
+    totalPoints: 69,
+    github: 'https://github.com/TheBookThief/yellow-note-book',
+  },
+  {
+    id: 9,
+    name: 'The Chu',
+    totalPoints: 69,
+    github: 'https://github.com/ItsRizee/fmi-codes',
+  },
+  {
+    id: 10,
+    name: 'Kolegite',
+    totalPoints: 68,
+    github: 'https://github.com/michislava/Insecta',
+  },
+  {
+    id: 11,
+    name: 'Ctrl+Alt+Elite',
+    totalPoints: 68,
+    github: 'https://github.com/MihailTs/VROOM',
+  },
+  {
+    id: 12,
+    name: 'CodeBros',
+    totalPoints: 67,
+    github: 'https://github.com/MartiHr/TimeBug',
+  },
+  {
+    id: 13,
+    name: 'Баланджинатор',
+    totalPoints: 66,
+    github: 'https://github.com/orgs/Balajinator-FMI/repositories',
+  },
+  {
+    id: 14,
+    name: 'SpanakHaters',
+    totalPoints: 65,
+    github: 'https://github.com/SuperMiro0809/FMI-Codes-2025.git',
+  },
+  {
+    id: 15,
+    name: 'PeakMotion',
+    totalPoints: 65,
+    github: 'https://github.com/VelislavP/peakmotion-front-end',
+  },
+  {
+    id: 16,
+    name: 'Гвинпин',
+    totalPoints: 64,
+    github: 'https://github.com/JivkoNushev/IoT-Firewall',
+  },
+  {
+    id: 17,
+    name: '2^2',
+    totalPoints: 64,
+    github: 'https://github.com/N1k1ta-white/StatUI',
+  },
+  {
+    id: 18,
+    name: 'ByteStorm',
+    totalPoints: 54,
+    github: 'https://github.com/polinizal/MadScientists',
+  },
+];
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations('ranking-page');
@@ -24,166 +135,271 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function RankingPage() {
   const t = await getTranslations('ranking-page');
 
-  async function RankingCards() {
-    const teams = await ApiClient.TeamsApiService.teamsControllerGetV1({});
-    const sortedTeams = teams
-      .filter((team) => team.totalPoints !== undefined)
-      .sort((team1, team2) => team2.totalPoints - team1.totalPoints);
-    const [firstTeam, secondTeam, thirdTeam, ...otherTeams] = sortedTeams;
+  const sortedTeams = [...teamsData].sort(
+    (team1, team2) => team2.totalPoints - team1.totalPoints,
+  );
+  const [firstTeam, secondTeam, thirdTeam, ...otherTeams] = sortedTeams;
 
-    return (
-      <div className="max-w-3xl m-auto flex flex-col gap-2">
-        <Card>
-          <CardHeader className="relative p-0 w-full aspect-[21/9] space-y-0 overflow-hidden rounded-t-xl">
-            <TeamBanner team={firstTeam} />
-            <Image
-              src="/assets/images/ranking/first.jpg"
-              alt={firstTeam.name}
-              width={3000}
-              height={2000}
-              className="absolute inset-0 object-cover w-full h-full hover:opacity-0 transition-opacity"
-            />
-          </CardHeader>
-          <CardContent className="p-3">
-            <div className="flex items-center">
-              <FaPeopleGroup className="w-6 h-6 mr-2" />
-              <p className="text-lg font-bold text-ellipsis overflow-hidden grow whitespace-nowrap">
-                {firstTeam.name}
-              </p>
-              <p className="text-lg font-bold">{firstTeam.totalPoints}</p>
-              <p className="text-xs">/700</p>
+  // Calculate the highest possible score
+  const maxScore = 100;
+
+  return (
+    <div className="py-8 px-4 max-w-5xl mx-auto">
+      <div className="text-center mb-12">
+        <h1 className="text-3xl sm:text-4xl md:text-6xl font-black uppercase mb-4">
+          {t('title')}
+        </h1>
+        <p className="max-w-2xl mx-auto">{t('description')}</p>
+      </div>
+
+      {/* Podium section - adjusted for mobile */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+        {/* First place - always first in mobile view */}
+        <div className="order-1 md:order-2">
+          <Card className="transform transition-all duration-300 hover:scale-105 hover:shadow-xl border-2 border-yellow-500 dark:border-yellow-600">
+            <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-yellow-500 dark:bg-yellow-600 rounded-full p-4 shadow-lg z-10">
+              <Trophy className="w-8 h-8 text-white" />
             </div>
-          </CardContent>
-        </Card>
-
-        <div className="max-w-3xl m-auto grid grid-cols-2 gap-2 w-full">
-          <Card>
-            <CardHeader className="relative p-0 w-full aspect-[16/9] space-y-0 overflow-hidden rounded-t-xl">
-              <TeamBanner team={secondTeam} />
-              <Image
-                src="/assets/images/ranking/second.jpg"
-                alt={secondTeam.name}
-                width={3000}
-                height={2000}
-                className="absolute inset-0 object-cover w-full h-full hover:opacity-0 transition-opacity"
-              />
-            </CardHeader>
-            <CardContent className="p-3">
-              <div className="flex items-center">
-                <FaPeopleGroup className="w-6 h-6 mr-2" />
-                <p className="text-lg font-bold text-ellipsis overflow-hidden grow whitespace-nowrap">
-                  {secondTeam.name}
-                </p>
-                <p className="text-lg font-bold">{secondTeam.totalPoints}</p>
-                <p className="text-xs">/700</p>
+            <CardHeader className="relative p-0 w-full aspect-video space-y-0 overflow-hidden rounded-t-xl mt-2">
+              <div className="absolute top-0 left-0 bg-yellow-500 dark:bg-yellow-600 text-white px-4 py-2 rounded-br-lg font-bold">
+                1<sup>st</sup>
               </div>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader className="relative p-0 w-full aspect-[16/9] space-y-0 overflow-hidden rounded-t-xl">
-              <TeamBanner team={thirdTeam} />
               <Image
-                src="/assets/images/ranking/third.jpg"
-                alt={thirdTeam.name}
+                src="/assets/images/ranking/first.jpg"
+                alt={firstTeam.name}
                 width={3000}
                 height={2000}
-                className="absolute inset-0 object-cover w-full h-full hover:opacity-0 transition-opacity"
+                className="object-cover w-full h-full"
               />
             </CardHeader>
-            <CardContent className="p-3">
-              <div className="flex items-center">
-                <FaPeopleGroup className="w-6 h-6 mr-2" />
-                <p className="text-lg font-bold text-ellipsis overflow-hidden grow whitespace-nowrap">
-                  {thirdTeam.name}
-                </p>
-                <p className="text-lg font-bold">{thirdTeam.totalPoints}</p>
-                <p className="text-xs">/700</p>
+            <CardContent className="p-5">
+              <div className="flex flex-col gap-2">
+                <h3 className="text-2xl font-bold text-ellipsis overflow-hidden whitespace-nowrap">
+                  {firstTeam.name}
+                  {firstTeam.github && (
+                    <a
+                      href={firstTeam.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="ml-2 inline-block p-1 bg-black rounded-full hover:bg-gray-800 transition-colors"
+                    >
+                      <Github className="w-5 h-5 text-white" />
+                    </a>
+                  )}
+                </h3>
+                <div className="flex items-center justify-between">
+                  <Badge className="bg-yellow-100 text-yellow-800 border-yellow-300 dark:bg-yellow-900 dark:text-yellow-100 dark:border-yellow-700 text-sm">
+                    ПОБЕДИТЕЛ #{firstTeam.id}
+                  </Badge>
+                  <div className="flex items-baseline">
+                    <span className="text-3xl font-bold text-yellow-500 dark:text-yellow-400">
+                      {firstTeam.totalPoints}
+                    </span>
+                    <span className="text-xs text-gray-400 dark:text-gray-500 ml-1">
+                      /{maxScore}
+                    </span>
+                  </div>
+                </div>
+                <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3 mt-2">
+                  <div
+                    className="bg-yellow-500 dark:bg-yellow-600 h-3 rounded-full"
+                    style={{
+                      width: `${(firstTeam.totalPoints / maxScore) * 100}%`,
+                    }}
+                  ></div>
+                </div>
               </div>
             </CardContent>
           </Card>
         </div>
 
-        <div className="max-w-2xl m-auto w-full flex flex-col gap-2">
-          {otherTeams.map((team) => (
-            <Card key={team.id}>
-              <CardContent className="p-3">
-                <div className="flex items-center">
-                  <FaPeopleGroup className="w-6 h-6 mr-2" />
-                  <p className="text-lg font-bold text-ellipsis overflow-hidden grow">
-                    {team.name}
-                  </p>
-                  <p className="text-lg font-bold">{team.totalPoints}</p>
-                  <p className="text-xs">/700</p>
+        {/* Second place */}
+        <div className="order-2 md:order-1 md:mt-8">
+          <Card className="transform transition-all duration-300 hover:scale-105 hover:shadow-lg">
+            <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-gray-100 dark:bg-gray-700 rounded-full p-3 shadow-md z-10">
+              <Medal className="w-6 h-6 text-gray-500 dark:text-gray-300" />
+            </div>
+            <CardHeader className="relative p-0 w-full aspect-video space-y-0 overflow-hidden rounded-t-xl mt-2">
+              <div className="absolute top-0 left-0 bg-gray-500 dark:bg-gray-600 text-white px-4 py-2 rounded-br-lg font-bold">
+                2<sup>nd</sup>
+              </div>
+              <Image
+                src="/assets/images/ranking/second.jpg"
+                alt={secondTeam.name}
+                width={3000}
+                height={2000}
+                className="object-cover w-full h-full"
+              />
+            </CardHeader>
+            <CardContent className="p-4">
+              <div className="flex flex-col gap-2">
+                <h3 className="text-xl font-bold text-ellipsis overflow-hidden whitespace-nowrap">
+                  {secondTeam.name}
+                  {secondTeam.github && (
+                    <a
+                      href={secondTeam.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="ml-2 inline-block p-1 bg-black rounded-full hover:bg-gray-800 transition-colors"
+                    >
+                      <Github className="w-4 h-4 text-white" />
+                    </a>
+                  )}
+                </h3>
+                <div className="flex items-center justify-between">
+                  <Badge variant="outline" className="text-sm">
+                    ПОБЕДИТЕЛ #{secondTeam.id}
+                  </Badge>
+                  <div className="flex items-baseline">
+                    <span className="text-2xl font-bold text-gray-500 dark:text-gray-400">
+                      {secondTeam.totalPoints}
+                    </span>
+                    <span className="text-xs text-gray-400 dark:text-gray-500 ml-1">
+                      /{maxScore}
+                    </span>
+                  </div>
+                </div>
+                <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 mt-2">
+                  <div
+                    className="bg-gray-500 dark:bg-gray-400 h-2 rounded-full"
+                    style={{
+                      width: `${(secondTeam.totalPoints / maxScore) * 100}%`,
+                    }}
+                  ></div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Third place */}
+        <div className="order-3 md:mt-12">
+          <Card className="transform transition-all duration-300 hover:scale-105 hover:shadow-lg">
+            <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-amber-100 dark:bg-amber-900 rounded-full p-3 shadow-md z-10">
+              <Medal className="w-6 h-6 text-amber-700 dark:text-amber-300" />
+            </div>
+            <CardHeader className="relative p-0 w-full aspect-video space-y-0 overflow-hidden rounded-t-xl mt-2">
+              <div className="absolute top-0 left-0 bg-amber-700 dark:bg-amber-800 text-white px-4 py-2 rounded-br-lg font-bold">
+                3<sup>rd</sup>
+              </div>
+              <Image
+                src="/assets/images/ranking/third.jpg"
+                alt={thirdTeam.name}
+                width={3000}
+                height={2000}
+                className="object-cover w-full h-full"
+              />
+            </CardHeader>
+            <CardContent className="p-4">
+              <div className="flex flex-col gap-2">
+                <h3 className="text-xl font-bold text-ellipsis overflow-hidden whitespace-nowrap">
+                  {thirdTeam.name}
+                  {thirdTeam.github && (
+                    <a
+                      href={thirdTeam.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="ml-2 inline-block p-1 bg-black rounded-full hover:bg-gray-800 transition-colors"
+                    >
+                      <Github className="w-4 h-4 text-white" />
+                    </a>
+                  )}
+                </h3>
+                <div className="flex items-center justify-between">
+                  <Badge variant="outline" className="text-sm">
+                    ПОБЕДИТЕЛ #{thirdTeam.id}
+                  </Badge>
+                  <div className="flex items-baseline">
+                    <span className="text-2xl font-bold text-amber-700 dark:text-amber-500">
+                      {thirdTeam.totalPoints}
+                    </span>
+                    <span className="text-xs text-gray-400 dark:text-gray-500 ml-1">
+                      /{maxScore}
+                    </span>
+                  </div>
+                </div>
+                <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 mt-2">
+                  <div
+                    className="bg-amber-700 dark:bg-amber-600 h-2 rounded-full"
+                    style={{
+                      width: `${(thirdTeam.totalPoints / maxScore) * 100}%`,
+                    }}
+                  ></div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+
+      <div className="flex justify-center w-full mb-8 mt-2">
+        <div className="text-center flex items-center">
+          <span className="text-yellow-500 dark:text-yellow-400 mr-2">★</span>
+          <p className="text-sm italic">
+            Класирането на отборите на първите три места беше определено от
+            журито.
+          </p>
+        </div>
+      </div>
+
+      {/* Other teams */}
+      <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
+        <h2 className="text-2xl font-bold mb-6 text-center">Други отбори</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {otherTeams.map((team, index) => (
+            <Card
+              key={team.id}
+              className="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+            >
+              <CardContent className="p-4">
+                <div className="flex items-center gap-4">
+                  <div className="bg-gray-100 dark:bg-gray-700 rounded-full w-10 h-10 flex items-center justify-center font-bold text-gray-600 dark:text-gray-300">
+                    {index + 4}
+                  </div>
+                  <div className="flex flex-col md:flex-row md:items-center justify-between w-full">
+                    <div>
+                      <h3 className="font-bold text-lg">
+                        {team.name}
+                        {team.github && (
+                          <a
+                            href={team.github}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="ml-2 inline-block p-1 bg-black rounded-full hover:bg-gray-800 transition-colors"
+                          >
+                            <Github className="w-4 h-4 text-white" />
+                          </a>
+                        )}
+                      </h3>
+                      <Badge variant="outline" className="text-xs mt-1">
+                        Отбор #{team.id}
+                      </Badge>
+                    </div>
+                    <div className="flex flex-col items-end mt-2 md:mt-0">
+                      <div className="flex items-baseline">
+                        <span className="text-xl font-bold">
+                          {team.totalPoints}
+                        </span>
+                        <span className="text-xs text-gray-400 dark:text-gray-500 ml-1">
+                          /{maxScore}
+                        </span>
+                      </div>
+                      <div className="w-32 bg-gray-200 dark:bg-gray-700 rounded-full h-1.5 mt-1">
+                        <div
+                          className="bg-blue-500 dark:bg-blue-600 h-1.5 rounded-full"
+                          style={{
+                            width: `${(team.totalPoints / maxScore) * 100}%`,
+                          }}
+                        ></div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </CardContent>
             </Card>
           ))}
         </div>
       </div>
-    );
-  }
-
-  function FallbackCards() {
-    return (
-      <div className="max-w-3xl m-auto flex flex-col gap-2">
-        <Card key={Math.random()} className="w-full transition">
-          <CardHeader className="relative p-0 w-full aspect-[21/9] space-y-0 overflow-hidden rounded-t-xl">
-            <Skeleton className="w-full h-full" />
-          </CardHeader>
-          <div className="p-3">
-            <Skeleton className="w-1/2 h-6" />
-          </div>
-        </Card>
-
-        <div className="flex flex-row gap-2">
-          <Card key={Math.random()} className="w-full transition">
-            <CardHeader className="relative p-0 w-full aspect-[21/9] space-y-0 overflow-hidden rounded-t-xl">
-              <Skeleton className="w-full h-full" />
-            </CardHeader>
-            <div className="p-3">
-              <Skeleton className="w-1/2 h-6" />
-            </div>
-          </Card>
-
-          <Card
-            key={Math.random()}
-            className="w-full transition hover:-translate-y-1 hover:shadow-lg"
-          >
-            <CardHeader className="relative p-0 w-full aspect-[21/9] space-y-0 overflow-hidden rounded-t-xl">
-              <Skeleton className="w-full h-full" />
-            </CardHeader>
-            <div className="p-3">
-              <Skeleton className="w-1/2 h-6" />
-            </div>
-          </Card>
-        </div>
-
-        <div className="max-w-2xl m-auto w-full flex flex-col gap-2">
-          {Array(15)
-            .fill(0)
-            .map((_) => (
-              <Card
-                key={Math.random()}
-                className="w-full  h-14 flex flex-row items-center p-3"
-              >
-                <Skeleton className="w-1/2 h-6" />
-              </Card>
-            ))}
-        </div>
-      </div>
-    );
-  }
-
-  return (
-    <>
-      <h1 className="text-center text-2xl sm:text-4xl md:text-6xl font-black uppercase my-4 truncate text-clip">
-        {t('title')}
-      </h1>
-
-      <Suspense fallback={<FallbackCards />}>
-        <RankingCards />
-      </Suspense>
-    </>
+    </div>
   );
 }
