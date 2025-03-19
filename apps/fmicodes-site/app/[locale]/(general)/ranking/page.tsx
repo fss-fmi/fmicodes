@@ -336,7 +336,7 @@ export default async function RankingPage() {
         <div className="text-center flex items-center">
           <span className="text-yellow-500 dark:text-yellow-400 mr-2">★</span>
           <p className="text-sm italic">
-            Класирането на отборите на първите три места беше гласувано от
+            Класирането на отборите на първите три места беше определено от
             журито.
           </p>
         </div>
