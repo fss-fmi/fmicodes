@@ -9,28 +9,118 @@ import {
   Badge,
 } from '@fmicodes/fmicodes-ui/lib/components/common/server';
 import Image from 'next/image';
-import { Trophy, Medal } from 'lucide-react';
+import { Trophy, Medal, Github } from 'lucide-react';
 
 // Hardcoded teams data
 const teamsData = [
-  { id: 1, name: 'The Commiters', totalPoints: 74 },
-  { id: 2, name: 'Kopengafen', totalPoints: 74 },
-  { id: 3, name: 'Exodia', totalPoints: 74 },
-  { id: 4, name: 'Zafira', totalPoints: 72 },
-  { id: 5, name: 'Corgi Lovers', totalPoints: 71 },
-  { id: 6, name: 'Hummingbird', totalPoints: 70 },
-  { id: 7, name: 'The Social Butterflies', totalPoints: 70 },
-  { id: 8, name: 'Жълта Книжка', totalPoints: 69 },
-  { id: 9, name: 'The Chu', totalPoints: 69 },
-  { id: 10, name: 'Kolegite', totalPoints: 68 },
-  { id: 11, name: 'Ctrl+Alt+Elite', totalPoints: 68 },
-  { id: 12, name: 'CodeBros', totalPoints: 67 },
-  { id: 13, name: 'Баланджинатор', totalPoints: 66 },
-  { id: 14, name: 'SpanakHaters', totalPoints: 65 },
-  { id: 15, name: 'PeakMotion', totalPoints: 65 },
-  { id: 16, name: 'Гвинпин', totalPoints: 64 },
-  { id: 17, name: '2^2', totalPoints: 64 },
-  { id: 18, name: 'ByteStorm', totalPoints: 54 },
+  {
+    id: 1,
+    name: 'The Commiters',
+    totalPoints: 74,
+    github: 'https://github.com/Alexander759/CellularAutomaton',
+  },
+  {
+    id: 2,
+    name: 'Kopengafen',
+    totalPoints: 74,
+    github: 'https://github.com/RamiHennawi/fmi-codes-2025',
+  },
+  {
+    id: 3,
+    name: 'Exodia',
+    totalPoints: 74,
+    github: 'https://github.com/ExodiaFMI/',
+  },
+  {
+    id: 4,
+    name: 'Zafira',
+    totalPoints: 72,
+    github: 'https://github.com/MartinM2304/hackathon2025/tree/main',
+  },
+  {
+    id: 5,
+    name: 'Corgi Lovers',
+    totalPoints: 71,
+    github: 'https://github.com/Hackaton-2025-ASN/ASN',
+  },
+  {
+    id: 6,
+    name: 'Hummingbird',
+    totalPoints: 70,
+    github: 'https://github.com/Hummingbird-FMI-Codes',
+  },
+  {
+    id: 7,
+    name: 'The Social Butterflies',
+    totalPoints: 70,
+    github: 'https://github.com/Alexander1022/social-flutter',
+  },
+  {
+    id: 8,
+    name: 'Жълта Книжка',
+    totalPoints: 69,
+    github: 'https://github.com/TheBookThief/yellow-note-book',
+  },
+  {
+    id: 9,
+    name: 'The Chu',
+    totalPoints: 69,
+    github: 'https://github.com/ItsRizee/fmi-codes',
+  },
+  {
+    id: 10,
+    name: 'Kolegite',
+    totalPoints: 68,
+    github: 'https://github.com/michislava/Insecta',
+  },
+  {
+    id: 11,
+    name: 'Ctrl+Alt+Elite',
+    totalPoints: 68,
+    github: 'https://github.com/MihailTs/VROOM',
+  },
+  {
+    id: 12,
+    name: 'CodeBros',
+    totalPoints: 67,
+    github: 'https://github.com/MartiHr/TimeBug',
+  },
+  {
+    id: 13,
+    name: 'Баланджинатор',
+    totalPoints: 66,
+    github: 'https://github.com/orgs/Balajinator-FMI/repositories',
+  },
+  {
+    id: 14,
+    name: 'SpanakHaters',
+    totalPoints: 65,
+    github: 'https://github.com/SuperMiro0809/FMI-Codes-2025.git',
+  },
+  {
+    id: 15,
+    name: 'PeakMotion',
+    totalPoints: 65,
+    github: 'https://github.com/VelislavP/peakmotion-front-end',
+  },
+  {
+    id: 16,
+    name: 'Гвинпин',
+    totalPoints: 64,
+    github: 'https://github.com/JivkoNushev/IoT-Firewall',
+  },
+  {
+    id: 17,
+    name: '2^2',
+    totalPoints: 64,
+    github: 'https://github.com/N1k1ta-white/StatUI',
+  },
+  {
+    id: 18,
+    name: 'ByteStorm',
+    totalPoints: 54,
+    github: 'https://github.com/polinizal/MadScientists',
+  },
 ];
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -86,6 +176,16 @@ export default async function RankingPage() {
               <div className="flex flex-col gap-2">
                 <h3 className="text-2xl font-bold text-ellipsis overflow-hidden whitespace-nowrap">
                   {firstTeam.name}
+                  {firstTeam.github && (
+                    <a
+                      href={firstTeam.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="ml-2 inline-block p-1 bg-black rounded-full hover:bg-gray-800 transition-colors"
+                    >
+                      <Github className="w-5 h-5 text-white" />
+                    </a>
+                  )}
                 </h3>
                 <div className="flex items-center justify-between">
                   <Badge className="bg-yellow-100 text-yellow-800 border-yellow-300 dark:bg-yellow-900 dark:text-yellow-100 dark:border-yellow-700 text-sm">
@@ -135,6 +235,16 @@ export default async function RankingPage() {
               <div className="flex flex-col gap-2">
                 <h3 className="text-xl font-bold text-ellipsis overflow-hidden whitespace-nowrap">
                   {secondTeam.name}
+                  {secondTeam.github && (
+                    <a
+                      href={secondTeam.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="ml-2 inline-block p-1 bg-black rounded-full hover:bg-gray-800 transition-colors"
+                    >
+                      <Github className="w-4 h-4 text-white" />
+                    </a>
+                  )}
                 </h3>
                 <div className="flex items-center justify-between">
                   <Badge variant="outline" className="text-sm">
@@ -184,6 +294,16 @@ export default async function RankingPage() {
               <div className="flex flex-col gap-2">
                 <h3 className="text-xl font-bold text-ellipsis overflow-hidden whitespace-nowrap">
                   {thirdTeam.name}
+                  {thirdTeam.github && (
+                    <a
+                      href={thirdTeam.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="ml-2 inline-block p-1 bg-black rounded-full hover:bg-gray-800 transition-colors"
+                    >
+                      <Github className="w-4 h-4 text-white" />
+                    </a>
+                  )}
                 </h3>
                 <div className="flex items-center justify-between">
                   <Badge variant="outline" className="text-sm">
@@ -238,7 +358,19 @@ export default async function RankingPage() {
                   </div>
                   <div className="flex flex-col md:flex-row md:items-center justify-between w-full">
                     <div>
-                      <h3 className="font-bold text-lg">{team.name}</h3>
+                      <h3 className="font-bold text-lg">
+                        {team.name}
+                        {team.github && (
+                          <a
+                            href={team.github}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="ml-2 inline-block p-1 bg-black rounded-full hover:bg-gray-800 transition-colors"
+                          >
+                            <Github className="w-4 h-4 text-white" />
+                          </a>
+                        )}
+                      </h3>
                       <Badge variant="outline" className="text-xs mt-1">
                         Отбор #{team.id}
                       </Badge>
